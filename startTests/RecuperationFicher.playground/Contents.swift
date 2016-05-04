@@ -136,6 +136,7 @@ if let aStreamReader = StreamReader(path:"Users/projet2a/Documents/Playgrounds/C
         strBuffer += line + "\r"
     }
     }
+    return ""
 }
     //print(strBuffer)
 

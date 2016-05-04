@@ -14,33 +14,59 @@ class Car{
     var x = 0
     var y = 0
     var isVertical = true
+    var p = Plateau()
     
     
     
-    init (Id:Int,length:Int,X:Int,Y:Int,isVertical:Bool) {
+    init (Id:Int,length:Int,X:Int,Y:Int,isVertical:Bool,p:Plateau) {
         self.Id=Id
         self.length=length
         self.x=X
         self.y=Y
         self.isVertical=isVertical
+        self.p=p
     }
     
     func movePlus(val:Int){
-        if(self.isVertical){
-            self.y = self.y+val
+        var ok = true
+        if(!(self.isVertical)){
+            if(self.y+val<=p.colonnes-1){
+                for k in 0..<self.length+val{
+                    if (((p.table[self.x][self.y+k]) != -1) || ((p.table[self.x][self.y+k]) != self.Id)) {
+                        ok=false
+                    }
+                }
+                if(ok) {
+                    self.y = self.y+val
+                }
+            }
         }
         else {
-            self.x = self.x+val
+            if(self.y+val<=p.lignes-1){
+                for k in 0..<self.length+val{
+                    if (((p.table[self.x+k][self.y]) != -1) || ((p.table[self.x+k][self.y]) != self.Id)) {
+                        ok=false
+                    }
+                }
+                if(ok) {
+                    self.x = self.x+val
+                }
+            }
         }
     }
     
     
     func moveMinus(val:Int){
-        if(self.isVertical){
-            self.y = self.y-val
+        if(!(self.isVertical)){
+            if(self.y-val>=0){
+                self.y = self.y-val
+            }
         }
         else {
-            self.x = self.x-val
+            if(self.x-val>=0){
+                 self.x = self.x-val
+            }
+           
         }
     }
     
