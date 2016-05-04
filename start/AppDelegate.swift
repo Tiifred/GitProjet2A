@@ -35,7 +35,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
          //let car = Car(Id:1,length:2,X:3,Y:3,isVertical:true,p:self.plateau)
         //plateau.cars.append(car)
         //print(car.affiche())
-        
+        //for i in 0..<plateau.cars.count{
+           // label.stringValue += plateau.cars[i].affiche() + "added \n"
+       // }
         label.stringValue += plateau.afficheTab()
         
     }
@@ -72,7 +74,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var copy = false
     
     
-    if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/CardSet-1") {
+    if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/projet/start/CardSet-1") {
     defer {
     aStreamReader.close()
     }
