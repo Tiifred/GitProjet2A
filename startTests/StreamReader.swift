@@ -1,8 +1,32 @@
-//: Playground - noun: a place where people can play
+//
+//  StreamReader.swift
+//  start
+//
+//  Created by Projet 2A on 04/05/2016.
+//  Copyright © 2016 Projet 2A. All rights reserved.
+//
 
-import Cocoa
+import Foundation
 
-var str = "Hello, playground"
+extension String {
+    func matchPattern(patStr:String)->Bool {
+        var isMatch:Bool = false
+        do {
+            let regex = try NSRegularExpression(pattern: patStr, options: [.CaseInsensitive])
+            let result = regex.firstMatchInString(self, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, characters.count))
+            
+            if (result != nil)
+            {
+                isMatch = true
+            }
+        }
+        catch {
+            isMatch = false
+        }
+        return isMatch
+    }
+}
+
 
 class StreamReader  {
     
@@ -87,26 +111,4 @@ class StreamReader  {
         fileHandle?.closeFile()
         fileHandle = nil
     }
-}
-
-var strBuffer : String = ""
-/*
- 
- *****************************************************IMPLEMENTATION********************************************************
- 
- 
-*/
-
-
-
-if let aStreamReader = StreamReader(path:"Users/projet2a/Documents/Playgrounds/CardSet-1") {
-    defer {
-        aStreamReader.close()
-    }
-    while let line = aStreamReader.nextLine() {
-        //print(line)
-        strBuffer += line + "\r"
-        
-    }
-    print(strBuffer)
 }
