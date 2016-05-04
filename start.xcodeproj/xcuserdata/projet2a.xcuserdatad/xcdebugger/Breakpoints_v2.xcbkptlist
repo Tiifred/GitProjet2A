@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "start/AppDelegate.swift"
-            timestampString = "483979083.121943"
+            timestampString = "484046261.558407"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "addcar(_:)"
             landmarkType = "5">
          </BreakpointContent>
