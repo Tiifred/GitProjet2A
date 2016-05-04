@@ -46,6 +46,7 @@
 		F00382BE1CD88BF400E2BE66 /* startUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startUITests.swift; sourceTree = "<group>"; };
 		F00382C01CD88BF400E2BE66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F03A60BC1CD9EFA300C67B21 /* RecuperationFicher.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RecuperationFicher.playground; sourceTree = "<group>"; };
+		F03A60BD1CD9F51000C67B21 /* ExpressionReguliere.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ExpressionReguliere.playground; sourceTree = "<group>"; };
 		F0FD6A471CD899DE008C6A2C /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		F0FD6A491CD8D8A5008C6A2C /* Plateau.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plateau.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,6 +112,7 @@
 		F00382B21CD88BF400E2BE66 /* startTests */ = {
 			isa = PBXGroup;
 			children = (
+				F03A60BD1CD9F51000C67B21 /* ExpressionReguliere.playground */,
 				F00382B31CD88BF400E2BE66 /* startTests.swift */,
 				F00382B51CD88BF400E2BE66 /* Info.plist */,
 				F03A60BC1CD9EFA300C67B21 /* RecuperationFicher.playground */,
