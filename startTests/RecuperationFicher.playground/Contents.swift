@@ -90,6 +90,13 @@ class StreamReader  {
 }
 
 var strBuffer : String = ""
+/*
+ 
+ *****************************************************IMPLEMENTATION********************************************************
+ 
+ 
+*/
+
 
 
 if let aStreamReader = StreamReader(path:"Users/projet2a/Documents/Playgrounds/CardSet-1") {
