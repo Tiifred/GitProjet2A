@@ -25,6 +25,7 @@ class Car{
         self.y=Y
         self.isVertical=isVertical
         self.p=p
+        
     }
     
     func movePlus(val:Int){

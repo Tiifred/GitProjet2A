@@ -109,35 +109,31 @@ class StreamReader  {
     }
 }
 
-
-/*
- 
- *****************************************************IMPLEMENTATION********************************************************
- 
- 
-*/
-
+func catchlvl(lvl:Int)->String{
 var strBuffer : String = ""
-var strBuffer2 : String = ""
-var i = 0
+    var copy = false
 
-if let aStreamReader = StreamReader(path:"Users/projet2a/Documents/Playgrounds/CardSet-1") {
-    defer {
-        aStreamReader.close()
-    }
-    while var line = aStreamReader.nextLine() {
-        if(line.matchPattern("level 40"))
-        {
-            while line != ""{
-            line += "\r" + aStreamReader.nextLine()!
-            print(line)
+
+    if let aStreamReader = StreamReader(path:"Users/projet2a/Documents/Playgrounds/CardSet-1") {
+        defer {
+            aStreamReader.close()
+        }
+        while let line = aStreamReader.nextLine() {
+            if(line.matchPattern("level \(lvl)")) {
+                strBuffer = ""
+                copy = true
             }
- 
-        strBuffer += line + "\r"
-    }
+            
+            if(line == "" && copy) {
+                copy = false
+                return strBuffer
+            }
+            
+            strBuffer += line + "\r"
+        
+        }
     }
     return ""
 }
-    //print(strBuffer)
 
-
+print(catchlvl(1))

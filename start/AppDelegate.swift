@@ -11,8 +11,12 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
- let car = Car(Id:1,length:2,X:3,Y:3,isVertical:true)
-    let plateau = Plateau()
+    var plateau = Plateau()
+    
+    
+    
+    
+
     @IBOutlet weak var window: NSWindow!
 
 
@@ -26,7 +30,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var label: NSTextField!
     @IBAction func addcar(sender: NSButton) {
-       plateau.cars.append(car)
+        let car = Car(Id:1,length:2,X:3,Y:3,isVertical:true,p:plateau)
+        plateau.cars.append(car)
          label.stringValue = ""
         //plateau.cars.append(car)
         //print(car.affiche())
@@ -34,6 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             label.stringValue += plateau.cars[i].affiche() + "added \n"
         }
         label.stringValue += plateau.afficheTab()
+        print("heloooooooooooo")
         
     }
 
