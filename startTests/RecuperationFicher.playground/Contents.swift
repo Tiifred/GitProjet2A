@@ -4,6 +4,26 @@ import Cocoa
 
 var str = "Hello, playground"
 
+extension String {
+    func matchPattern(patStr:String)->Bool {
+        var isMatch:Bool = false
+        do {
+            let regex = try NSRegularExpression(pattern: patStr, options: [.CaseInsensitive])
+            let result = regex.firstMatchInString(self, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, characters.count))
+            
+            if (result != nil)
+            {
+                isMatch = true
+            }
+        }
+        catch {
+            isMatch = false
+        }
+        return isMatch
+    }
+}
+
+
 class StreamReader  {
     
     let encoding : UInt
@@ -89,7 +109,7 @@ class StreamReader  {
     }
 }
 
-var strBuffer : String = ""
+
 /*
  
  *****************************************************IMPLEMENTATION********************************************************
@@ -97,16 +117,26 @@ var strBuffer : String = ""
  
 */
 
-
+var strBuffer : String = ""
+var strBuffer2 : String = ""
+var i = 0
 
 if let aStreamReader = StreamReader(path:"Users/projet2a/Documents/Playgrounds/CardSet-1") {
     defer {
         aStreamReader.close()
     }
-    while let line = aStreamReader.nextLine() {
-        //print(line)
+    while var line = aStreamReader.nextLine() {
+        if(line.matchPattern("level 40"))
+        {
+            while line != ""{
+            line += "\r" + aStreamReader.nextLine()!
+            print(line)
+            }
+ 
         strBuffer += line + "\r"
-        
     }
-    print(strBuffer)
+    }
 }
+    //print(strBuffer)
+
+
