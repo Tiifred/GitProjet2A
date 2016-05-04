@@ -1,5 +1,12 @@
-//: Playground - noun: a place where people can play
+//
+//  Main.swift
+//  start
+//
+//  Created by Projet 2A on 04/05/2016.
+//  Copyright © 2016 Projet 2A. All rights reserved.
+//
 
+import Foundation
 import Cocoa
 
 var str = "Hello, playground"
@@ -127,41 +134,7 @@ class StreamReader  {
     }
 }
 
-func catchlvl(lvl:Int)->String{
-var strBuffer : String = ""
-    var copy = false
 
 
-    if let aStreamReader = StreamReader(path:"Users/projet2a/Documents/projet/start/CardSet-1") {
-        defer {
-            aStreamReader.close()
-        }
-        while let line = aStreamReader.nextLine() {
-            if(line.matchPattern("level \(lvl)")) {
-                strBuffer = ""
-                copy = true
-            }
-            
-            if(line == "" && copy) {
-                copy = false
-                return strBuffer
-            }
-            
-            strBuffer += line + "\r"
-        
-        }
-    }
-    return ""
-}
-
-//var deflvl =
-    print(catchlvl(1))
-//var tablvl = deflvl.lines
-//print(deflvl.lines)
-//tablvl[1].words()
-//tablvl.count
-
-//for i in 0..<tablvl.count{
-  //  print(tablvl[i].words())
-//}
+    
 
