@@ -34,6 +34,7 @@ class Car{
                 for k in 0..<self.length+val{
                     if (((p.table[self.x][self.y+k]) != -1) || ((p.table[self.x][self.y+k]) != self.Id)) {
                         ok=false
+                        print("i can't")
                     }
                 }
                 if(ok) {
@@ -46,6 +47,7 @@ class Car{
                 for k in 0..<self.length+val{
                     if (((p.table[self.x+k][self.y]) != -1) || ((p.table[self.x+k][self.y]) != self.Id)) {
                         ok=false
+                        print("i can't")
                     }
                 }
                 if(ok) {
@@ -57,16 +59,32 @@ class Car{
     
     
     func moveMinus(val:Int){
+        var ok = true
         if(!(self.isVertical)){
-            if(self.y-val>=0){
-                self.y = self.y-val
+            if(self.y+val<=p.colonnes-1){
+                for k in 0..<val{
+                    if (((p.table[self.x][self.y-k]) != -1) || ((p.table[self.x][self.y+k]) != self.Id)) {
+                        ok=false
+                        print("i can't")
+                    }
+                }
+                if(ok) {
+                    self.y = self.y-val
+                }
             }
         }
         else {
-            if(self.x-val>=0){
-                 self.x = self.x-val
+            if(self.y+val<=p.lignes-1){
+                for k in 0..<self.length+val{
+                    if (((p.table[self.x-k][self.y]) != -1) || ((p.table[self.x+k][self.y]) != self.Id)) {
+                        ok=false
+                        print("i can't")
+                    }
+                }
+                if(ok) {
+                    self.x = self.x-val
+                }
             }
-           
         }
     }
     

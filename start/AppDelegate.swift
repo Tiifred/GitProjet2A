@@ -28,11 +28,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var label: NSTextField!
     @IBAction func addcar(sender: NSButton) {
-       
+       lecture()
          label.stringValue = ""
-       label.stringValue += catchlvl(1)
-         let car = Car(Id:1,length:2,X:3,Y:3,isVertical:true,p:self.plateau)
-        plateau.cars.append(car)
+        
+       //label.stringValue += catchlvl(1)
+         //let car = Car(Id:1,length:2,X:3,Y:3,isVertical:true,p:self.plateau)
+        //plateau.cars.append(car)
         //print(car.affiche())
         
         label.stringValue += plateau.afficheTab()
@@ -57,12 +58,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func lecture(){
         
-        //let deflvl = catchlvl(1)
-        //var tablvl = deflvl.lines
-       // for i in 1..<tablvl.count{
+        let deflvl = catchlvl(1)
+        var tablvl = deflvl.lines
+       for i in 1..<tablvl.count{
        //     print(i)
-   // plateau.cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: plateau))
-       // }
+    plateau.cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: plateau))
+        }
         
     }
     

@@ -1,0 +1,536 @@
+# Images des véhicules
+1 Annexes/Images/CarH-X.png
+2 Annexes/Images/CarH-blue.png
+3 Annexes/Images/CarH-cream.png
+4 Annexes/Images/CarH-darkblue.png
+5 Annexes/Images/CarH-green.png
+6 Annexes/Images/CarH-lightblue.png
+7 Annexes/Images/CarH-lightgreen.png
+8 Annexes/Images/CarH-marron.png
+9 Annexes/Images/CarH-orange.png
+10 Annexes/Images/CarH-rose.png
+11 Annexes/Images/CarH-violet.png
+12 Annexes/Images/CarH-yellow.png
+100 Annexes/Images/TruckH-violet.png
+101 Annexes/Images/TruckH-yellow.png
+102 Annexes/Images/TruckH-lightgreen.png
+103 Annexes/Images/TruckH-blue.png
+1 Annexes/Images/DS21.png
+
+# Le pas de sortie est compté entre ()
+# Level 1 (8 pas)
+2 1 2 h r 1
+0 0 2 h r 2
+0 5 3 v f 100
+1 0 3 v r 101
+1 3 3 v r 102
+4 0 2 v f 3
+4 4 2 h f 4
+5 2 3 h r 103
+
+# Level 2 (8 pas)
+2 0 2 h r 1
+0 0 2 v f 2
+0 3 3 h f 100
+1 3 2 v r 3
+1 5 3 v f 101
+2 4 2 v f 4
+3 0 3 h f 102
+4 2 2 v r 5
+4 4 2 h f 6
+5 0 2 h r 7
+5 3 2 h f 8
+
+# Level 3 (14 pas)
+2 1 2 h r 1
+2 3 3 v f 100
+3 1 2 h f 2
+3 5 3 v f 101
+4 1 2 v f 3
+5 2 2 h r 4 
+
+# Level 4 (9 pas)
+2 1 2 h r 1
+0 0 3 v r 100
+0 3 3 v f 101
+3 2 2 v r 2
+3 3 3 h r 102
+4 5 2 v r 3
+5 2 3 h f 103
+
+# Level 5 (9 pas)
+2 1 2 h r 1
+0 0 2 h f 2
+0 3 3 v f 100
+0 5 2 v r 3
+1 0 3 v r 101
+1 4 3 v r 102
+2 5 2 v f 4
+3 1 3 h r 103
+4 0 2 v f 5
+4 4 2 h r 6
+5 4 2 h f 7
+
+# Level 6 (9 pas)
+2 1 2 h r 1
+0 0 2 h f 2
+0 3 2 v r 3
+1 0 2 h r 4
+1 4 3 v f 100
+1 5 3 v r 101
+2 3 3 v f 102
+3 0 2 h f 5
+3 2 2 v r 6
+4 0 2 v f 7
+5 3 3 h r 103
+
+# Level 7 (13 pas)
+2 1 2 h r 1
+0 1 2 v f 2
+0 2 2 h f 3
+0 4 2 v r 4
+0 5 2 v r 5
+1 3 2 v f 6
+2 5 2 v f 7
+3 2 2 h r 8
+4 3 2 v r 9
+
+# Level 8 (12 pas)
+2 0 2 h r 1
+0 3 2 h r 2
+0 5 3 v r 100
+1 2 2 h f 3
+1 4 2 v f 4
+2 2 2 v f 5
+2 3 2 v r 6
+3 0 2 h r 7
+3 4 2 h r 8
+4 0 2 h f 9
+4 2 2 v f 10
+4 3 3 h f 101
+5 0 2 h f 11
+5 3 3 h r 102
+
+# Level 9 (12 pas)
+2 0 2 h r 1
+0 1 2 v r 2
+0 2 2 h f 3
+0 4 2 h f 4
+1 3 2 v f 5
+1 4 2 h r 6
+2 4 3 v r 100
+2 5 2 v f 7
+3 0 3 v r 101
+3 1 3 h f 102
+4 2 2 v r 8
+4 5 2 v f 9
+
+# Level 10 (17 pas)
+2 1 2 h r 1
+0 0 2 h f 2
+0 2 2 v r 3
+0 4 2 h r 4
+1 0 2 h r 5
+1 5 3 v r 100
+2 0 3 v r 101
+3 1 3 h r 102
+4 3 2 v f 6
+4 4 2 h r 7
+5 0 2 h f 8
+5 4 2 h r 9
+
+# Level 11 (25 pas)
+2 1 2 h r 1
+0 0 3 v r 100
+0 1 2 h f 2
+0 3 3 v f 101
+3 2 2 v r 3
+3 3 3 h f 102
+4 5 2 v r 4
+5 2 3 h r 103
+
+# Level 12 (17 pas)
+2 0 2 h r 1
+0 0 2 v r 2
+0 1 2 h f 3
+0 5 3 v f 100
+1 2 3 v r 101
+3 3 3 h r 102
+4 4 2 v f 4
+5 0 3 h f 103
+
+# Level 13 (16 pas)
+2 3 2 h r 1
+0 0 2 h r 2
+0 2 2 h f 3
+0 4 2 v r 4
+1 2 2 v f 5
+1 5 3 v r 100
+2 1 2 v f 6
+3 0 3 v f 101
+3 3 2 h f 7
+4 3 2 v f 8
+4 4 2 h f 9
+5 1 2 h f 10
+5 4 2 h r 11
+
+# Level 14 (17 pas)
+2 2 2 h r 1
+0 0 2 h f 2
+0 2 2 v r 3
+1 4 2 h f 4
+2 0 2 v r 5
+2 1 2 v r 6
+2 4 2 v f 7
+2 5 2 v r 8
+3 2 2 h f 9
+4 2 2 v r 10
+4 4 2 h r 11
+5 0 2 h r 12
+
+# Level 15 (23 pas)
+2 2 2 h r 1
+0 1 2 h r 2
+0 3 2 h f 3
+1 0 2 h r 4
+1 2 2 h r 5
+1 4 3 v f 100
+1 5 3 v r 101
+2 0 3 v f 102
+2 1 3 v r 103
+3 2 2 v f 6
+3 3 2 v f 7
+4 4 2 h f 8
+5 1 2 h r 9
+5 3 2 h f 10
+
+# Level 16 (21 pas)
+2 3 2 h r 1
+0 0 2 h f 2
+0 2 2 h r 3
+0 4 2 v f 4
+0 5 3 v r 100
+1 0 2 v f 5
+1 2 2 h r 6
+2 1 2 v r 7
+2 2 3 v f 101
+3 3 3 h r 102
+5 0 2 h r 8
+
+# Level 17 (24 pas)
+2 0 2 h r 1
+0 0 2 v f 2
+0 1 3 h f 100
+1 2 2 h r 3
+1 4 2 h f 4
+2 2 2 v r 5
+3 0 2 h f 6
+3 3 3 v r 101
+4 0 3 h f 102
+4 4 2 v f 7
+4 5 2 v r 8
+5 0 3 h f 103
+
+# Level 18 (25 pas)
+2 1 2 h r 1
+0 0 2 h r 2
+0 2 2 v f 3
+0 3 3 v r 100
+1 0 2 h f 4
+2 0 3 v f 101
+3 1 3 h r 102
+4 1 2 h f 5
+5 0 3 h r 103
+
+# Level 19 (22 pas)
+2 2 2 h r 1
+0 2 2 v r 2
+0 3 2 h r 3
+1 4 2 v r 4
+2 1 2 v f 5
+3 2 2 h f 6
+3 4 2 v r 7
+4 1 3 h r 100
+
+# Level 20 (10 pas)
+2 0 2 h r 1
+0 0 2 v f 2
+0 3 3 h f 100
+1 1 2 h f 3
+1 3 2 v f 4
+2 2 2 v r 5
+2 5 3 v r 101
+4 2 2 v r 6
+4 3 2 h f 7
+5 3 3 h f 102
+
+# Level 21 (21 pas)
+2 1 2 h r 1
+0 0 2 h r 2
+0 2 2 v r 3
+0 3 3 v f 100
+1 0 3 v r 101
+3 1 3 h r 102
+5 3 3 h r 103
+
+# Level 22 (26 pas)
+2 1 2 h r 1
+0 2 2 v f 2
+0 3 3 h r 100
+1 0 2 v f 3
+1 3 3 v f 101
+1 4 2 h f 4
+3 1 2 v r 5
+3 4 2 h r 6
+4 0 2 v f 7
+4 2 2 h r 8
+4 5 2 v f 9
+5 1 3 h f 102
+
+# Level 23 (29 pas)
+2 3 2 h r 1
+0 2 3 h r 100
+0 5 3 v r 101
+1 2 2 v r 2
+1 3 2 h f 3
+3 2 2 v r 4
+3 3 2 v f 5
+3 4 2 h r 6
+4 4 2 h r 7
+5 2 3 h r 102
+
+# Level 24 (25 pas)
+2 2 2 h r 1
+0 2 2 v f 2
+0 3 2 h f 3
+1 1 2 v f 4
+2 0 2 v r 5
+2 4 2 v f 6
+3 1 2 h r 7
+4 0 3 h f 100
+4 4 2 v r 8
+5 0 2 h f 9
+
+# Level 25 (27 pas)
+2 1 2 h r 1
+0 0 2 h f 2
+0 2 2 v f 3
+0 4 2 h f 4
+1 0 2 h r 5
+1 5 3 v r 100
+2 0 3 v r 101
+2 4 2 v r 6
+3 1 3 h f 102
+4 1 2 v r 7
+4 3 2 v r 8
+4 4 2 h r 9
+5 4 2 h f 10
+
+# Level 26 (28 pas)
+2 1 2 h r 1
+0 1 2 v r 2
+0 3 3 h f 100
+1 0 2 v r 3
+1 3 2 v r 4
+1 4 3 v f 101
+2 5 2 v f 5
+3 0 2 v f 6
+3 1 3 h r 102
+4 2 2 v f 7
+4 5 2 v f 8
+5 3 2 h f 9
+
+# Level 27 (28 pas)
+2 0 2 h r 1
+0 0 2 v f 2
+0 1 2 h f 3
+0 3 3 v f 100
+1 1 2 h r 4
+2 2 2 v r 5
+2 5 3 v r 101
+3 3 2 h f 6
+4 2 2 v f 7
+5 3 3 h r 102
+
+# Level 28 (30 pas)
+2 0 2 h r 1
+0 0 3 h r 100
+0 3 2 v r 2
+1 2 3 v f 101
+1 4 2 h r 3
+3 0 2 v f 4
+3 1 2 v f 5
+3 3 2 h r 6
+3 5 3 v r 102
+4 2 3 h f 103
+5 0 2 h r 7
+5 2 2 h f 8
+
+# Level 29 (31 pas)
+2 0 2 h r 1
+0 0 3 h f 100
+0 4 3 v f 101
+1 2 2 v r 2
+2 5 2 v f 3
+3 0 2 v r 4
+3 1 2 h f 5
+3 3 2 h r 6
+4 1 2 h f 7
+4 3 2 v f 8
+4 5 2 v r 9
+5 0 3 h r 102
+
+# Level 30 (32 pas)
+2 1 2 h r 1
+0 0 3 v r 100
+0 2 2 v f 2
+0 3 3 h r 101
+1 3 2 v r 3
+3 0 2 h f 4
+3 2 2 h f 5
+3 5 3 v r 102
+5 0 2 h f 6
+5 2 2 h r 7
+
+# Level 31 (37 pas)
+2 1 2 h r 1
+0 0 2 h f 2
+0 3 3 h r 100
+1 3 2 v r 3
+1 4 2 h f 4
+2 0 2 v f 5
+2 5 3 v r 101
+3 2 3 v f 102
+3 3 2 h r 6
+4 0 2 h r 7
+5 3 3 h f 103
+
+# Level 32 (37 pas)
+2 0 2 h r 1
+0 0 2 h r 2
+0 2 3 v r 100
+0 3 2 v f 3
+0 4 2 h r 4
+3 0 2 v r 5
+3 1 2 h f 6
+3 3 2 h f 7
+3 5 3 v f 101
+4 3 2 v f 8
+5 0 2 h r 9
+
+# Level 33 (40 pas)
+2 0 2 h r 1
+0 1 2 v f 2
+0 2 3 v f 100
+0 4 2 h f 3
+3 0 2 v f 4
+3 1 2 h r 5
+3 3 2 h f 6
+3 5 3 v r 101
+4 1 2 h r 7
+4 3 2 v f 8
+4 4 2 v r 9
+5 0 3 h f 102
+
+# Level 34 (43 pas)
+2 0 2 h r 1
+0 0 2 v r 2
+0 3 3 h r 100
+1 3 2 v r 3
+1 5 3 v f 101
+2 4 2 v f 4
+3 0 3 h r 102
+3 3 2 v f 5
+4 2 2 v r 6
+4 4 2 h f 7
+5 0 2 h r 8
+5 3 2 h f 9
+
+# Level 35 (43 pas)
+2 0 2 h r 1
+0 2 3 v r 100
+0 3 2 h r 2
+0 5 3 v f 101
+1 3 2 v r 3
+3 0 2 v f 4
+3 1 3 h f 102
+4 1 2 h f 5
+4 3 2 v r 6
+4 4 2 v f 7
+5 0 2 h f 8
+
+# Level 36 (44 pas)
+2 2 2 h r 1
+0 0 3 v f 100
+0 1 3 h r 101
+0 4 2 h f 2
+1 1 2 v f 3
+1 2 2 h f 4
+1 5 3 v r 102
+3 0 3 h f 103
+3 3 2 v r 5
+4 2 2 v f 6
+4 4 2 h r 7
+5 0 2 h r 8
+
+# Level 37 (47 pas)
+2 1 2 h r 1
+0 0 2 h r 2
+0 2 2 v r 3
+0 4 2 h f 4
+1 0 2 h f 5
+1 4 3 v f 100
+1 5 3 v r 101
+2 0 3 v f 102
+3 1 3 h r 103
+4 3 2 v r 6
+4 4 2 h f 7
+5 0 2 h r 8
+5 4 2 h r 9
+
+# Level 38 (48 pas)
+2 0 2 h r 1
+0 0 2 v f 2
+0 3 3 h r 100
+1 1 2 h f 3
+1 3 2 v r 4
+2 2 2 v r 5
+2 5 3 v f 101
+3 3 2 h f 6
+4 2 2 v r 7
+4 3 2 h f 8
+5 3 3 h r 102
+
+# Level 39 (50 pas)
+2 0 2 h r 1
+0 2 2 v f 2
+0 3 3 h f 100
+1 3 2 v f 3
+2 2 2 v r 4
+2 5 3 v r 101
+3 0 2 h f 5
+3 3 2 h r 6
+4 0 2 v f 7
+4 1 2 v r 8
+4 2 2 h r 9
+5 2 2 h f 10
+
+# Level 40 (51 pas)
+2 3 2 h r 1
+0 0 3 v r 100
+0 1 2 h r 2
+0 4 2 v r 3
+1 1 2 v f 4
+1 2 2 v r 5
+1 5 3 v f 101
+3 0 3 h f 102
+3 3 2 v f 6
+4 2 2 v r 7
+4 4 2 h f 8
+5 0 2 h f 9
+5 3 2 h r 10
+
+# Level 41 (pas de solution)
+2 0 2 h r 1
+0 2 3 v r 100
+3 2 3 v f 101

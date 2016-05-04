@@ -46,7 +46,7 @@ class Plateau{
         abc=""
         for i in 0..<lignes {
             for j in 0..<colonnes {
-                abc += "\(table[i][j])"
+                abc += " '\(table[i][j]) '"
             }
             abc += "\n"
         }
