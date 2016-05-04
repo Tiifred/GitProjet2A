@@ -46,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //car.moveMinus(1)
        // label.stringValue+=car.affiche()
          //plateau.cars.append(car)
-        plateau.cars[0].moveMinus(1)
+        plateau.cars[4].movePlus(1)
       label.stringValue =  plateau.afficheTab()
     }
     
