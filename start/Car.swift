@@ -61,8 +61,8 @@ class Car{
         if(s == "plus"){
             if(!(self.isVertical)){
                 if(self.y + val + self.length<=p.colonnes){
-                    for k in 1..<val + 1{
-                        if (((p.table[self.x][self.y+k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
+                    for k in 0..<val{
+                        if (((p.table[self.x][self.y + self.length + k]) != -1) && ((p.table[self.x][self.y + self.length + k]) != self.Id)) {
                             ok=false
                             print("i can't")
                         }
@@ -74,9 +74,9 @@ class Car{
                 ok = true
             }
             else {
-                if(self.x+val+self.length<=p.lignes-1){
-                    for k in 0..<self.length+val{
-                        if (((p.table[self.x+k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
+                if(self.x+val+self.length<=p.lignes){
+                    for k in 1..<val + self.length {
+                        if (((p.table[self.x + k][self.y]) != -1) && ((p.table[self.x + k][self.y]) != self.Id)) {
                             ok=false
                             print("i can't")
                         }
@@ -106,6 +106,7 @@ class Car{
             else {
                 if(self.x-val>=0){
                     for k in 1..<val+1{
+                        print("ici22")
                         if (((p.table[self.x-k][self.y]) != -1) && ((p.table[self.x-k][self.y]) != self.Id)) {
                             ok=false
                             print("i can't")
