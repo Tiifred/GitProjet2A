@@ -27,79 +27,36 @@ class Car{
         self.p=p
     }
     
-    func movePlus(val:Int){
-       // var ok = true
-        if(!(self.isVertical)){
-       /*     if(self.y+val<=p.colonnes-1){
-                for k in 0..<self.length+val{
-                    if (((p.table[self.x][self.y+k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
-                        ok=false
-                        print("i can't")
-                    }
-                }
-                if(ok) {*/
-                    self.y = self.y+val
-                    print("it's okkkkkkkk")
-                }
-          /*  }
-            ok = true
-        }*/
-        else {
-          /*  if(self.y+val<=p.lignes-1){
-                for k in 0..<self.length+val{
-                    if (((p.table[self.x+k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
-                        ok=false
-                        print("i can't")
-                    }
-                }
-                if(ok) {
-                  */  self.x = self.x+val
-                    print("it's okkkkkkkk")
-                }
-            /*}
-        }
-        ok = true*/
-    }
-    
-    
-    func moveMinus(val:Int){
-        var ok = true
-        if(!(self.isVertical)){
-            if(self.y+val<=p.colonnes-1){
-                for k in 1..<val+1{
-                    if (((p.table[self.x][self.y-k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
-                        ok=false
-                        print("i can't")
-                    }
-                }
-                if(ok) {
-                    self.y = self.y-val
-                }
-            }
-        }
-        else {
-            if(self.y+val<=p.lignes-1){
-                for k in 1..<val+1{
-                    if (((p.table[self.x-k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
-                        ok=false
-                        print("i can't")
-                    }
-                }
-                if(ok) {
-                    self.x = self.x-val
-                }
-            }
-        }
-        ok = true
-    }
     
     func affiche()->String{
     
         return "car \(Id), x\(x) , y\(y) "
     }
     
+    func movePlus(val:Int){
+        if(!(self.isVertical)){
+                self.y = self.y+val
+                print("Mooving Y+1")
+            }else {
+                self.x = self.x+val
+                print("Mooving X+1")
+            }
+    }
+
+    func moveMinus(val:Int){
+        if(!(self.isVertical)){
+            self.y = self.y-val
+            print("Mooving Y-1")
+        }else {
+            self.x = self.x-val
+            print("Mooving X-1")
+        }
+    }
+    
+
+    
     func isAllowed(s:String, val:Int)->Bool{
-        //var result : Bool = false
+
         var ok = true
         if(s == "plus"){
             if(!(self.isVertical)){
