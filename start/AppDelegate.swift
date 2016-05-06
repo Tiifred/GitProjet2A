@@ -74,7 +74,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var copy = false
     
     
-    if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/projet/start/CardSet-1") {
+    if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/CardSet-1") {
     defer {
     aStreamReader.close()
     }
