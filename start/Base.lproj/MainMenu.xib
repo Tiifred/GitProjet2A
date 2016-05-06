@@ -696,18 +696,28 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ch-Pg-GXa">
-                        <rect key="frame" x="286" y="54" width="73" height="32"/>
-                        <buttonCell key="cell" type="push" title="Move" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QO7-fJ-xTz">
+                        <rect key="frame" x="338" y="99" width="66" height="32"/>
+                        <buttonCell key="cell" type="push" title="Plus" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QO7-fJ-xTz">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="Move:" target="Voe-Tx-rLC" id="bB4-mm-YEv"/>
+                            <action selector="moovePlus:" target="Voe-Tx-rLC" id="bed-8K-dd1"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B1s-KO-Kzn">
+                        <rect key="frame" x="333" y="41" width="77" height="32"/>
+                        <buttonCell key="cell" type="push" title="Minus" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vMI-Jv-Wbk">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="mooveMinus:" target="Voe-Tx-rLC" id="FVc-rC-saX"/>
                         </connections>
                     </button>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="543" y="349"/>
+            <point key="canvasLocation" x="321" y="364"/>
         </window>
     </objects>
 </document>

@@ -64,7 +64,7 @@ class Car{
                     for k in 0..<self.length+val{
                         if (((p.table[self.x][self.y+k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
                             ok=false
-                            print("i can't")
+                            print("i can't Plus 1")
                         }
                     }
                     if(ok) {
@@ -73,11 +73,11 @@ class Car{
                 ok = true
             }
             else {
-                if(self.y+val<=p.lignes-1){
+                if(self.x+val<=p.lignes-1){
                     for k in 0..<self.length+val{
                         if (((p.table[self.x+k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
                             ok=false
-                            print("i can't")
+                            print("i can't Plus 2")
                         }
                     }
                     if(ok) {
@@ -89,11 +89,12 @@ class Car{
         }
         else if (s == "minus"){
             if(!(self.isVertical)){
-                if(self.y+val<=p.colonnes-1){
-                    for k in 0..<self.length+val{
-                        if (((p.table[self.x][self.y+k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
+                if(self.y-val >= 0){
+                    print("ici")
+                    for k in 1..<val+1{
+                        if (((p.table[self.x][self.y-k]) != -1) && ((p.table[self.x][self.y-k]) != self.Id)) {
                             ok=false
-                            print("i can't")
+                            print("i can't Minus 1")
                         }
                     }
                     if(ok) {
@@ -102,17 +103,20 @@ class Car{
                 ok = true
             }
             else {
-                if(self.y+val<=p.lignes-1){
-                    for k in 0..<self.length+val{
-                        if (((p.table[self.x+k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
+                if(self.x-val >= 0){
+                    print("ici")
+
+                    for k in 1..<val+1{
+                        if (((p.table[self.x-k][self.y]) != -1) && ((p.table[self.x-k][self.y]) != self.Id)) {
                             ok=false
-                            print("i can't")
+                            print("i can't Minus 2")
                         }
                     }
                     if(ok) {
                         return true
                     }
                 }
+                print("i can't Minus 2")
             }
             return false
 

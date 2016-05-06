@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     @IBOutlet weak var window: NSWindow!
-
+    @IBOutlet weak var label: NSTextField!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
@@ -27,73 +27,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-    @IBOutlet weak var label: NSTextField!
+   
+    
     @IBAction func addcar(sender: NSButton) {
-        
-        //lecture()
         controleur.lecture(1)
         label.stringValue = ""
         label.stringValue += controleur.afficheTab()
-        
     }
 
-    @IBAction func Move(sender: NSButton) {
+    
+    @IBAction func moovePlus(sender: NSButton) {
         if(controleur.plateau.cars[4].isAllowed("plus", val: 1)){
             controleur.plateau.cars[4].movePlus(1)
         }
         label.stringValue =  controleur.afficheTab()
     }
     
-
-    
-    /*
-    func datbool(s:String)->Bool{
-        if(s == "h"){
-            return false
+    @IBAction func mooveMinus(sender: NSButton) {
+        if(controleur.plateau.cars[4].isAllowed("minus", val: 1)){
+            controleur.plateau.cars[4].moveMinus(1)
         }
-        return true
+        label.stringValue =  controleur.afficheTab()
     }
-    
-
-
-    
-    func lecture(){
-        
-        let deflvl = catchlvl(1)
-        var tablvl = deflvl.lines
-        for i in 1..<tablvl.count{
-    plateau.cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: plateau))
-        }
-        
-    }
-    
-    func catchlvl(lvl:Int)->String{
-        var strBuffer : String = ""
-        var copy = false
-    
-        
-        if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/CardSet-1") {
-            defer {
-                aStreamReader.close()
-            }
-            while let line = aStreamReader.nextLine() {
-                if(line.matchPattern("level \(lvl)")) {
-                    strBuffer = ""
-                    copy = true
-                }
-    
-                if(line == "" && copy) {
-                    copy = false
-                    return strBuffer
-                }
-    
-                strBuffer += line + "\r"
-    
-            }
-        }
-        return strBuffer + "\n"
-    }
- */
  
 }
 

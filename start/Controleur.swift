@@ -96,41 +96,6 @@ class Controleur {
         return strBuffer + "\n"
     }
 
-
- /* func catchLvl(lvl:Int) {
-        
-        var strBuffer : String = ""
-        var copy = false
-        var deflvl = ""
-        
-        
-        if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/CardSet-1") {
-            defer {
-                aStreamReader.close()
-            }
-            while let line = aStreamReader.nextLine() {
-                if(line.matchPattern("level \(lvl)")) {
-                    strBuffer = ""
-                    copy = true
-                }
-                
-                if(line == "" && copy) {
-                    copy = false
-                    deflvl = strBuffer + "\n"
-                }
-                
-                strBuffer += line + "\r"
-            }
-            
-        }
-        
-        var tablvl = deflvl.lines
-        for i in 1..<tablvl.count{
-            plateau.cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: plateau))
-
-        }
-    } */
-
 }
 
     
