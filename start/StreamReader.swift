@@ -131,7 +131,7 @@ extension String {
             words.append(substring!)
         }
         
-        print(words[0])
+        //print(words[0])
         return words
     }
     // Placer chaque ligne du String dans une case du tableau

@@ -99,7 +99,7 @@ class Car{
     }
     
     func isAllowed(s:String, val:Int)->Bool{
-        var result : Bool = false
+        //var result : Bool = false
         var ok = true
         if(s == "plus"){
             if(!(self.isVertical)){

@@ -9,8 +9,10 @@
 import Foundation
 
 class Controleur {
-    
     var plateau = Plateau()
+
+    
+    
     
     func update(){
         
@@ -47,6 +49,88 @@ class Controleur {
         return abc
         
     }
+    
+    func datbool(s:String)->Bool{           // (WARNING: A DEPLACER DANS CATCHLVL) Sert a verifier si la voiture est horizontal ou vertical, on s'en sert pour l'instant que dans la focntion lecture.
+        if(s == "h"){
+            return false
+        }
+        return true
+    }
+
+  
+
+    func lecture(lvl:Int){
+        
+        let deflvl = catchlvl(lvl)
+        var tablvl = deflvl.lines
+        for i in 1..<tablvl.count{
+            plateau.cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: plateau))
+        }
+        
+    }
+    
+    func catchlvl(lvl:Int)->String{
+        var strBuffer : String = ""
+        var copy = false
+        
+        
+        if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/CardSet-1") {
+            defer {
+                aStreamReader.close()
+            }
+            while let line = aStreamReader.nextLine() {
+                if(line.matchPattern("level \(lvl)")) {
+                    strBuffer = ""
+                    copy = true
+                }
+                
+                if(line == "" && copy) {
+                    copy = false
+                    return strBuffer
+                }
+                
+                strBuffer += line + "\r"
+                
+            }
+        }
+        return strBuffer + "\n"
+    }
+
+
+ /* func catchLvl(lvl:Int) {
+        
+        var strBuffer : String = ""
+        var copy = false
+        var deflvl = ""
+        
+        
+        if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/CardSet-1") {
+            defer {
+                aStreamReader.close()
+            }
+            while let line = aStreamReader.nextLine() {
+                if(line.matchPattern("level \(lvl)")) {
+                    strBuffer = ""
+                    copy = true
+                }
+                
+                if(line == "" && copy) {
+                    copy = false
+                    deflvl = strBuffer + "\n"
+                }
+                
+                strBuffer += line + "\r"
+            }
+            
+        }
+        
+        var tablvl = deflvl.lines
+        for i in 1..<tablvl.count{
+            plateau.cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: plateau))
+
+        }
+    } */
+
+}
 
     
-}

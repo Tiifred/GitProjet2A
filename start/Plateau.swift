@@ -23,10 +23,5 @@ class Plateau {
         self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
         
     }
-
-
-        
-    
-    
-    }
+}
     
