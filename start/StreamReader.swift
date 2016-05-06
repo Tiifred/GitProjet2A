@@ -9,45 +9,7 @@
 import Foundation
 import Cocoa
 
-var str = "Hello, playground"
 
-extension String {
-    func matchPattern(patStr:String)->Bool {
-        var isMatch:Bool = false
-        do {
-            let regex = try NSRegularExpression(pattern: patStr, options: [.CaseInsensitive])
-            let result = regex.firstMatchInString(self, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, characters.count))
-            
-            if (result != nil)
-            {
-                isMatch = true
-            }
-        }
-        catch {
-            isMatch = false
-        }
-        return isMatch
-    }
-    
-    func words() -> [String] {
-        
-        let range = Range<String.Index>(start: self.startIndex, end: self.endIndex)
-        var words = [String]()
-        
-        self.enumerateSubstringsInRange(range, options: NSStringEnumerationOptions.ByWords) { (substring, _, _, in) -> () in
-            words.append(substring!)
-        }
-        
-        print(words[0])
-        return words
-    }
-    
-    var lines:[String] {
-        var result:[String] = []
-        enumerateLines{ result.append($0.line) }
-        return result
-    }
-}
 
 class StreamReader  {
     
@@ -133,6 +95,53 @@ class StreamReader  {
         fileHandle = nil
     }
 }
+
+
+extension String {
+    
+    
+    // Permet de rechercher un mot clé dans un string à l'aide des expressions régulières
+    func matchPattern(patStr:String)->Bool {
+        var isMatch:Bool = false
+        
+        do
+        {
+            let regex = try NSRegularExpression(pattern: patStr, options: [.CaseInsensitive])
+            let result = regex.firstMatchInString(self, options: NSMatchingOptions(rawValue: 0), range: NSMakeRange(0, characters.count))
+            
+            if (result != nil)
+            {
+                isMatch = true
+            }
+        }
+        catch
+        {
+            isMatch = false
+        }
+        return isMatch
+    }
+    
+    // Permet de placer chaque mot du String dans une case de tableau.
+    func words() -> [String] {
+        
+        let range = Range<String.Index>(start: self.startIndex, end: self.endIndex)
+        var words = [String]()
+        
+        self.enumerateSubstringsInRange(range, options: NSStringEnumerationOptions.ByWords) { (substring, _, _, in) -> () in
+            words.append(substring!)
+        }
+        
+        print(words[0])
+        return words
+    }
+    // Placer chaque ligne du String dans une case du tableau
+    var lines:[String] {
+        var result:[String] = []
+        enumerateLines{ result.append($0.line) }
+        return result
+    }
+}
+
 
 
 

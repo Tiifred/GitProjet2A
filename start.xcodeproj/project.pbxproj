@@ -12,9 +12,10 @@
 		F00382A91CD88BF400E2BE66 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F00382A71CD88BF400E2BE66 /* MainMenu.xib */; };
 		F00382B41CD88BF400E2BE66 /* startTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00382B31CD88BF400E2BE66 /* startTests.swift */; };
 		F00382BF1CD88BF400E2BE66 /* startUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00382BE1CD88BF400E2BE66 /* startUITests.swift */; };
-		F0097C5F1CDA27EB00A3CFD2 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0097C5E1CDA27EB00A3CFD2 /* Main.swift */; };
+		F0097C5F1CDA27EB00A3CFD2 /* StreamReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0097C5E1CDA27EB00A3CFD2 /* StreamReader.swift */; };
 		F0097C611CDA36B300A3CFD2 /* CardSet-1 in Resources */ = {isa = PBXBuildFile; fileRef = F0097C601CDA36B300A3CFD2 /* CardSet-1 */; };
 		F0097C631CDA36CC00A3CFD2 /* CardSet-1 in Resources */ = {isa = PBXBuildFile; fileRef = F0097C621CDA36CC00A3CFD2 /* CardSet-1 */; };
+		F04320081CDC95D60086D769 /* Controleur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04320071CDC95D60086D769 /* Controleur.swift */; };
 		F0FD6A481CD899DE008C6A2C /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD6A471CD899DE008C6A2C /* Car.swift */; };
 		F0FD6A4A1CD8D8A5008C6A2C /* Plateau.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD6A491CD8D8A5008C6A2C /* Plateau.swift */; };
 /* End PBXBuildFile section */
@@ -48,10 +49,11 @@
 		F00382BA1CD88BF400E2BE66 /* startUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = startUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00382BE1CD88BF400E2BE66 /* startUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startUITests.swift; sourceTree = "<group>"; };
 		F00382C01CD88BF400E2BE66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F0097C5E1CDA27EB00A3CFD2 /* Main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		F0097C5E1CDA27EB00A3CFD2 /* StreamReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamReader.swift; sourceTree = "<group>"; };
 		F0097C601CDA36B300A3CFD2 /* CardSet-1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "CardSet-1"; path = "../CardSet-1"; sourceTree = "<group>"; };
 		F0097C621CDA36CC00A3CFD2 /* CardSet-1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CardSet-1"; sourceTree = "<group>"; };
 		F03A60BC1CD9EFA300C67B21 /* RecuperationFicher.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RecuperationFicher.playground; sourceTree = "<group>"; };
+		F04320071CDC95D60086D769 /* Controleur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controleur.swift; sourceTree = "<group>"; };
 		F0FD6A471CD899DE008C6A2C /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		F0FD6A491CD8D8A5008C6A2C /* Plateau.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plateau.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,7 +114,8 @@
 				F0FD6A471CD899DE008C6A2C /* Car.swift */,
 				F00382AA1CD88BF400E2BE66 /* Info.plist */,
 				F0FD6A491CD8D8A5008C6A2C /* Plateau.swift */,
-				F0097C5E1CDA27EB00A3CFD2 /* Main.swift */,
+				F0097C5E1CDA27EB00A3CFD2 /* StreamReader.swift */,
+				F04320071CDC95D60086D769 /* Controleur.swift */,
 			);
 			path = start;
 			sourceTree = "<group>";
@@ -270,8 +273,9 @@
 			files = (
 				F0FD6A481CD899DE008C6A2C /* Car.swift in Sources */,
 				F00382A41CD88BF400E2BE66 /* AppDelegate.swift in Sources */,
-				F0097C5F1CDA27EB00A3CFD2 /* Main.swift in Sources */,
+				F0097C5F1CDA27EB00A3CFD2 /* StreamReader.swift in Sources */,
 				F0FD6A4A1CD8D8A5008C6A2C /* Plateau.swift in Sources */,
+				F04320081CDC95D60086D769 /* Controleur.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
