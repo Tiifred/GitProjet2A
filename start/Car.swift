@@ -14,7 +14,7 @@ class Car{
     var x = 0
     var y = 0
     var isVertical = true
-    var p = Plateau()
+    var p = Plateau(dad:0)
     
     
     
@@ -30,67 +30,24 @@ class Car{
     func movePlus(val:Int){
        // var ok = true
         if(!(self.isVertical)){
-       /*     if(self.y+val<=p.colonnes-1){
-                for k in 0..<self.length+val{
-                    if (((p.table[self.x][self.y+k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
-                        ok=false
-                        print("i can't")
-                    }
-                }
-                if(ok) {*/
-                    self.y = self.y+val
-                    print("it's okkkkkkkk")
-                }
-          /*  }
-            ok = true
-        }*/
-        else {
-          /*  if(self.y+val<=p.lignes-1){
-                for k in 0..<self.length+val{
-                    if (((p.table[self.x+k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
-                        ok=false
-                        print("i can't")
-                    }
-                }
-                if(ok) {
-                  */  self.x = self.x+val
-                    print("it's okkkkkkkk")
-                }
-            /*}
+            self.y = self.y+val
+            print("it's okkkkkkkk")
         }
-        ok = true*/
+        else {
+            self.x = self.x+val
+            print("it's okkkkkkkk")
+        }
     }
     
     
     func moveMinus(val:Int){
-        var ok = true
         if(!(self.isVertical)){
-            if(self.y+val<=p.colonnes-1){
-                for k in 1..<val+1{
-                    if (((p.table[self.x][self.y-k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
-                        ok=false
-                        print("i can't")
-                    }
-                }
-                if(ok) {
-                    self.y = self.y-val
-                }
-            }
+            self.y = self.y-val
         }
         else {
-            if(self.y+val<=p.lignes-1){
-                for k in 1..<val+1{
-                    if (((p.table[self.x-k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
-                        ok=false
-                        print("i can't")
-                    }
-                }
-                if(ok) {
-                    self.x = self.x-val
-                }
-            }
+            self.x = self.x-val
         }
-        ok = true
+
     }
     
     func affiche()->String{
@@ -103,20 +60,21 @@ class Car{
         var ok = true
         if(s == "plus"){
             if(!(self.isVertical)){
-                if(self.y+val<=p.colonnes-1){
-                    for k in 0..<self.length+val{
+                if(self.y + val + self.length<=p.colonnes){
+                    for k in 1..<val + 1{
                         if (((p.table[self.x][self.y+k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
                             ok=false
                             print("i can't")
                         }
                     }
                     if(ok) {
-                        return true                    }
+                        return true
+                    }
                 }
                 ok = true
             }
             else {
-                if(self.y+val<=p.lignes-1){
+                if(self.x+val+self.length<=p.lignes-1){
                     for k in 0..<self.length+val{
                         if (((p.table[self.x+k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
                             ok=false
@@ -132,22 +90,23 @@ class Car{
         }
         else if (s == "minus"){
             if(!(self.isVertical)){
-                if(self.y+val<=p.colonnes-1){
-                    for k in 0..<self.length+val{
-                        if (((p.table[self.x][self.y+k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
+                if(self.y-val>=0){
+                    for k in 1..<val+1{
+                        if (((p.table[self.x][self.y-k]) != -1) && ((p.table[self.x][self.y-k]) != self.Id)) {
                             ok=false
                             print("i can't")
                         }
                     }
                     if(ok) {
-                        return true                    }
+                        return true
+                    }
                 }
                 ok = true
             }
             else {
-                if(self.y+val<=p.lignes-1){
-                    for k in 0..<self.length+val{
-                        if (((p.table[self.x+k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
+                if(self.x-val>=0){
+                    for k in 1..<val+1{
+                        if (((p.table[self.x-k][self.y]) != -1) && ((p.table[self.x-k][self.y]) != self.Id)) {
                             ok=false
                             print("i can't")
                         }

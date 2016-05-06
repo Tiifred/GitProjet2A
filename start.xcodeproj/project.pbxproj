@@ -15,6 +15,7 @@
 		F0097C5F1CDA27EB00A3CFD2 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0097C5E1CDA27EB00A3CFD2 /* Main.swift */; };
 		F0097C611CDA36B300A3CFD2 /* CardSet-1 in Resources */ = {isa = PBXBuildFile; fileRef = F0097C601CDA36B300A3CFD2 /* CardSet-1 */; };
 		F0097C631CDA36CC00A3CFD2 /* CardSet-1 in Resources */ = {isa = PBXBuildFile; fileRef = F0097C621CDA36CC00A3CFD2 /* CardSet-1 */; };
+		F0DC359C1CDC943200FD1927 /* Controleur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DC359B1CDC943200FD1927 /* Controleur.swift */; };
 		F0FD6A481CD899DE008C6A2C /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD6A471CD899DE008C6A2C /* Car.swift */; };
 		F0FD6A4A1CD8D8A5008C6A2C /* Plateau.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD6A491CD8D8A5008C6A2C /* Plateau.swift */; };
 /* End PBXBuildFile section */
@@ -52,6 +53,7 @@
 		F0097C601CDA36B300A3CFD2 /* CardSet-1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "CardSet-1"; path = "../CardSet-1"; sourceTree = "<group>"; };
 		F0097C621CDA36CC00A3CFD2 /* CardSet-1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CardSet-1"; sourceTree = "<group>"; };
 		F03A60BC1CD9EFA300C67B21 /* RecuperationFicher.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RecuperationFicher.playground; sourceTree = "<group>"; };
+		F0DC359B1CDC943200FD1927 /* Controleur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controleur.swift; sourceTree = "<group>"; };
 		F0FD6A471CD899DE008C6A2C /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		F0FD6A491CD8D8A5008C6A2C /* Plateau.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plateau.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -113,6 +115,7 @@
 				F00382AA1CD88BF400E2BE66 /* Info.plist */,
 				F0FD6A491CD8D8A5008C6A2C /* Plateau.swift */,
 				F0097C5E1CDA27EB00A3CFD2 /* Main.swift */,
+				F0DC359B1CDC943200FD1927 /* Controleur.swift */,
 			);
 			path = start;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				F00382A41CD88BF400E2BE66 /* AppDelegate.swift in Sources */,
 				F0097C5F1CDA27EB00A3CFD2 /* Main.swift in Sources */,
 				F0FD6A4A1CD8D8A5008C6A2C /* Plateau.swift in Sources */,
+				F0DC359C1CDC943200FD1927 /* Controleur.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

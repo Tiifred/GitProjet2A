@@ -13,14 +13,22 @@ var abc=""
 
 
 class Plateau{
+    var ID = 0
     let lignes = 6
     let colonnes = 6
    var cars = [Car]()
     var table = [[Int]]()
+    var papa = -1
     
-    init(){
+    init(dad:Int){
         self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
-        
+        self.papa = dad
+    }
+    
+    func cop(p:Plateau){
+        self.cars = p.cars
+        self.table = p.table
+        self.papa = p.papa
     }
 
 

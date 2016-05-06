@@ -12,14 +12,14 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-
-    let plateau = Plateau()
-    //let m = Main
+    var controleur = Controleur()
+    
+ 
+    
     @IBOutlet weak var window: NSWindow!
 
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -30,27 +30,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func addcar(sender: NSButton) {
        lecture()
          label.stringValue = ""
-        
-       //label.stringValue += catchlvl(1)
-         //let car = Car(Id:1,length:2,X:3,Y:3,isVertical:true,p:self.plateau)
-        //plateau.cars.append(car)
-        //print(car.affiche())
-        //for i in 0..<plateau.cars.count{
-           // label.stringValue += plateau.cars[i].affiche() + "added \n"
-       // }
-        label.stringValue += plateau.afficheTab()
+        label.stringValue += controleur.plateau.afficheTab()
         
     }
 
-    @IBAction func Move(sender: NSButton) {
-        //car.moveMinus(1)
-       // label.stringValue+=car.affiche()
-         //plateau.cars.append(car)
-        if(plateau.cars[4].isAllowed("plus", val: 1)){
-            plateau.cars[4].movePlus(1)
-        }
-        label.stringValue =  plateau.afficheTab()
+    @IBAction func step(sender: NSButton) {
+    controleur.mooving()
     }
+    
+    
+    @IBAction func Move(sender: NSButton) {
+        if(controleur.plateau.cars[6].isAllowed("minus", val: 3)){
+            print("ici")
+            controleur.plateau.cars[6].moveMinus(3)
+        }
+        label.stringValue = controleur.plateau.afficheTab()
+    }
+    
+    @IBAction func plus(sender: NSButton) {
+        if(controleur.plateau.cars[6].isAllowed("plus", val: 3)){
+            print("ou la ")
+            controleur.plateau.cars[6].movePlus(3)
+        }
+        label.stringValue = controleur.plateau.afficheTab()
+
+    }
+    
     
     func datbool(s:String)->Bool{
         if(s == "h"){
@@ -65,8 +70,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let deflvl = catchlvl(1)
         var tablvl = deflvl.lines
        for i in 1..<tablvl.count{
-       //     print(i)
-    plateau.cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: plateau))
+    controleur.plateau.cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: controleur.plateau))
         }
         
     }
@@ -76,7 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var copy = false
     
     
-    if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/CardSet-1") {
+    if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/projet/start/CardSet-1") {
     defer {
     aStreamReader.close()
     }

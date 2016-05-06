@@ -678,7 +678,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1va-Sn-GHL">
-                        <rect key="frame" x="50" y="192" width="388" height="136"/>
+                        <rect key="frame" x="46" y="190" width="388" height="136"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="10I-V2-62c">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -703,6 +703,26 @@
                         </buttonCell>
                         <connections>
                             <action selector="Move:" target="Voe-Tx-rLC" id="bB4-mm-YEv"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9R-7h-PJg">
+                        <rect key="frame" x="294" y="108" width="66" height="32"/>
+                        <buttonCell key="cell" type="push" title="plus" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="j5g-qI-3um">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="plus:" target="Voe-Tx-rLC" id="4lk-CQ-exS"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wCu-mt-ldL">
+                        <rect key="frame" x="62" y="103" width="94" height="32"/>
+                        <buttonCell key="cell" type="push" title="first step" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UBC-Tx-eBU">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="step:" target="Voe-Tx-rLC" id="F6g-gL-6DX"/>
                         </connections>
                     </button>
                 </subviews>
