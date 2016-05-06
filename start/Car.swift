@@ -28,24 +28,24 @@ class Car{
     }
     
     func movePlus(val:Int){
-        var ok = true
+       // var ok = true
         if(!(self.isVertical)){
-            if(self.y+val<=p.colonnes-1){
+       /*     if(self.y+val<=p.colonnes-1){
                 for k in 0..<self.length+val{
                     if (((p.table[self.x][self.y+k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
                         ok=false
                         print("i can't")
                     }
                 }
-                if(ok) {
+                if(ok) {*/
                     self.y = self.y+val
                     print("it's okkkkkkkk")
                 }
-            }
+          /*  }
             ok = true
-        }
+        }*/
         else {
-            if(self.y+val<=p.lignes-1){
+          /*  if(self.y+val<=p.lignes-1){
                 for k in 0..<self.length+val{
                     if (((p.table[self.x+k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
                         ok=false
@@ -53,12 +53,12 @@ class Car{
                     }
                 }
                 if(ok) {
-                    self.x = self.x+val
+                  */  self.x = self.x+val
                     print("it's okkkkkkkk")
                 }
-            }
+            /*}
         }
-        ok = true
+        ok = true*/
     }
     
     
@@ -96,6 +96,71 @@ class Car{
     func affiche()->String{
     
         return "car \(Id), x\(x) , y\(y) "
+    }
+    
+    func isAllowed(s:String, val:Int)->Bool{
+        var result : Bool = false
+        var ok = true
+        if(s == "plus"){
+            if(!(self.isVertical)){
+                if(self.y+val<=p.colonnes-1){
+                    for k in 0..<self.length+val{
+                        if (((p.table[self.x][self.y+k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
+                            ok=false
+                            print("i can't")
+                        }
+                    }
+                    if(ok) {
+                        return true                    }
+                }
+                ok = true
+            }
+            else {
+                if(self.y+val<=p.lignes-1){
+                    for k in 0..<self.length+val{
+                        if (((p.table[self.x+k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
+                            ok=false
+                            print("i can't")
+                        }
+                    }
+                    if(ok) {
+                        return true
+                    }
+                }
+            }
+            return false
+        }
+        else if (s == "minus"){
+            if(!(self.isVertical)){
+                if(self.y+val<=p.colonnes-1){
+                    for k in 0..<self.length+val{
+                        if (((p.table[self.x][self.y+k]) != -1) && ((p.table[self.x][self.y+k]) != self.Id)) {
+                            ok=false
+                            print("i can't")
+                        }
+                    }
+                    if(ok) {
+                        return true                    }
+                }
+                ok = true
+            }
+            else {
+                if(self.y+val<=p.lignes-1){
+                    for k in 0..<self.length+val{
+                        if (((p.table[self.x+k][self.y]) != -1) && ((p.table[self.x+k][self.y]) != self.Id)) {
+                            ok=false
+                            print("i can't")
+                        }
+                    }
+                    if(ok) {
+                        return true
+                    }
+                }
+            }
+            return false
+
+        }
+        return false
     }
 }
 
