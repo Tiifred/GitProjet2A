@@ -707,6 +707,7 @@
                     </button>
                 </subviews>
             </view>
+            <point key="canvasLocation" x="543" y="349"/>
         </window>
     </objects>
 </document>
