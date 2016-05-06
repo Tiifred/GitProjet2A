@@ -46,8 +46,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //car.moveMinus(1)
        // label.stringValue+=car.affiche()
          //plateau.cars.append(car)
-        plateau.cars[4].movePlus(1)
-      label.stringValue =  plateau.afficheTab()
+        if(plateau.cars[4].isAllowed("plus", val: 1)){
+            plateau.cars[4].movePlus(1)
+        }
+        label.stringValue =  plateau.afficheTab()
     }
     
     func datbool(s:String)->Bool{
@@ -74,7 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var copy = false
     
     
-    if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/projet/start/CardSet-1") {
+    if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/CardSet-1") {
     defer {
     aStreamReader.close()
     }
