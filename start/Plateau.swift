@@ -19,6 +19,7 @@ class Plateau{
    var cars = [Car]()
     var table = [[Int]]()
     var papa = -1
+    var key = 0
     
     init(dad:Int){
         self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
@@ -34,9 +35,11 @@ class Plateau{
 
     func update(){
         //if(cars[i].canMove){
+        key = 0
             table  = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
             for i in 0..<cars.count{
                 if(cars[i].isVertical){
+                    key = key*cars[i].length + cars[i].y
                     for j in 0..<cars[i].length{
                         table[cars[i].x+j][cars[i].y] = cars[i].Id
                     }
@@ -44,10 +47,12 @@ class Plateau{
                     for k in 0..<cars[i].length{
                         table[cars[i].x][cars[i].y+k] = cars[i].Id
                     }
+                     key = key*cars[i].length + cars[i].y
                 }
             }
        // }
     }
+    
     
     func afficheTab()->String{
         update()
