@@ -8,13 +8,23 @@
 
 import Foundation
 
+protocol Copying {
+    init(original: Self)
+}
+
+extension Copying {
+    func copy() -> Self {
+        return Self.init(original: self)
+    }
+}
+
 class Car{
     var Id = 0
     var length = 0
     var x = 0
     var y = 0
     var isVertical = true
-    var p = Plateau(dad:0)
+    var p = Plateau()
     
     
     
@@ -31,12 +41,11 @@ class Car{
        // var ok = true
         if(!(self.isVertical)){
             self.y = self.y+val
-            print("it's okkkkkkkk")
         }
         else {
             self.x = self.x+val
-            print("it's okkkkkkkk")
         }
+        p.update()
     }
     
     
@@ -47,6 +56,7 @@ class Car{
         else {
             self.x = self.x-val
         }
+        p.update()
 
     }
     
@@ -61,10 +71,9 @@ class Car{
         if(s == "plus"){
             if(!(self.isVertical)){
                 if(self.y + val + self.length<=p.colonnes){
-                    for k in 0..<val{
-                        if (((p.table[self.x][self.y + self.length + k]) != -1) && ((p.table[self.x][self.y + self.length + k]) != self.Id)) {
+                    for k in 1..<val + 1 + self.length {
+                        if (((p.table[self.x][self.y + k - 1]) != -1) && ((p.table[self.x][self.y + k - 1]) != self.Id)) {
                             ok=false
-                            print("i can't")
                         }
                     }
                     if(ok) {
@@ -75,10 +84,9 @@ class Car{
             }
             else {
                 if(self.x+val+self.length<=p.lignes){
-                    for k in 1..<val + self.length {
-                        if (((p.table[self.x + k][self.y]) != -1) && ((p.table[self.x + k][self.y]) != self.Id)) {
+                    for k in 1..<val+1 + self.length {
+                        if (((p.table[self.x + k - 1][self.y]) != -1) && ((p.table[self.x + k-1][self.y]) != self.Id)) {
                             ok=false
-                            print("i can't")
                         }
                     }
                     if(ok) {
@@ -94,7 +102,6 @@ class Car{
                     for k in 1..<val+1{
                         if (((p.table[self.x][self.y-k]) != -1) && ((p.table[self.x][self.y-k]) != self.Id)) {
                             ok=false
-                            print("i can't")
                         }
                     }
                     if(ok) {
@@ -106,10 +113,8 @@ class Car{
             else {
                 if(self.x-val>=0){
                     for k in 1..<val+1{
-                        print("ici22")
                         if (((p.table[self.x-k][self.y]) != -1) && ((p.table[self.x-k][self.y]) != self.Id)) {
                             ok=false
-                            print("i can't")
                         }
                     }
                     if(ok) {
