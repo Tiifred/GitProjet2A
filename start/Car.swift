@@ -72,7 +72,7 @@ class Car{
             if(!(self.isVertical)){
                 if(self.y + val + self.length<=p.colonnes){
                     for k in 1..<val + 1 + self.length {
-                        if (((p.table[self.x][self.y + k - 1]) != -1) && ((p.table[self.x][self.y + k - 1]) != self.Id)) {
+                        if (((p.table[self.x][self.y + k - 1]) != 0) && ((p.table[self.x][self.y + k - 1]) != self.Id)) {
                             ok=false
                         }
                     }
@@ -85,7 +85,7 @@ class Car{
             else {
                 if(self.x+val+self.length<=p.lignes){
                     for k in 1..<val+1 + self.length {
-                        if (((p.table[self.x + k - 1][self.y]) != -1) && ((p.table[self.x + k-1][self.y]) != self.Id)) {
+                        if (((p.table[self.x + k - 1][self.y]) != 0) && ((p.table[self.x + k-1][self.y]) != self.Id)) {
                             ok=false
                         }
                     }
@@ -100,7 +100,7 @@ class Car{
             if(!(self.isVertical)){
                 if(self.y-val>=0){
                     for k in 1..<val+1{
-                        if (((p.table[self.x][self.y-k]) != -1) && ((p.table[self.x][self.y-k]) != self.Id)) {
+                        if (((p.table[self.x][self.y-k]) != 0) && ((p.table[self.x][self.y-k]) != self.Id)) {
                             ok=false
                         }
                     }
@@ -113,7 +113,7 @@ class Car{
             else {
                 if(self.x-val>=0){
                     for k in 1..<val+1{
-                        if (((p.table[self.x-k][self.y]) != -1) && ((p.table[self.x-k][self.y]) != self.Id)) {
+                        if (((p.table[self.x-k][self.y]) != 0) && ((p.table[self.x-k][self.y]) != self.Id)) {
                             ok=false
                         }
                     }

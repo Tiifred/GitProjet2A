@@ -30,6 +30,8 @@ class Controleur{
 	}
 	
 	func createPath(){
+		if(!b){
+			
 		print("******* Reconstitution  *********")
 		var varpapa :Int
 		var varid = tablist[tablist.count-1].ID
@@ -37,15 +39,16 @@ class Controleur{
 		print("\(tablist[varid].afficheTab())")
 		print (varid)
 		path.append(varid)
-		while(varid != 0){
-			varpapa = tablist[varid].papa
-			varid = tablist[varpapa].ID
-			path.append(varid)
-			print(tablist[varid].move)
-			print("\(tablist[varid].afficheTab())")
-			print (varid)
-		}
+			while(varid != 0){
+				varpapa = tablist[varid].papa
+				varid = tablist[varpapa].ID
+				path.append(varid)
+				print(tablist[varid].move)
+				print("\(tablist[varid].afficheTab())")
+				print (varid)
+			}
 		print("il y a finalement \(path.count) deplacement necessaire")
+		}
 	}
 	
 	func mooving(){
@@ -86,9 +89,9 @@ class Controleur{
 											tmp.papa = z
 											tmp.move = "car :\(i+1) mouvement vertical plus de \(j) avec papa \(tablist[tmp.papa].afficheTab())"
 											tmp.update()
-											for ind in mem[mem.count-3]..<tablist.count{
+											for ind in 0..<tablist.count{
 												if ( tmp.isEqual(tablist[ind]) && !exist){
-													
+												
 													/*print(tmp.afficheTab())
 													print(tablist[ind].afficheTab())
 													print("plateau \(tmp.ID) exist  car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)")*/
@@ -120,7 +123,7 @@ class Controleur{
 											tmp.papa = z
 											tmp.move = "car :\(i+1) mouvement vertical moins de \(j) avec papa \(tmp.papa)"
 											tmp.update()
-											for ind in mem[mem.count-3]..<tablist.count{
+											for ind in 0..<tablist.count{
 												if ( tmp.isEqual(tablist[ind]) && !exist){
 													exist = true
 													
@@ -159,7 +162,7 @@ class Controleur{
 											tmp.update()
 											tmp.move = "car :\(i+1) mouvement horizontal plus de \(j) avec papa \(tmp.papa)"
 											tmp.papa = z
-											for ind in mem[mem.count-3]..<tablist.count{
+											for ind in 0..<tablist.count{
 												if ( tmp.isEqual(tablist[ind]) && !exist){
 													exist = true
 												
@@ -196,7 +199,7 @@ class Controleur{
 											tmp.update()
 											tmp.move = "car :\(i+1) mouvement horizontal moins de \(j) avec papa \(tmp.papa)"
 											tmp.papa = z
-											for ind in mem[mem.count-3]..<tablist.count{
+											for ind in 0..<tablist.count{
 												if ( tmp.isEqual(tablist[ind]) && !exist){
 													exist = true
 													
@@ -231,6 +234,11 @@ class Controleur{
 						
 					}
 				}// END for z
+				
+				for ka in 0..<tablist.count{
+					print( "  \(tablist[ka].afficheTab())   \(tablist[ka].key) ")
+				}
+				
 				count1 += 1
 				print("count incr \(count1)")
 			}

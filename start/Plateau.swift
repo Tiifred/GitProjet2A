@@ -20,10 +20,11 @@ class Plateau : Copyable{
     var table = [[Int]]()
     var papa = -1
 	var move = ""
+	var key = 0
     
     
     init(){
-        self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
+        self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:0))
     }
     
     required init(instance: Plateau) {
@@ -32,17 +33,19 @@ class Plateau : Copyable{
     }
     
     func update(){
-        
-            table  = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
+        key=0
+            table  = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:0))
             for i in 0..<cars.count{
                 if(cars[i].isVertical){
                     for j in 0..<cars[i].length{
                         table[cars[i].x+j][cars[i].y] = cars[i].Id
                     }
+					key = key * cars[i].length + cars[i].x
                 }else{
                     for k in 0..<cars[i].length{
                         table[cars[i].x][cars[i].y+k] = cars[i].Id
                     }
+					key = key * cars[i].length + cars[i].y
                 }
             }
     
@@ -76,7 +79,7 @@ class Plateau : Copyable{
     
     func lecture(){
         
-        let deflvl = catchlvl(20)
+        let deflvl = catchlvl(16)
         var tablvl = deflvl.lines
         for i in 1..<tablvl.count{
            cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: self))
