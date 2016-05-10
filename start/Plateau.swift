@@ -83,7 +83,7 @@ class Plateau : Copyable{
     
     func lecture(){
         
-        let deflvl = catchlvl(32)
+        let deflvl = catchlvl(1)
         var tablvl = deflvl.lines
         for i in 1..<tablvl.count{
             cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: self, img:foundimg(Int(tablvl[i].words()[5])!)))
