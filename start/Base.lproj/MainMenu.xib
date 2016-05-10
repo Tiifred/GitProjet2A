@@ -14,6 +14,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="start" customModuleProvider="target">
             <connections>
+                <outlet property="ImgArea" destination="a5w-FL-1DT" id="DH1-vt-Dxz"/>
                 <outlet property="label" destination="1va-Sn-GHL" id="enW-39-Wrz"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -678,7 +679,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1va-Sn-GHL">
-                        <rect key="frame" x="46" y="159" width="388" height="136"/>
+                        <rect key="frame" x="46" y="159" width="54" height="136"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="10I-V2-62c">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -725,6 +726,10 @@
                             <action selector="Move:" target="Voe-Tx-rLC" id="bB4-mm-YEv"/>
                         </connections>
                     </button>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-FL-1DT">
+                        <rect key="frame" x="237" y="120" width="200" height="200"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
+                    </imageView>
                 </subviews>
             </view>
             <point key="canvasLocation" x="377" y="262.5"/>
