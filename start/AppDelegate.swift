@@ -84,6 +84,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func draw(){
+        var xx:Int
+        var yy:Int
         for i in 0..<controleur.plateau.cars.count{
             if(!(controleur.plateau.cars[i].isVertical)){
                 if(controleur.plateau.cars[i].length==2){
@@ -130,7 +132,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 57, height: 180))
                     let imgtmp = NSImage(named : controleur.plateau.cars[i].img)
                     var tmp = resize(imgtmp!,w:57,h:180)
-                    //tmp  = tmp.imageRotatedByDegreess(CGFloat(90))
+                    tmp  = tmp.imageRotatedByDegreess(CGFloat(180))
                     
                     
                     imgView.image = tmp
