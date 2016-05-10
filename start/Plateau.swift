@@ -19,7 +19,8 @@ class Plateau : Copyable{
    var cars = [Car]()
     var table = [[Int]]()
     var papa = -1
-    var key = 0
+	var move = ""
+    var key = -1
     
     
     init(){
@@ -32,12 +33,11 @@ class Plateau : Copyable{
     }
     
     func update(){
-        //if(cars[i].canMove){
         key = 0
             table  = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
             for i in 0..<cars.count{
                 if(cars[i].isVertical){
-                    key = key*cars[i].length + cars[i].y
+                   key = key * self.lignes+1-cars[i].length + cars[i].x
                     for j in 0..<cars[i].length{
                         table[cars[i].x+j][cars[i].y] = cars[i].Id
                     }
@@ -45,7 +45,7 @@ class Plateau : Copyable{
                     for k in 0..<cars[i].length{
                         table[cars[i].x][cars[i].y+k] = cars[i].Id
                     }
-                     key = key*cars[i].length + cars[i].y
+                    key = key * self.colonnes+1-cars[i].length + cars[i].y
                 }
             }
     
@@ -80,7 +80,7 @@ class Plateau : Copyable{
     
     func lecture(){
         
-        let deflvl = catchlvl(20)
+        let deflvl = catchlvl(32)
         var tablvl = deflvl.lines
         for i in 1..<tablvl.count{
            cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: self))
@@ -93,7 +93,7 @@ class Plateau : Copyable{
         var copy = false
         
         
-        if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/CardSet-1") {
+        if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/projet/start/CardSet-1") {
             ///Users/projet2a/Documents/projet/start/CardSet-1
             defer {
                 aStreamReader.close()
@@ -134,13 +134,16 @@ class Plateau : Copyable{
     }
     
     func isSol()->Bool{
-        var seeking = true
+        /*var seeking = true
         for i in 1..<self.colonnes - self.cars[0].y {
             if (((self.table[self.cars[0].x ][self.cars[0].y + i]) != -1) && ((self.table[self.cars[0].x][self.cars[0].y + i]) != 1)) {
                 seeking = false
             }
+        }*/
+        var seeking = false
+        if(self.cars[0].y == 4) {
+            seeking = true
         }
-        
         return seeking
     }
     

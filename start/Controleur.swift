@@ -20,10 +20,13 @@ extension Copyable {
 
 class Controleur{
 	var tablist = [Plateau]()
+    var current = [Plateau]()
+    var next = [Plateau]()
 	var plateau = Plateau()
 	var b = true
 	var path = [Int]()
-	
+    var sol = Plateau()
+    var stop = 0
 	
 	init(){
 		tablist.append(self.plateau)
@@ -31,78 +34,121 @@ class Controleur{
 	
 	func createPath(){
 		print("******* Reconstitution  *********")
-		var varpapa :Int
-		var varid = tablist[tablist.count-1].ID
+        for k in 0..<tablist.count{
+            tablist[k].ID = k
+        }
+        
+		var varpapa :Int   // key papa
+		var varid = sol.ID // varid = position
+        var dadID = 0                           // position papa
 		print(tablist[varid].move)
 		print("\(tablist[varid].afficheTab())")
-		print (varid)
-		path.append(varid)
-		while(varid != 0){
+		while(tablist[varid].key != stop){
 			varpapa = tablist[varid].papa
-			varid = tablist[varpapa].ID
+            for k in 0..<tablist.count{
+                if(tablist[k].key == varpapa){
+                    dadID = tablist[k].ID
+                }
+            }
+			varid = tablist[dadID].ID
 			path.append(varid)
 			print(tablist[varid].move)
 			print("\(tablist[varid].afficheTab())")
-			print (varid)
 		}
-		print("il y a finalement \(path.count) deplacement necessaire")
+		print("il y a finalement \(path.count)  deplacements necessaires")
+        
 	}
 	
 	func mooving(){
+        
 		
-		//Users/projet2A/Documents/GitProjet2A/start/Controleur.swift
 		//tmp = self.plateau
 		print("starting ")
-		var count1 = 0
-		var counter = 0
-		var mem = [Int]()
-		
-		mem.append(0)
-		mem.append(counter)
-		var exist = false
-		//print(plateau.afficheTab())
-		
-		
-		
+        var count1 = 0
+        var counter = 0
+        var mem = [Int]()
+        
+        mem.append(0)
+        mem.append(counter)
+        var exist = false
+        
+        var nee = tablist[0].tryy(tablist[0])
+        current.append(nee)
+        stop = nee.key
+        print(nee.key)
+        
 		while(b){
-			
-			counter = tablist.count
-			print("\(counter)")
-			if(counter != mem[mem.count-1]){
-			mem.append(counter)
-			}
-			if(count1<counter && b ){
-				for z in mem[(mem.count) - 2]..<mem[(mem.count) - 1]{//numero du plateau dans la liste
-					if (b){
+            var pos = 0
+            counter = tablist.count
+            print("\(counter)")
+            if(counter != mem[mem.count-1]){
+                mem.append(counter)
+            }
+            
+            if(counter != 1){
+                current.removeAll()
+                for c in 0..<next.count{
+                    var ne = next[c].tryy(next[c])
+                    current.append(ne)
+                }
+                next.removeAll()
+            }
+            
+            
+            
+            
+            if(count1<counter && b ){
+                for z in 0..<current.count{//numero du plateau dans la liste
+                    if (b){
 						for i in 0..<plateau.cars.count{ // pour chaque vehicule
 							if (plateau.cars[i].isVertical && b){
 								for j in 1..<plateau.colonnes { // j : toutes la valeurs possible de deplacement
 									//if(tablist[z].cars[i].x + tablist[z].cars[i].length + j <= tablist[z].colonnes && b){
-										if (tablist[z].cars[i].isAllowed("plus", val: j) && b ){
+										if (current[z].cars[i].isAllowed("plus", val: j) && b ){
 											var tmp : Plateau
-											tmp = tablist[z].tryy(tablist[z])
+											tmp = current[z].tryy(current[z])
 											tmp.cars[i].movePlus(j)
 											tmp.ID = tablist.count
-											tmp.papa = z
-											tmp.move = "car :\(i+1) mouvement vertical plus de \(j) avec papa \(tablist[tmp.papa].afficheTab())"
+											tmp.papa = current[z].key
+											tmp.move = "car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)"
 											tmp.update()
-											for ind in mem[mem.count-3]..<tablist.count{
-												if ( tmp.isEqual(tablist[ind]) && !exist){
-													
+                                            exist = false
+											for ind in 0..<tablist.count{
+                                                
+                                                if(tmp.key <= tablist[ind].key){
+                                                    if ( (tmp.key == tablist[ind].key) && !exist){
 													/*print(tmp.afficheTab())
 													print(tablist[ind].afficheTab())
 													print("plateau \(tmp.ID) exist  car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)")*/
-													exist = true
-													break
-												}
+                                                        exist = true
+                                                        
+                                                        break
+                                                    }
+                                                
+                                                }
 											}
 											if(!exist){
-												tablist.append(tmp)
+                                                pos=0
+                                                
+                                                for ind2 in 0..<tablist.count{
+                                                    if(tablist[ind2].key < tmp.key){
+                                                    pos += 1
+                                                    }
+                                                }
+                                                if(pos<tablist.count){
+                                                   
+                                                    tablist.insert(tmp, atIndex: pos)
+                                                }
+                                                else{
+                                                    tablist.append(tmp)
+                                                 
+                                                }
+												next.append(tmp)
 												
 												if(tmp.isSol()){
 													print ("solution trouvé")
-													print(tmp.ID)
-													b = false
+													sol = tmp
+                                                    b = false
 													print(tmp.afficheTab())
 												}
 												//				print(tmp.afficheTab())
@@ -111,31 +157,53 @@ class Controleur{
 											exist = false
 										}
 									//}
-									if(tablist[z].cars[i].x - j >= 0 && b ){
-										if (tablist[z].cars[i].isAllowed("minus", val: j) && b){
+									//if(current[z].cars[i].x - j >= 0 && b ){
+										if (current[z].cars[i].isAllowed("minus", val: j) && b){
 											var tmp : Plateau
-											tmp = tablist[z].tryy(tablist[z])
+											tmp = current[z].tryy(current[z])
 											tmp.cars[i].moveMinus(j)
 											tmp.ID = tablist.count
-											tmp.papa = z
+											tmp.papa = current[z].key
 											tmp.move = "car :\(i+1) mouvement vertical moins de \(j) avec papa \(tmp.papa)"
 											tmp.update()
-											for ind in mem[mem.count-3]..<tablist.count{
-												if ( tmp.isEqual(tablist[ind]) && !exist){
-													exist = true
-													
-													break
+                                          //  pos = 0
+                                            exist = false
+											for ind in 0..<tablist.count{
+                                                if(tmp.key <= tablist[ind].key){
+                                                    if ( (tmp.key == tablist[ind].key) && !exist){
+                                                     //   pos += 1
+                                                        exist = true
+                                                
+                                                        break
 													
 													/*print(tmp.afficheTab())
 													print(tablist[ind].afficheTab())
 													print("plateau \(tmp.ID) exist  car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)")*/
-												}
+                                                    }
+                                                }
 											}
 											if(!exist){
-												tablist.append(tmp)
+                                                
+                                                pos=0
+                                               
+                                                for ind2 in 0..<tablist.count{
+                                                    
+                                                    if(tablist[ind2].key < tmp.key){
+                                                        pos += 1
+                                                    }
+                                                }
+                                                if(pos<tablist.count){
+                                                    
+                                                    tablist.insert(tmp, atIndex: pos)
+                                                }
+                                                else{
+                                                    tablist.append(tmp)
+                                                    
+                                                }
+                                                next.append(tmp)
 												if(tmp.isSol()){
 													print ("solution trouvé")
-													print(tmp.ID)
+													sol = tmp
 													b = false
 													print(tmp.afficheTab())
 												}
@@ -144,23 +212,26 @@ class Controleur{
 											}
 											exist = false
 										}
-									}
+									//}
 								}
 							}
-							if (!(tablist[z].cars[i].isVertical) && b){
-								for j in 1..<tablist[z].lignes{
+							if (!(current[z].cars[i].isVertical) && b){
+								for j in 1..<current[z].lignes{
 								//	if(tablist[z].cars[i].x+tablist[z].cars[i].length+j <= tablist[z].lignes && b){
-										if (tablist[z].cars[i].isAllowed("plus", val: j) && b){
+										if (current[z].cars[i].isAllowed("plus", val: j) && b){
 											var tmp : Plateau
-											tmp = tablist[z].tryy(tablist[z])
+											tmp = current[z].tryy(current[z])
 											tmp.cars[i].movePlus(j)
 											tmp.ID = tablist.count
-											tmp.papa = z
+											tmp.papa = current[z].key
 											tmp.update()
 											tmp.move = "car :\(i+1) mouvement horizontal plus de \(j) avec papa \(tmp.papa)"
-											tmp.papa = z
-											for ind in mem[mem.count-3]..<tablist.count{
-												if ( tmp.isEqual(tablist[ind]) && !exist){
+                                          //  pos = 0
+                                            exist = false
+											for ind in 0..<tablist.count{
+                                                if(tmp.key <= tablist[ind].key){
+												if ( (tmp.key == tablist[ind].key) && !exist){
+                                           //         pos += 1
 													exist = true
 												
 													break
@@ -169,15 +240,30 @@ class Controleur{
 													//							print(tablist[ind].afficheTab())
 													//							print("plateau \(tmp.ID) exist  car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)")
 												}
+                                               }
 											}
 											if(!exist){
-												tablist.append(tmp)
-												
+                                                
+                                                pos=0
+                                                for ind2 in 0..<tablist.count{
+                                                    if(tablist[ind2].key < tmp.key){
+                                                        pos += 1
+                                                    }
+                                                }
+                                                if(pos<tablist.count){
+                                                    
+                                                    tablist.insert(tmp, atIndex: pos)
+                                                }
+                                                else{
+                                                    tablist.append(tmp)
+                                                    
+                                                }
+                                                next.append(tmp)
 												if(tmp.isSol()){
 													print ("solution trouvé")
-													print(tmp.ID)
 													b = false
 													print(tmp.afficheTab())
+                                                    sol = tmp
 												}
 												//						print(tmp.afficheTab())
 												//						print("plateau \(tmp.ID) added : car :\(i+1) mouvement horizontal plus de \(j) avec papa \(tmp.papa)")
@@ -185,19 +271,23 @@ class Controleur{
 											exist = false
 										}
 									//}
-									if(tablist[z].cars[i].y - j >= 0 && b){
+									//if(current[z].cars[i].y - j >= 0 && b){
 									
-										if (tablist[z].cars[i].isAllowed("minus", val: j) && b){
+										if (current[z].cars[i].isAllowed("minus", val: j) && b){
 											var tmp : Plateau
-											tmp = tablist[z].tryy(tablist[z])
+											tmp = current[z].tryy(current[z])
 											tmp.cars[i].moveMinus(j)
 											tmp.ID = tablist.count
-											tmp.papa = z
+											tmp.papa = current[z].key
 											tmp.update()
 											tmp.move = "car :\(i+1) mouvement horizontal moins de \(j) avec papa \(tmp.papa)"
-											tmp.papa = z
-											for ind in mem[mem.count-3]..<tablist.count{
-												if ( tmp.isEqual(tablist[ind]) && !exist){
+                                          //  pos = 0
+                                            exist = false
+											for ind in 0..<tablist.count{
+                                                if(tmp.key <= tablist[ind].key){
+												if ( (tmp.key == tablist[ind].key) && !exist){
+                                          //          pos += 1
+                                                    
 													exist = true
 													
 													break
@@ -206,13 +296,30 @@ class Controleur{
 													//							print(tablist[ind].afficheTab())
 													//							print("plateau \(tmp.ID) exist  car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)")
 												}
+                                                }
 											}
 											if(!exist){
-												tablist.append(tmp)
-												
+                                                
+                                               pos = 0
+                                                for ind2 in 0..<tablist.count{
+                                                    if(tablist[ind2].key < tmp.key){
+                                                        pos += 1
+                                                    }
+                                                }
+                                                if(pos<tablist.count){
+                                                   
+                                                    tablist.insert(tmp, atIndex: pos)
+                                                }
+                                                else{
+                                                    tablist.append(tmp)
+                                                    
+                                                }
+                                                
+                                                
+                                                next.append(tmp)
 												if(tmp.isSol()){
 													print ("solution trouvé")
-													print(tmp.ID)
+													sol = tmp
 													b = false
 													print(tmp.afficheTab())
 												}
@@ -223,7 +330,7 @@ class Controleur{
 										}
 										
 										
-									}
+									//}
 								}
 								
 							}
@@ -231,12 +338,15 @@ class Controleur{
 						
 					}
 				}// END for z
+
+                
 				count1 += 1
 				print("count incr \(count1)")
 			}
 			else {
 				b = false
 				print("pas de solution")
+            
 			}
 		} // END WHILe
 	}
