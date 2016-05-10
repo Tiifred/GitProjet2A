@@ -672,14 +672,14 @@
         <window title="start" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="468" height="329"/>
+            <rect key="contentRect" x="335" y="390" width="934" height="494"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="468" height="329"/>
+                <rect key="frame" x="0.0" y="0.0" width="934" height="494"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1va-Sn-GHL">
-                        <rect key="frame" x="46" y="159" width="54" height="136"/>
+                        <rect key="frame" x="46" y="315" width="325" height="145"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="10I-V2-62c">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -687,7 +687,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-Sm-mi5">
-                        <rect key="frame" x="62" y="23" width="94" height="32"/>
+                        <rect key="frame" x="26" y="209" width="94" height="32"/>
                         <buttonCell key="cell" type="push" title="addcar" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="skP-fk-KTm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -697,7 +697,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9R-7h-PJg">
-                        <rect key="frame" x="287" y="78" width="73" height="32"/>
+                        <rect key="frame" x="31" y="128" width="73" height="32"/>
                         <buttonCell key="cell" type="push" title="plus" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="j5g-qI-3um">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -707,7 +707,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wCu-mt-ldL">
-                        <rect key="frame" x="62" y="72" width="94" height="32"/>
+                        <rect key="frame" x="26" y="252" width="94" height="32"/>
                         <buttonCell key="cell" type="push" title="first step" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UBC-Tx-eBU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -717,7 +717,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ch-Pg-GXa">
-                        <rect key="frame" x="287" y="23" width="73" height="32"/>
+                        <rect key="frame" x="37" y="167" width="73" height="32"/>
                         <buttonCell key="cell" type="push" title="Move" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QO7-fJ-xTz">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -727,12 +727,12 @@
                         </connections>
                     </button>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-FL-1DT">
-                        <rect key="frame" x="237" y="120" width="200" height="200"/>
+                        <rect key="frame" x="488" y="45" width="421" height="449"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
                     </imageView>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="377" y="262.5"/>
+            <point key="canvasLocation" x="625" y="321"/>
         </window>
     </objects>
 </document>

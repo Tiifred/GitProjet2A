@@ -25,16 +25,18 @@ class Car{
     var y = 0
     var isVertical = true
     var p = Plateau()
+    var img = ""
     
     
     
-    init (Id:Int,length:Int,X:Int,Y:Int,isVertical:Bool,p:Plateau) {
+    init (Id:Int,length:Int,X:Int,Y:Int,isVertical:Bool,p:Plateau,img:String) {
         self.Id=Id
         self.length=length
         self.x=X
         self.y=Y
         self.isVertical=isVertical
         self.p=p
+        self.img=img
     }
     
     func movePlus(val:Int){

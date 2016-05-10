@@ -47,6 +47,9 @@ extension String {
         enumerateLines{ result.append($0.line) }
         return result
     }
+    
+        var length: Int { return characters.count    }  
+    
 }
 
 class StreamReader  {

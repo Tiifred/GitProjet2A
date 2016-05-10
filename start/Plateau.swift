@@ -21,6 +21,9 @@ class Plateau : Copyable{
     var papa = -1
 	var move = ""
     var key = -1
+    var corresp=[String]()
+    
+    
     
     
     init(){
@@ -83,7 +86,7 @@ class Plateau : Copyable{
         let deflvl = catchlvl(32)
         var tablvl = deflvl.lines
         for i in 1..<tablvl.count{
-           cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: self))
+            cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: self, img:foundimg(Int(tablvl[i].words()[5])!)))
         }
         
     }
@@ -91,6 +94,9 @@ class Plateau : Copyable{
     func catchlvl(lvl:Int)->String{
         var strBuffer : String = ""
         var copy = false
+        var ini = true
+        var tmp=""
+        var count = 0
         
         
         if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/projet/start/CardSet-1") {
@@ -107,6 +113,16 @@ class Plateau : Copyable{
                 if(line == "" && copy) {
                     copy = false
                     return strBuffer
+                }
+                if(ini){
+                    if(count != 0){
+                        tmp += line + "\r"
+                    }
+                    count += 1
+                }
+                if(line == "" && ini) {
+                    ini = false
+                    corresp = tmp.lines
                 }
                 
                 strBuffer += line + "\r"
@@ -127,7 +143,7 @@ class Plateau : Copyable{
     func tryy(p:Plateau)->Plateau{
         var newPlat = Plateau()
         for o in 0..<p.cars.count{
-			newPlat.cars.append(Car(Id: p.cars[o].Id, length: p.cars[o].length, X: p.cars[o].x, Y: p.cars[o].y, isVertical: p.cars[o].isVertical, p: newPlat))
+            newPlat.cars.append(Car(Id: p.cars[o].Id, length: p.cars[o].length, X: p.cars[o].x, Y: p.cars[o].y, isVertical: p.cars[o].isVertical, p: newPlat, img:p.cars[o].img))
         }
 		newPlat.update()
         return newPlat
@@ -145,6 +161,24 @@ class Plateau : Copyable{
             seeking = true
         }
         return seeking
+    }
+    
+    func foundimg(val:Int)->String{
+        var original = ""
+        for i in 0..<corresp.count{
+            if (Int(corresp[i].words()[0]) == val) {
+                let length = corresp[i].words()[0].length
+            
+            
+             original = corresp[i]
+                for j in 0...length{
+                    original = String(original.characters.dropFirst()) // ello
+                }
+            }
+            return original
+            
+        }
+        return ""
     }
     
 }
