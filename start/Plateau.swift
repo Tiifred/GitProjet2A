@@ -168,16 +168,16 @@ class Plateau : Copyable{
         for i in 0..<corresp.count{
             if (Int(corresp[i].words()[0]) == val) {
                 let length = corresp[i].words()[0].length
-            
-            
              original = corresp[i]
                 for j in 0...length{
                     original = String(original.characters.dropFirst()) // ello
                 }
+                print("founded \(val)")
+                return original
             }
-            return original
             
         }
+        print("not founded")
         return ""
     }
     
