@@ -781,7 +781,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ula-Ld-xvr">
-                        <rect key="frame" x="133" y="144" width="42" height="22"/>
+                        <rect key="frame" x="94" y="178" width="42" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="M8g-Bu-3gV">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -789,7 +789,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wZu-YC-D31">
-                        <rect key="frame" x="133" y="174" width="42" height="22"/>
+                        <rect key="frame" x="94" y="152" width="42" height="22"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="9bq-8D-Uvf">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -797,7 +797,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oae-jE-i20">
-                        <rect key="frame" x="101" y="177" width="21" height="17"/>
+                        <rect key="frame" x="60" y="184" width="21" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="X :" id="Upn-dK-Qvp">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -805,7 +805,7 @@
                         </textFieldCell>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aaV-gW-BgY">
-                        <rect key="frame" x="101" y="147" width="20" height="17"/>
+                        <rect key="frame" x="60" y="152" width="20" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Y :" id="xLL-4R-WKl">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -813,13 +813,23 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I3p-3s-JXo">
-                        <rect key="frame" x="181" y="154" width="84" height="32"/>
-                        <buttonCell key="cell" type="push" title="Ajouter" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hqd-p5-x5b">
+                        <rect key="frame" x="146" y="171" width="185" height="32"/>
+                        <buttonCell key="cell" type="push" title="Ajouter voiture verticale" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hqd-p5-x5b">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="AddCar:" target="Voe-Tx-rLC" id="OHt-Ec-2tS"/>
+                            <action selector="AddCarV:" target="Voe-Tx-rLC" id="8BK-6u-6Xj"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r3e-wu-hcy">
+                        <rect key="frame" x="146" y="146" width="201" height="32"/>
+                        <buttonCell key="cell" type="push" title="Ajouter voiture horizontale" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VXY-sP-8d3">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="AddCarH:" target="Voe-Tx-rLC" id="b84-oO-eyd"/>
                         </connections>
                     </button>
                 </subviews>
