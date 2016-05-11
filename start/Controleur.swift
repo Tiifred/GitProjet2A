@@ -74,7 +74,7 @@ class Controleur{
         mem.append(counter)
         var exist = false
         
-        var nee = tablist[0].tryy(tablist[0])
+        let nee = tablist[0].tryy(tablist[0])
         current.append(nee)
         stop = nee.key
         print(nee.key)

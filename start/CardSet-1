@@ -1,21 +1,21 @@
 # Images des véhicules
-1 Annexes/Images/CarH-X.png
-2 Annexes/Images/CarH-blue.png
-3 Annexes/Images/CarH-cream.png
-4 Annexes/Images/CarH-darkblue.png
-5 Annexes/Images/CarH-green.png
-6 Annexes/Images/CarH-lightblue.png
-7 Annexes/Images/CarH-lightgreen.png
-8 Annexes/Images/CarH-marron.png
-9 Annexes/Images/CarH-orange.png
-10 Annexes/Images/CarH-rose.png
-11 Annexes/Images/CarH-violet.png
-12 Annexes/Images/CarH-yellow.png
-100 Annexes/Images/TruckH-violet.png
-101 Annexes/Images/TruckH-yellow.png
-102 Annexes/Images/TruckH-lightgreen.png
-103 Annexes/Images/TruckH-blue.png
-1 Annexes/Images/DS21.png
+1 CarH-X
+2 CarH-blue
+3 CarH-cream
+4 CarH-darkblue
+5 CarH-green
+6 CarH-lightblue
+7 CarH-lightgreen
+8 CarH-marron
+9 CarH-orange
+10 CarH-rose
+11 CarH-violet
+12 CarH-yellow
+100 TruckH-violet
+101 TruckH-yellow
+102 TruckH-lightgreen
+103 TruckH-blue
+104 DS21
 
 # Le pas de sortie est compté entre ()
 # Level 1 (8 pas)

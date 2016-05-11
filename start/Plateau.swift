@@ -101,7 +101,7 @@ class Plateau : Copyable{
         var count = 0
         
         
-        if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/CardSet-1") {
+        if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/projet/start/start/CardSet-1") {
             ///Users/projet2a/Documents/projet/start/CardSet-1
             defer {
                 aStreamReader.close()
