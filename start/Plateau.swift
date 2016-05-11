@@ -86,7 +86,7 @@ class Plateau : Copyable{
         let deflvl = catchlvl(1)
         var tablvl = deflvl.lines
         for i in 1..<tablvl.count{
-            cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: self, img:foundimg(Int(tablvl[i].words()[5])!)))
+            cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: self,ori:tablvl[i].words()[4], img:foundimg(Int(tablvl[i].words()[5])!)))
         }
         
     }
@@ -143,7 +143,7 @@ class Plateau : Copyable{
     func tryy(p:Plateau)->Plateau{
         var newPlat = Plateau()
         for o in 0..<p.cars.count{
-            newPlat.cars.append(Car(Id: p.cars[o].Id, length: p.cars[o].length, X: p.cars[o].x, Y: p.cars[o].y, isVertical: p.cars[o].isVertical, p: newPlat, img:p.cars[o].img))
+            newPlat.cars.append(Car(Id: p.cars[o].Id, length: p.cars[o].length, X: p.cars[o].x, Y: p.cars[o].y, isVertical: p.cars[o].isVertical, p: newPlat, ori:p.cars[o].orientation,img:p.cars[o].img))
         }
 		newPlat.update()
         return newPlat

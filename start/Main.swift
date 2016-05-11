@@ -87,6 +87,8 @@ extension NSImage {
 
 class StreamReader  {
     
+    
+    
     let encoding : UInt
     let chunkSize : Int
     

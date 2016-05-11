@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 protocol Copyable {
 	init(instance: Self)
 }
@@ -18,7 +19,8 @@ extension Copyable {
 	}
 }
 
-class Controleur{
+
+class Controleur {
 	var tablist = [Plateau]()
     var current = [Plateau]()
     var next = [Plateau]()
@@ -28,6 +30,8 @@ class Controleur{
     var sol = Plateau()
     var stop = 0
 	
+    
+    
 	init(){
 		tablist.append(self.plateau)
 	}
