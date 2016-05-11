@@ -11,6 +11,7 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+	
      // *** Description plateau ***
         let margebas=47
         let margegauche=25
@@ -18,9 +19,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let carreau = 54
     // *** fin Description  ***
     
-    
-    var controleur = Controleur()
-    
+	
+	var controleur = Controleur()
+	var fin=0
+	var current=0
    // for i in 0..controleur.plateau.cars.count{
     
     //}
@@ -38,6 +40,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         ImgArea.image = grid
+		controleur.plateau.lecture()
+		 draw()
+		
+
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -46,36 +52,95 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var ImgArea: NSImageView!
     @IBOutlet weak var label: NSTextField!
-    @IBAction func addcar(sender: NSButton) {
-       controleur.plateau.lecture()
-         label.stringValue = ""
-        label.stringValue += controleur.plateau.afficheTab()
-        
-    }
-
-
-    @IBAction func step(sender: NSButton) {
-    controleur.mooving()
-	controleur.createPath()
-    }
-    
-    
-    @IBAction func Move(sender: NSButton) {
-        /*if(controleur.plateau.cars[2].isAllowed("minus", val: 1)){
-            print("ici")
-            controleur.plateau.cars[2].moveMinus(1)
-        }
-        label.stringValue = controleur.plateau.afficheTab()*/
-        draw()
-		    }
 	
-    @IBAction func plus(sender: NSButton) {
+	@IBAction func nextLvl(sender: NSButton) {
+		if(controleur.plateau.lvl<41){
+			controleur.tablist = [Plateau]()
+			controleur.current = [Plateau]()
+			controleur.next = [Plateau]()
+			controleur.plateau = Plateau(lvl:controleur.plateau.lvl+1)
+			controleur.b = true
+			controleur.path = [Int]()
+			controleur.sol = Plateau(lvl:controleur.plateau.lvl+1)
+			controleur.stop = 0
+			controleur.tablist.append(controleur.plateau)
+			controleur.plateau.lecture()
+			draw()
+			controleur.calculed = false
+			
+			print("change lvl")
+		}
+	}
+	
+	@IBAction func searchsolution(sender: NSButton) {
+		controleur.mooving()
+		controleur.createPath()
+		fin = controleur.path.count
+		current = fin - 1
+	}
+	
+	@IBOutlet weak var chooser: NSTextField!
+	@IBAction func chooselvl(sender: NSButton) {
+		if((chooser.intValue)<42 && (chooser.intValue)>0 ){
+			controleur.tablist = [Plateau]()
+			controleur.current = [Plateau]()
+			controleur.next = [Plateau]()
+			controleur.plateau = Plateau(lvl:Int(chooser.intValue))
+			controleur.b = true
+			controleur.path = [Int]()
+			controleur.sol = Plateau(lvl:Int(chooser.intValue))
+			controleur.stop = 0
+			controleur.tablist.append(controleur.plateau)
+			
+			print("change lvl")
+			controleur.plateau.lecture()
+			draw()
+			controleur.calculed = false
+			
+		}
+	}
+	
+	
+	
+	@IBAction func previousLvl(sender: NSButton) {
+		if(controleur.plateau.lvl>0){
+			
+			controleur.tablist = [Plateau]()
+			controleur.current = [Plateau]()
+			controleur.next = [Plateau]()
+			controleur.plateau = Plateau(lvl:controleur.plateau.lvl-1)
+			controleur.b = true
+			controleur.path = [Int]()
+			controleur.sol = Plateau(lvl:controleur.plateau.lvl-1)
+			controleur.stop = 0
+			controleur.tablist.append(controleur.plateau)
+			
+			print("change lvl")
+			controleur.plateau.lecture()
+			draw()
+			controleur.calculed = false
+		}
+	}
 
-    }
+	@IBAction func previousMove(sender: NSButton) {
+		if(current != fin-1 && controleur.calculed){
+			controleur.plateau = controleur.tablist[controleur.path[current + 1]]
+			draw()
+			current = current + 1
+		}
+	}
+
+	@IBAction func nextMove(sender: NSButton) {
+		if(current != 0 && controleur.calculed){
+			controleur.plateau = controleur.tablist[controleur.path[current - 1]]
+			draw()
+			current = current - 1
+		}
+	}
     
     func resize(image: NSImage, w: Int, h: Int) -> NSImage {
-        var destSize = NSMakeSize(CGFloat(w), CGFloat(h))
-        var newImage = NSImage(size: destSize)
+        let destSize = NSMakeSize(CGFloat(w), CGFloat(h))
+        let newImage = NSImage(size: destSize)
         newImage.lockFocus()
         image.drawInRect(NSMakeRect(0, 0, destSize.width, destSize.height), fromRect: NSMakeRect(0, 0, image.size.width, image.size.height), operation: NSCompositingOperation.CompositeSourceOver, fraction: CGFloat(1))
         newImage.unlockFocus()
@@ -84,8 +149,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func draw(){
-        var xx:Int
-        var yy:Int
+		for v in ImgArea.subviews{
+   v.removeFromSuperview()
+		}
         for i in 0..<controleur.plateau.cars.count{
             if(!(controleur.plateau.cars[i].isVertical)){
                 if(controleur.plateau.cars[i].length==2){
@@ -130,7 +196,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x-2)*interstice + (6-controleur.plateau.cars[i].x-3)*57 )
                     
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 57, height: 180))
-                    var imgtmp = NSImage(named : controleur.plateau.cars[i].img)
+                    let imgtmp = NSImage(named : controleur.plateau.cars[i].img)
                     if(imgtmp!.size.width > imgtmp!.size.height){
                         imgView.image = imgtmp
                         imgView.rotateByAngle(270)

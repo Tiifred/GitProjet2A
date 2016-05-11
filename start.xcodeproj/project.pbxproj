@@ -110,12 +110,12 @@
 				F0097C621CDA36CC00A3CFD2 /* CardSet-1 */,
 				F00382A31CD88BF400E2BE66 /* AppDelegate.swift */,
 				F00382A51CD88BF400E2BE66 /* Assets.xcassets */,
+				F0DC359B1CDC943200FD1927 /* Controleur.swift */,
 				F00382A71CD88BF400E2BE66 /* MainMenu.xib */,
 				F00382AA1CD88BF400E2BE66 /* Info.plist */,
 				F0FD6A471CD899DE008C6A2C /* Car.swift */,
 				F0FD6A491CD8D8A5008C6A2C /* Plateau.swift */,
 				F0097C5E1CDA27EB00A3CFD2 /* Main.swift */,
-				F0DC359B1CDC943200FD1927 /* Controleur.swift */,
 			);
 			path = start;
 			sourceTree = "<group>";
