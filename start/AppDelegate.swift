@@ -73,6 +73,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			vue.current = vue.current - 1
 		}
 	}
+    
+    @IBOutlet weak var AddCarX: NSTextField!
+    @IBOutlet weak var AddCarY: NSTextField!
+    
+    @IBAction func AddCar(sender: NSButton) {
+        vue.controleur.addCarManualy(AddCarX.integerValue, y: AddCarY.integerValue)
+        vue.draw(self.ImgArea)
+    }
+    
 
 
 }

@@ -350,4 +350,16 @@ class Controleur{
 		} // END WHILe
 		calculed = true
 	}
+    
+    func addCarManualy(x:Int, y:Int){
+        var i = 0
+        i = plateau.cars.count + 1
+
+        
+        let c = Car(Id: i, length: 2, X: x, Y: y, isVertical: true, p: plateau, ori: "r", img: "CarH-rose")
+        plateau.cars.append(c)
+    }
+    
+    
+    
 }
