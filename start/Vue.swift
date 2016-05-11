@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class Vue{
+class Vue: NSImageView{
     
     // *** Description plateau ***
     let margebas=47
@@ -22,64 +22,22 @@ class Vue{
     var controleur = Controleur()
     var fin=0
     var current=0
-    // for i in 0..controleur.plateau.cars.count{
-    
-    //}
     var grid = NSImage(named: "grid")
-
-    init(){
+ 
+    
+    override var acceptsFirstResponder: Bool {
+        return true
+    }
+    override func mouseDown(theEvent : NSEvent) {
+        Swift.print("Original: \(theEvent.locationInWindow)")
+        let convertedPoint = self.convertPoint(theEvent.locationInWindow, fromView: theEvent.window?.contentView)
+        Swift.print("Tuned: \(convertedPoint)")
         
     }
     
-    func nextlvl(){
-        if(controleur.plateau.lvl<41){
-            controleur.tablist = [Plateau]()
-            controleur.current = [Plateau]()
-            controleur.next = [Plateau]()
-            controleur.plateau = Plateau(lvl:controleur.plateau.lvl+1)
-            controleur.b = true
-            controleur.path = [Int]()
-            controleur.sol = Plateau(lvl:controleur.plateau.lvl+1)
-            controleur.stop = 0
-            controleur.tablist.append(controleur.plateau)
-            controleur.plateau.lecture()
-            controleur.calculed = false
-        }
+    override func rightMouseDown(theEvent : NSEvent) {
+        Swift.print("right mouse")
     }
-    
-    func previouslvl(){
-        if(controleur.plateau.lvl>0){
-            controleur.tablist = [Plateau]()
-            controleur.current = [Plateau]()
-            controleur.next = [Plateau]()
-            controleur.plateau = Plateau(lvl:controleur.plateau.lvl-1)
-            controleur.b = true
-            controleur.path = [Int]()
-            controleur.sol = Plateau(lvl:controleur.plateau.lvl-1)
-            controleur.stop = 0
-            controleur.tablist.append(controleur.plateau)
-            controleur.plateau.lecture()
-            controleur.calculed = false
-        }
-    }
-    
-    func inilvl(val:Int){
-        if((val)<42 && (val)>0 ){
-                controleur.tablist = [Plateau]()
-                controleur.current = [Plateau]()
-                controleur.next = [Plateau]()
-                controleur.plateau = Plateau(lvl:val)
-                controleur.b = true
-                controleur.path = [Int]()
-                controleur.sol = Plateau(lvl:val)
-                controleur.stop = 0
-                controleur.tablist.append(controleur.plateau)
-                controleur.plateau.lecture()
-                controleur.calculed = false
-
-        }
-    }
-    
     
     func resize(image: NSImage, w: Int, h: Int) -> NSImage {
         let destSize = NSMakeSize(CGFloat(w), CGFloat(h))
@@ -92,6 +50,7 @@ class Vue{
     }
     
     func draw(ImgArea: NSImageView!){
+        
         for v in ImgArea.subviews{
             v.removeFromSuperview()
         }

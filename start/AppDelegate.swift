@@ -9,6 +9,7 @@
 import Cocoa
 
 
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
@@ -22,19 +23,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ImgArea.image = vue.grid
 		vue.controleur.plateau.lecture()
 		 vue.draw(self.ImgArea)
+      
     }
     
+  
 
 
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
 
+    
     @IBOutlet weak var ImgArea: NSImageView!
-    @IBOutlet weak var label: NSTextField!
-	
+  //  self.ImgArea.acceptsFirstResponder = true
+    
 	@IBAction func nextLvl(sender: NSButton) {
-		vue.nextlvl()
+		vue.controleur.nextlvl()
         vue.draw(self.ImgArea)
 	}
 	
@@ -45,16 +49,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		vue.current = vue.fin - 1
 	}
 	
-	@IBOutlet weak var chooser: NSTextField!
+	
 	@IBAction func chooselvl(sender: NSButton) {
-        vue.inilvl(Int(chooser.intValue))
-        vue.draw(self.ImgArea)
+        //vue.controleur.inilvl(Int(chooser.intValue))
+       // vue.draw(self.ImgArea)
 	}
 	
 	
 	
 	@IBAction func previousLvl(sender: NSButton) {
-		vue.previouslvl()
+		vue.controleur.previouslvl()
         vue.draw(self.ImgArea)
 	}
 

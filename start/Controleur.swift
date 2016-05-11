@@ -28,13 +28,15 @@ class Controleur{
 	var sol = Plateau(lvl:1)
     var stop = 0
 	var calculed = false
+    var haveSol=false
 	
 	init(){
 		tablist.append(self.plateau)
 	}
 	
 	func createPath(){
-		print("******* Reconstitution  *********")
+        if(haveSol){
+        print("******* Reconstitution  *********")
         for k in 0..<tablist.count{
             tablist[k].ID = k
         }
@@ -58,13 +60,14 @@ class Controleur{
 			print("\(tablist[varid].afficheTab())")
 		}
 		print("il y a finalement \(path.count - 1)  deplacements necessaires")
-        
+        }
+        else {
+            print ("pas de solution")
+        }
 	}
 	
 	func mooving(){
-        
-		
-		//tmp = self.plateau
+
 		print("starting ")
         var count1 = 0
         var counter = 0
@@ -149,6 +152,7 @@ class Controleur{
 													sol = tmp
                                                     b = false
 													print(tmp.afficheTab())
+                                                    haveSol = true
 												}
 												//				print(tmp.afficheTab())
 												//				print("plateau \(tmp.ID) added : car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)")
@@ -205,6 +209,7 @@ class Controleur{
 													sol = tmp
 													b = false
 													print(tmp.afficheTab())
+                                                    haveSol = true
 												}
 												//			print(tmp.afficheTab())
 												//			print("plateau \(tmp.ID) added : car :\(i+1) mouvement vertical moins de \(j) avec papa \(tmp.papa)")
@@ -260,6 +265,7 @@ class Controleur{
                                                 next.append(tmp)
 												if(tmp.isSol()){
 													print ("solution trouvé")
+                                                    haveSol = true
 													b = false
 													print(tmp.afficheTab())
                                                     sol = tmp
@@ -318,6 +324,7 @@ class Controleur{
                                                 next.append(tmp)
 												if(tmp.isSol()){
 													print ("solution trouvé")
+                                                    haveSol = true
 													sol = tmp
 													b = false
 													print(tmp.afficheTab())
@@ -350,4 +357,55 @@ class Controleur{
 		} // END WHILe
 		calculed = true
 	}
+    
+    
+    func nextlvl(){
+        if(self.plateau.lvl<41){
+            self.tablist = [Plateau]()
+            self.current = [Plateau]()
+             self.next = [Plateau]()
+             self.plateau = Plateau(lvl: self.plateau.lvl+1)
+             self.b = true
+             self.path = [Int]()
+             self.sol = Plateau(lvl: self.plateau.lvl+1)
+             self.stop = 0
+             self.tablist.append( self.plateau)
+             self.plateau.lecture()
+             self.calculed = false
+        }
+    }
+    
+    func previouslvl(){
+        if( self.plateau.lvl>0){
+             self.tablist = [Plateau]()
+             self.current = [Plateau]()
+             self.next = [Plateau]()
+             self.plateau = Plateau(lvl: self.plateau.lvl-1)
+             self.b = true
+             self.path = [Int]()
+             self.sol = Plateau(lvl: self.plateau.lvl-1)
+             self.stop = 0
+             self.tablist.append( self.plateau)
+             self.plateau.lecture()
+             self.calculed = false
+        }
+    }
+    
+    func inilvl(val:Int){
+        if((val)<42 && (val)>0 ){
+             self.tablist = [Plateau]()
+             self.current = [Plateau]()
+             self.next = [Plateau]()
+             self.plateau = Plateau(lvl:val)
+             self.b = true
+             self.path = [Int]()
+             self.sol = Plateau(lvl:val)
+             self.stop = 0
+             self.tablist.append( self.plateau)
+             self.plateau.lecture()
+             self.calculed = false
+            
+        }
+    }
+
 }
