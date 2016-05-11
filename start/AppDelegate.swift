@@ -241,14 +241,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 						self.ImgArea.addSubview(imgView)
 					}
 				}
-
-				
+			
             }
     }
-		
-		
-		
-		
+	
+	
+	
+	
    }
 
 }
