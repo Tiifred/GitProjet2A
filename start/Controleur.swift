@@ -354,18 +354,16 @@ class Controleur{
     func addCarManualy(x:Int, y:Int, isVertical:Bool, image:String){
         var i = 0
         i = plateau.cars.count + 1
-
         
         let c = Car(Id: i, length: 2, X: x, Y: y, isVertical: isVertical, p: plateau, ori: "r", img: image)
         plateau.update()
+        
         if ( !c.isVertical && plateau.table[c.x][c.y] == -1 && plateau.table[c.x][c.y+1] == -1) {
             plateau.cars.append(c)
         }
         else if (c.isVertical && plateau.table[c.x][c.y] == -1 && plateau.table[c.x+1][c.y] == -1) {
             plateau.cars.append(c)
         }
-
-        
         else {print("Place occupé !")}
     }
     
