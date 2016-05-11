@@ -22,14 +22,16 @@ class Plateau : Copyable{
 	var move = ""
     var key = -1
     var corresp=[String]()
+	var lvl = 1
     
     
     
     
-    init(){
+	init(lvl:Int){
         self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
+		self.lvl = lvl
     }
-    
+	
     required init(instance: Plateau) {
         self.table = instance.table
         self.cars = instance.cars
@@ -81,9 +83,9 @@ class Plateau : Copyable{
         return result
     }
     
-    func lecture(){
-        
-        let deflvl = catchlvl(1)
+	func lecture(){
+		
+        let deflvl = catchlvl(self.lvl)
         var tablvl = deflvl.lines
         for i in 1..<tablvl.count{
             cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: self, img:foundimg(Int(tablvl[i].words()[5])!)))
@@ -99,7 +101,7 @@ class Plateau : Copyable{
         var count = 0
         
         
-        if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/projet/start/CardSet-1") {
+        if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/CardSet-1") {
             ///Users/projet2a/Documents/projet/start/CardSet-1
             defer {
                 aStreamReader.close()
@@ -141,7 +143,7 @@ class Plateau : Copyable{
     
     
     func tryy(p:Plateau)->Plateau{
-        var newPlat = Plateau()
+		let newPlat = Plateau(lvl:p.lvl)
         for o in 0..<p.cars.count{
             newPlat.cars.append(Car(Id: p.cars[o].Id, length: p.cars[o].length, X: p.cars[o].x, Y: p.cars[o].y, isVertical: p.cars[o].isVertical, p: newPlat, img:p.cars[o].img))
         }
@@ -169,7 +171,7 @@ class Plateau : Copyable{
             if (Int(corresp[i].words()[0]) == val) {
                 let length = corresp[i].words()[0].length
              original = corresp[i]
-                for j in 0...length{
+                for _ in 0...length{
                     original = String(original.characters.dropFirst()) // ello
                 }
                 print("founded \(val)")

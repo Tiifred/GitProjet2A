@@ -22,11 +22,12 @@ class Controleur{
 	var tablist = [Plateau]()
     var current = [Plateau]()
     var next = [Plateau]()
-	var plateau = Plateau()
+	var plateau = Plateau(lvl:1)
 	var b = true
 	var path = [Int]()
-    var sol = Plateau()
+	var sol = Plateau(lvl:1)
     var stop = 0
+	var calculed = false
 	
 	init(){
 		tablist.append(self.plateau)
@@ -43,6 +44,7 @@ class Controleur{
         var dadID = 0                           // position papa
 		print(tablist[varid].move)
 		print("\(tablist[varid].afficheTab())")
+		path.append(varid)
 		while(tablist[varid].key != stop){
 			varpapa = tablist[varid].papa
             for k in 0..<tablist.count{
@@ -55,7 +57,7 @@ class Controleur{
 			print(tablist[varid].move)
 			print("\(tablist[varid].afficheTab())")
 		}
-		print("il y a finalement \(path.count)  deplacements necessaires")
+		print("il y a finalement \(path.count - 1)  deplacements necessaires")
         
 	}
 	
@@ -88,15 +90,12 @@ class Controleur{
             if(counter != 1){
                 current.removeAll()
                 for c in 0..<next.count{
-                    var ne = next[c].tryy(next[c])
+                    let ne = next[c].tryy(next[c])
                     current.append(ne)
                 }
                 next.removeAll()
             }
-            
-            
-            
-            
+  
             if(count1<counter && b ){
                 for z in 0..<current.count{//numero du plateau dans la liste
                     if (b){
@@ -349,5 +348,6 @@ class Controleur{
             
 			}
 		} // END WHILe
+		calculed = true
 	}
 }

@@ -24,7 +24,7 @@ class Car{
     var x = 0
     var y = 0
     var isVertical = true
-    var p = Plateau()
+	var p :Plateau
     var img = ""
     
     
@@ -68,7 +68,6 @@ class Car{
     }
     
     func isAllowed(s:String, val:Int)->Bool{
-        var result : Bool = false
         var ok = true
         if(s == "plus"){
             if(!(self.isVertical)){
