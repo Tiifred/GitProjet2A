@@ -16,8 +16,10 @@
             <connections>
                 <outlet property="AddCarX" destination="wZu-YC-D31" id="c0L-0w-7sE"/>
                 <outlet property="AddCarY" destination="Ula-Ld-xvr" id="Wdh-XV-f8k"/>
+                <outlet property="ChooseImage" destination="68D-6b-Rqd" id="HvH-lz-kPp"/>
                 <outlet property="ImgArea" destination="a5w-FL-1DT" id="DH1-vt-Dxz"/>
                 <outlet property="chooser" destination="Gh2-1L-JXD" id="vrL-ph-VMH"/>
+                <outlet property="isVertical" destination="E7H-86-O78" id="MjB-23-XhQ"/>
                 <outlet property="searrchsolution" destination="Z40-sx-aZ4" id="XnP-Dm-kqU"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -765,13 +767,6 @@
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-FL-1DT">
-                        <rect key="frame" x="376" y="31" width="421" height="449"/>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
-                        <connections>
-                            <action selector="testIt:" target="Voe-Tx-rLC" id="5Pe-Yh-iwi"/>
-                        </connections>
-                    </imageView>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JpF-8V-f16">
                         <rect key="frame" x="114" y="221" width="119" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Ajouter une voiture" id="edt-op-jSu">
@@ -812,29 +807,61 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I3p-3s-JXo">
-                        <rect key="frame" x="146" y="171" width="185" height="32"/>
-                        <buttonCell key="cell" type="push" title="Ajouter voiture verticale" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="hqd-p5-x5b">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E7H-86-O78">
+                        <rect key="frame" x="60" y="87" width="50" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vertical" id="0eA-uC-nda">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zcm-lk-Yy6">
+                        <rect key="frame" x="241" y="76" width="86" height="32"/>
+                        <buttonCell key="cell" type="push" title="AddCar" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ReT-P1-1ek">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="AddCarV:" target="Voe-Tx-rLC" id="8BK-6u-6Xj"/>
+                            <action selector="addCarTest:" target="Voe-Tx-rLC" id="mHT-4n-g4w"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r3e-wu-hcy">
-                        <rect key="frame" x="146" y="146" width="201" height="32"/>
-                        <buttonCell key="cell" type="push" title="Ajouter voiture horizontale" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VXY-sP-8d3">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kwi-Eb-bbB">
+                        <rect key="frame" x="124" y="76" width="87" height="32"/>
+                        <buttonCell key="cell" type="push" title="Change" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="She-8b-R7W">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="AddCarH:" target="Voe-Tx-rLC" id="b84-oO-eyd"/>
+                            <action selector="changeIsVertical:" target="Voe-Tx-rLC" id="RYW-HQ-7eh"/>
                         </connections>
                     </button>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-FL-1DT">
+                        <rect key="frame" x="356" y="31" width="421" height="449"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
+                        <connections>
+                            <action selector="testIt:" target="Voe-Tx-rLC" id="5Pe-Yh-iwi"/>
+                        </connections>
+                    </imageView>
+                    <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="68D-6b-Rqd">
+                        <rect key="frame" x="62" y="120" width="99" height="26"/>
+                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="image" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="JAa-gc-0lo">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <objectValues>
+                                <string>CarH-blue</string>
+                                <string>CarH-yellow</string>
+                                <string>CarH-green</string>
+                                <string>CarH-cream</string>
+                                <string>CarH-marron</string>
+                                <string>CarH-orange</string>
+                                <string>CarH-rose</string>
+                            </objectValues>
+                        </comboBoxCell>
+                    </comboBox>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="629.5" y="326"/>
+            <point key="canvasLocation" x="227.5" y="317"/>
         </window>
     </objects>
 </document>

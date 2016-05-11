@@ -76,18 +76,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var AddCarX: NSTextField!
     @IBOutlet weak var AddCarY: NSTextField!
-
+    @IBOutlet weak var ChooseImage: NSComboBox!
     
-    @IBAction func AddCarV(sender: NSButton) {
-        vue.controleur.addCarManualy(AddCarX.integerValue, y: AddCarY.integerValue, isVertical: true, image: "CarH-rose")
-        vue.draw(self.ImgArea)
+    var isV : Bool = true
+    @IBOutlet weak var isVertical: NSTextField!
 
+    @IBAction func changeIsVertical(sender: NSButton) {
+        if(isVertical.stringValue == "Vertical") {
+            isVertical.stringValue = "Horizontal"
+            isV = false
+        }else {
+            isVertical.stringValue = "Vertical"
+            isV = true
     }
-    @IBAction func AddCarH(sender: NSButton) {
-        vue.controleur.addCarManualy(AddCarX.integerValue, y: AddCarY.integerValue, isVertical: false, image: "CarH-rose")
-        vue.draw(self.ImgArea)
-    }
+}
     
-
+    @IBAction func addCarTest(sender: NSButton) {
+        vue.controleur.addCarManualy(AddCarX.integerValue, y: AddCarY.integerValue, isVertical: isV, image: ChooseImage.stringValue)
+        vue.draw(self.ImgArea)
+    }
 
 }
