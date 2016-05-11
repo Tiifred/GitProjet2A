@@ -13,6 +13,15 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
 
 	var vue = Vue()
+    var aaa = ""
+    var tralala = ""
+    let textFieldX = NSTextView()
+    let textFieldY = NSTextView()
+    let textFieldOri = NSTextView()
+    var cbox = NSComboBox()
+     var cboxval = NSComboBox()
+     var cboxX = NSComboBox()
+     var cboxY = NSComboBox()
 
     
     @IBOutlet weak var window: NSWindow!
@@ -22,8 +31,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ImgArea.image = vue.grid
 		vue.controleur.plateau.lecture()
 		 vue.draw(self.ImgArea)
+        
+
     }
     
+
 
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -48,10 +60,95 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	@IBOutlet weak var chooser: NSTextField!
 	@IBAction func chooselvl(sender: NSButton) {
         vue.inilvl(Int(chooser.intValue))
+       
         vue.draw(self.ImgArea)
 	}
 	
 	
+    @IBAction func newWind(sender: NSButton) {
+        //Declare new subwindow
+        var win = NSWindow(contentRect: NSMakeRect(100, 100, 800, 200),
+                           styleMask: 1 | 2 | 4 | 8,
+                           backing: NSBackingStoreType.Buffered, defer: true);
+        
+        win.title = "Add a Vehicule";
+        win.center();
+        
+        var butcar = NSButton(frame: NSMakeRect(150,50,90,30))
+        butcar.title = "adding a car"
+        butcar.target = self
+        butcar.action = Selector("myAction:")
+        win.contentView!.addSubview(butcar)
+        
+        var buttruck = NSButton(frame: NSMakeRect(300,50,90,30))
+        buttruck.title = "adding a Truck"
+        buttruck.target = self
+        buttruck.action = Selector("myAction2:")
+        win.contentView!.addSubview(buttruck)
+        
+        cbox = NSComboBox(frame: NSMakeRect(400,100,150,30))
+        cbox.addItemWithObjectValue("CarH-blue")
+        cbox.addItemWithObjectValue("CarH-cream")
+        cbox.addItemWithObjectValue("CarHdark-blue")
+        cbox.addItemWithObjectValue("CarH-green")
+        cbox.addItemWithObjectValue("CarH-lightgreen")
+        cbox.addItemWithObjectValue("CarH-marron")
+        cbox.addItemWithObjectValue("CarH-orange")
+        cbox.addItemWithObjectValue("CarH-rose")
+        cbox.addItemWithObjectValue("CarH-violet")
+        cbox.addItemWithObjectValue("CarH-X")
+        cbox.addItemWithObjectValue("CarH-yellow")
+        cbox.addItemWithObjectValue("CarV-blue")
+        cbox.addItemWithObjectValue("CarV-green")
+        cbox.addItemWithObjectValue("CarV-X")
+        cbox.addItemWithObjectValue("DS21")
+        cbox.addItemWithObjectValue("TruckH-blue")
+        cbox.addItemWithObjectValue("TruckH-volet")
+        cbox.addItemWithObjectValue("TruckH-lightgreen")
+        cbox.addItemWithObjectValue("TruckH-yellow")
+        cbox.addItemWithObjectValue("TruckV-blue")
+        win.contentView!.addSubview(cbox)
+        
+        cboxX = NSComboBox(frame: NSMakeRect(0,100,150,30))
+        cbox.placeholderString = "Image"
+        cboxX.placeholderString = " Position x"
+        cboxY = NSComboBox(frame: NSMakeRect(200,100,150,30))
+        cboxY.placeholderString = "position Y"
+        for j in 0..<vue.controleur.plateau.lignes{
+            cboxX.addItemWithObjectValue(j)
+        }
+        for j in 0..<vue.controleur.plateau.colonnes{
+            cboxY.addItemWithObjectValue(j)
+        }
+         cboxval = NSComboBox(frame: NSMakeRect(600,100,150,30))
+        cboxval.placeholderString = "Orientation"
+            cboxval.addItemWithObjectValue("v")
+            cboxval.addItemWithObjectValue("h")
+        
+         win.contentView!.addSubview(cboxX)
+         win.contentView!.addSubview(cboxY)
+         win.contentView!.addSubview(cboxval)
+        
+        //Add the window to the main viewer
+        window.addChildWindow(win, ordered:NSWindowOrderingMode.Above);
+        
+        var controller = NSWindowController(window: win);
+        controller.showWindow(self);
+        print("wind added")
+        
+    }
+    
+    func myAction(obj:AnyObject?){
+        vue.controleur.addManualy(Int(cboxX.stringValue)!, y:Int(cboxY.stringValue)!, Vertical:vue.controleur.plateau.datbool((cboxval.stringValue)), image:cbox.stringValue,length:2)
+         vue.draw(self.ImgArea)
+    }
+    
+    func myAction2(obj:AnyObject?){
+        vue.controleur.addManualy(Int(cboxX.stringValue)!, y:Int(cboxY.stringValue)!, Vertical:vue.controleur.plateau.datbool((cboxval.stringValue)), image:cbox.stringValue,length:3)
+        vue.draw(self.ImgArea)
+    }
+    
+    
 	
 	@IBAction func previousLvl(sender: NSButton) {
 		vue.previouslvl()
@@ -73,6 +170,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			vue.current = vue.current - 1
 		}
 	}
-
+    
+    @IBAction func test(sender: NSButton) {
+        let openDlg = NSOpenPanel()
+        openDlg.allowsMultipleSelection = false
+        openDlg.canChooseFiles = true
+        openDlg.canChooseDirectories = false
+        if openDlg.runModal() == NSOKButton{
+            aaa = String(openDlg.URL!)
+        }
+        
+        for i in 0..<7{
+            aaa = String(aaa.characters.dropFirst())
+        }
+        print(aaa)
+       // vue.controleur.plateau.path = aaa
+        vue.inipath(1,path:aaa)
+        vue.draw(self.ImgArea)
+        
+        
+        
+    }
 
 }

@@ -97,12 +97,11 @@ class Controleur{
             }
   
             if(count1<counter && b ){
-                for z in 0..<current.count{//numero du plateau dans la liste
+                for z in 0..<current.count{
                     if (b){
-						for i in 0..<plateau.cars.count{ // pour chaque vehicule
+						for i in 0..<plateau.cars.count{
 							if (plateau.cars[i].isVertical && b){
-								for j in 1..<plateau.colonnes { // j : toutes la valeurs possible de deplacement
-									//if(tablist[z].cars[i].x + tablist[z].cars[i].length + j <= tablist[z].colonnes && b){
+								for j in 1..<plateau.colonnes {
 										if (current[z].cars[i].isAllowed("plus", val: j) && b ){
 											var tmp : Plateau
 											tmp = current[z].tryy(current[z])
@@ -116,9 +115,6 @@ class Controleur{
                                                 
                                                 if(tmp.key <= tablist[ind].key){
                                                     if ( (tmp.key == tablist[ind].key) && !exist){
-													/*print(tmp.afficheTab())
-													print(tablist[ind].afficheTab())
-													print("plateau \(tmp.ID) exist  car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)")*/
                                                         exist = true
                                                         
                                                         break
@@ -150,13 +146,9 @@ class Controleur{
                                                     b = false
 													print(tmp.afficheTab())
 												}
-												//				print(tmp.afficheTab())
-												//				print("plateau \(tmp.ID) added : car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)")
 											}
 											exist = false
 										}
-									//}
-									//if(current[z].cars[i].x - j >= 0 && b ){
 										if (current[z].cars[i].isAllowed("minus", val: j) && b){
 											var tmp : Plateau
 											tmp = current[z].tryy(current[z])
@@ -165,19 +157,12 @@ class Controleur{
 											tmp.papa = current[z].key
 											tmp.move = "car :\(i+1) mouvement vertical moins de \(j) avec papa \(tmp.papa)"
 											tmp.update()
-                                          //  pos = 0
                                             exist = false
 											for ind in 0..<tablist.count{
                                                 if(tmp.key <= tablist[ind].key){
                                                     if ( (tmp.key == tablist[ind].key) && !exist){
-                                                     //   pos += 1
                                                         exist = true
-                                                
                                                         break
-													
-													/*print(tmp.afficheTab())
-													print(tablist[ind].afficheTab())
-													print("plateau \(tmp.ID) exist  car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)")*/
                                                     }
                                                 }
 											}
@@ -206,17 +191,13 @@ class Controleur{
 													b = false
 													print(tmp.afficheTab())
 												}
-												//			print(tmp.afficheTab())
-												//			print("plateau \(tmp.ID) added : car :\(i+1) mouvement vertical moins de \(j) avec papa \(tmp.papa)")
 											}
 											exist = false
 										}
-									//}
 								}
 							}
 							if (!(current[z].cars[i].isVertical) && b){
 								for j in 1..<current[z].lignes{
-								//	if(tablist[z].cars[i].x+tablist[z].cars[i].length+j <= tablist[z].lignes && b){
 										if (current[z].cars[i].isAllowed("plus", val: j) && b){
 											var tmp : Plateau
 											tmp = current[z].tryy(current[z])
@@ -225,19 +206,12 @@ class Controleur{
 											tmp.papa = current[z].key
 											tmp.update()
 											tmp.move = "car :\(i+1) mouvement horizontal plus de \(j) avec papa \(tmp.papa)"
-                                          //  pos = 0
                                             exist = false
 											for ind in 0..<tablist.count{
                                                 if(tmp.key <= tablist[ind].key){
 												if ( (tmp.key == tablist[ind].key) && !exist){
-                                           //         pos += 1
 													exist = true
-												
 													break
-													//							print("exist")
-													//							print(tmp.afficheTab())
-													//							print(tablist[ind].afficheTab())
-													//							print("plateau \(tmp.ID) exist  car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)")
 												}
                                                }
 											}
@@ -264,13 +238,9 @@ class Controleur{
 													print(tmp.afficheTab())
                                                     sol = tmp
 												}
-												//						print(tmp.afficheTab())
-												//						print("plateau \(tmp.ID) added : car :\(i+1) mouvement horizontal plus de \(j) avec papa \(tmp.papa)")
 											}
 											exist = false
 										}
-									//}
-									//if(current[z].cars[i].y - j >= 0 && b){
 									
 										if (current[z].cars[i].isAllowed("minus", val: j) && b){
 											var tmp : Plateau
@@ -280,20 +250,14 @@ class Controleur{
 											tmp.papa = current[z].key
 											tmp.update()
 											tmp.move = "car :\(i+1) mouvement horizontal moins de \(j) avec papa \(tmp.papa)"
-                                          //  pos = 0
                                             exist = false
 											for ind in 0..<tablist.count{
                                                 if(tmp.key <= tablist[ind].key){
 												if ( (tmp.key == tablist[ind].key) && !exist){
-                                          //          pos += 1
-                                                    
 													exist = true
 													
 													break
-													//							print("exist")
-													//							print(tmp.afficheTab())
-													//							print(tablist[ind].afficheTab())
-													//							print("plateau \(tmp.ID) exist  car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)")
+
 												}
                                                 }
 											}
@@ -313,41 +277,55 @@ class Controleur{
                                                     tablist.append(tmp)
                                                     
                                                 }
-                                                
-                                                
-                                                next.append(tmp)
+                                                 next.append(tmp)
 												if(tmp.isSol()){
 													print ("solution trouvé")
 													sol = tmp
 													b = false
 													print(tmp.afficheTab())
 												}
-												//						print(tmp.afficheTab())
-												//						print("plateau \(tmp.ID) added : car :\(i+1) mouvement horizontal moins de \(j) avec papa \(tmp.papa)")
 											}
 											exist = false
 										}
-										
-										
-									//}
 								}
-								
 							}
 						}
-						
 					}
 				}// END for z
-
-                
 				count1 += 1
 				print("count incr \(count1)")
 			}
 			else {
 				b = false
-				print("pas de solution")
-            
 			}
 		} // END WHILe
 		calculed = true
 	}
+
+
+    func addManualy(x:Int, y:Int, Vertical:Bool, image:String, length:Int){
+        var i = 0
+        var okk = true
+        i = plateau.cars.count + 1
+        
+        let c = Car(Id: i, length: length, X: x, Y: y, isVertical: Vertical, p: plateau, ori: "r", img: image)
+        plateau.update()
+        for k in 0..<length{
+            if (!c.isVertical && plateau.table[c.x][c.y+k] != -1){
+               okk = false
+                // plateau.cars.append(c)
+            }
+             if (c.isVertical && plateau.table[c.x+k][c.y] != -1) {
+                okk = false
+                // plateau.cars.append(c)
+            }
+        }
+        if(okk){
+            plateau.cars.append(c)
+        }
+    }
+
+    
+    
 }
+ 

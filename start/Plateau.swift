@@ -23,6 +23,7 @@ class Plateau : Copyable{
     var key = -1
     var corresp=[String]()
 	var lvl = 1
+    var path = "/Users/projet2a/Documents/projet/start/start/CardSet-1"
     
     
     
@@ -31,7 +32,14 @@ class Plateau : Copyable{
         self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
 		self.lvl = lvl
     }
-	
+    
+    
+    init(lvl:Int, path:String){
+        self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
+        self.lvl = lvl
+        self.path = path
+    }
+    
     required init(instance: Plateau) {
         self.table = instance.table
         self.cars = instance.cars
@@ -101,8 +109,7 @@ class Plateau : Copyable{
         var count = 0
         
         
-        if let aStreamReader = StreamReader(path:"/Users/projet2a/Documents/projet/start/start/CardSet-1") {
-            ///Users/projet2a/Documents/projet/start/CardSet-1
+        if let aStreamReader = StreamReader(path:self.path) {
             defer {
                 aStreamReader.close()
             }
@@ -152,12 +159,6 @@ class Plateau : Copyable{
     }
     
     func isSol()->Bool{
-        /*var seeking = true
-        for i in 1..<self.colonnes - self.cars[0].y {
-            if (((self.table[self.cars[0].x ][self.cars[0].y + i]) != -1) && ((self.table[self.cars[0].x][self.cars[0].y + i]) != 1)) {
-                seeking = false
-            }
-        }*/
         var seeking = false
         if(self.cars[0].y == 4) {
             seeking = true

@@ -79,6 +79,22 @@ class Vue{
 
         }
     }
+    func inipath(val:Int, path:String){
+        if((val)<42 && (val)>0 ){
+            controleur.tablist = [Plateau]()
+            controleur.current = [Plateau]()
+            controleur.next = [Plateau]()
+            controleur.plateau = Plateau(lvl:val,path : path)
+            controleur.b = true
+            controleur.path = [Int]()
+            controleur.sol = Plateau(lvl:val, path:path)
+            controleur.stop = 0
+            controleur.tablist.append(controleur.plateau)
+            controleur.plateau.lecture()
+            controleur.calculed = false
+            
+        }
+    }
     
     
     func resize(image: NSImage, w: Int, h: Int) -> NSImage {
