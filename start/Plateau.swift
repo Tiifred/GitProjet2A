@@ -20,9 +20,9 @@ class Plateau : Copyable{
     var table = [[Int]]()
     var papa = -1
 	var move = ""
-    var key = 0
+    var key = -1
     var corresp=[String]()
-	var lvl = 1
+	var lvl1 = 1
     var path = "/Users/projet2a/Documents/projet/start/start/CardSet-1"
     var nbrlvl = 0
     
@@ -31,14 +31,14 @@ class Plateau : Copyable{
     
 	init(lvl:Int){
         self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
-		self.lvl = lvl
-        self.nbrlvl = detectnblvl()
+		self.lvl1 = lvl
+       // self.nbrlvl = detectnblvl()
     }
     
     
     init(lvl:Int, path:String){
         self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
-        self.lvl = lvl
+        self.lvl1 = lvl
         self.path = path
     }
     
@@ -95,7 +95,7 @@ class Plateau : Copyable{
     
 	func lecture(){
 		
-        let deflvl = catchlvl(self.lvl)
+        let deflvl = catchlvl(self.lvl1)
         var tablvl = deflvl.lines
         for i in 1..<tablvl.count{
 			cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: self, ori:(tablvl[i].words()[4]) ,img:foundimg(Int(tablvl[i].words()[5])!)))
@@ -103,7 +103,7 @@ class Plateau : Copyable{
         
     }
     
-    func detectnblvl()->Int{
+  /*  func detectnblvl()->Int{
         var count = 0
         if let aStreamReader = StreamReader(path:self.path) {
             defer {
@@ -116,24 +116,25 @@ class Plateau : Copyable{
             }
         }
         return count
-    }
+    }*/
     
-    func catchlvl(lvl:Int)->String{
+    func catchlvl(level:Int)->String{
         var strBuffer : String = ""
         var copy = false
         var ini = true
         var tmp=""
         var count = 0
-        
+      //  self.lvl = 1
         
         if let aStreamReader = StreamReader(path:self.path) {
             defer {
                 aStreamReader.close()
             }
             while let line = aStreamReader.nextLine() {
-                if(line.matchPattern("level \(lvl)")) {
+                if(line.matchPattern("level \(level)")) {
                     strBuffer = ""
                     copy = true
+                    print("founded")
                 }
                 
                 if(line == "" && copy) {
@@ -167,7 +168,7 @@ class Plateau : Copyable{
     
     
     func tryy(p:Plateau)->Plateau{
-		let newPlat = Plateau(lvl:p.lvl)
+		let newPlat = Plateau(lvl:p.lvl1)
         for o in 0..<p.cars.count{
 			newPlat.cars.append(Car(Id: p.cars[o].Id, length: p.cars[o].length, X: p.cars[o].x, Y: p.cars[o].y, isVertical: p.cars[o].isVertical, p: newPlat,ori:p.cars[o].orientation, img:p.cars[o].img))
         }

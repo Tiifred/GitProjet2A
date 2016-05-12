@@ -34,14 +34,14 @@ class Vue{
     }
     
     func nextlvl(){
-        if(controleur.plateau.lvl<controleur.plateau.nbrlvl){
+        if(controleur.plateau.lvl1<41){
             controleur.tablist = [Plateau]()
             controleur.current = [Plateau]()
             controleur.next = [Plateau]()
-            controleur.plateau = Plateau(lvl:controleur.plateau.lvl+1)
+            controleur.plateau = Plateau(lvl:controleur.plateau.lvl1+1)
             controleur.b = true
             controleur.path = [Int]()
-            controleur.sol = Plateau(lvl:controleur.plateau.lvl+1)
+            controleur.sol = Plateau(lvl:controleur.plateau.lvl1+1)
             controleur.stop = 0
             controleur.tablist.append(controleur.plateau)
             controleur.plateau.lecture()
@@ -50,14 +50,14 @@ class Vue{
     }
     
     func previouslvl(){
-        if(controleur.plateau.lvl>1){
+        if(controleur.plateau.lvl1>1){
             controleur.tablist = [Plateau]()
             controleur.current = [Plateau]()
             controleur.next = [Plateau]()
-            controleur.plateau = Plateau(lvl:controleur.plateau.lvl-1)
+            controleur.plateau = Plateau(lvl:controleur.plateau.lvl1-1)
             controleur.b = true
             controleur.path = [Int]()
-            controleur.sol = Plateau(lvl:controleur.plateau.lvl-1)
+            controleur.sol = Plateau(lvl:controleur.plateau.lvl1-1)
             controleur.stop = 0
             controleur.tablist.append(controleur.plateau)
             controleur.plateau.lecture()
@@ -68,7 +68,7 @@ class Vue{
     
     
     func inilvl(val:Int){
-        if((val)<controleur.plateau.nbrlvl+1 && (val)>=0 ){
+        if((val)<42 && (val)>0 ){
                 controleur.tablist = [Plateau]()
                 controleur.current = [Plateau]()
                 controleur.next = [Plateau]()
@@ -84,7 +84,7 @@ class Vue{
         }
     }
     func inipath(val:Int, path:String){
-        if((val)<controleur.plateau.nbrlvl+1 && (val)>0 ){
+        if((val)<42 && (val)>0 ){
             controleur.tablist = [Plateau]()
             controleur.current = [Plateau]()
             controleur.next = [Plateau]()
@@ -101,7 +101,17 @@ class Vue{
     }
     
     func create(){
-        
+        controleur.tablist = [Plateau]()
+        controleur.current = [Plateau]()
+        controleur.next = [Plateau]()
+        controleur.plateau = Plateau(val )
+        controleur.b = true
+        controleur.path = [Int]()
+        controleur.sol = Plateau(lvl:val)
+        controleur.stop = 0
+        controleur.tablist.append(controleur.plateau)
+        controleur.plateau.lecture()
+        controleur.calculed = false
     }
     
     

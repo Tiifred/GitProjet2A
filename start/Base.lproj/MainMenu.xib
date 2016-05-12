@@ -16,8 +16,6 @@
             <connections>
                 <outlet property="ImgArea" destination="a5w-FL-1DT" id="DH1-vt-Dxz"/>
                 <outlet property="afficheMove" destination="9p5-yX-1ji" id="h7Z-TQ-Qpr"/>
-                <outlet property="chooser" destination="Gh2-1L-JXD" id="6He-S2-ejC"/>
-                <outlet property="enterlvl" destination="Gh2-1L-JXD" id="juE-M5-ZrU"/>
                 <outlet property="searrchsolution" destination="Z40-sx-aZ4" id="XnP-Dm-kqU"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
@@ -774,16 +772,6 @@
                             <action selector="newWind:" target="Voe-Tx-rLC" id="qlg-ep-GzF"/>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0b-LQ-Q7p">
-                        <rect key="frame" x="123" y="255" width="94" height="32"/>
-                        <buttonCell key="cell" type="push" title="valider" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zyR-6w-09a">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="chooselvl:" target="Voe-Tx-rLC" id="I2h-Wu-OeU"/>
-                        </connections>
-                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9p5-yX-1ji">
                         <rect key="frame" x="798" y="75" width="337" height="360"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="sfd-CS-zhP">
@@ -812,20 +800,20 @@
                             <action selector="createlvl:" target="Voe-Tx-rLC" id="QuQ-SM-ILY"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gh2-1L-JXD">
-                        <rect key="frame" x="12" y="261" width="84" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="n8W-ml-CfN">
+                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jwv-iq-ERT">
+                        <rect key="frame" x="20" y="263" width="96" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="EvI-Lb-Txv">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                         <connections>
-                            <action selector="enterlvl:" target="Voe-Tx-rLC" id="xaF-td-Xln"/>
+                            <action selector="setlvl:" target="Voe-Tx-rLC" id="EbA-MG-cpY"/>
                         </connections>
                     </textField>
                 </subviews>
             </view>
-            <point key="canvasLocation" x="867.5" y="326"/>
+            <point key="canvasLocation" x="836.5" y="308"/>
         </window>
     </objects>
 </document>

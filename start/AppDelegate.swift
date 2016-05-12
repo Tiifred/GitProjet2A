@@ -59,20 +59,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         vue.draw(self.ImgArea)
     }
     
+    @IBAction func setlvl(sender: NSTextField) {
+        vue.inilvl(Int(sender.intValue))
+        vue.draw(self.ImgArea)
+    }
    
 
     @IBAction func createlvl(sender: NSButton) {
-        vue.inilvl(0)
+        vue.create()
         vue.draw(self.ImgArea)
-        afficheMove.stringValue = ""
     }
 
-    
-    @IBAction func enterlvl(sender: NSTextField) {
-        vue.inilvl(Int(sender.intValue))
-        vue.draw(self.ImgArea)
-         afficheMove.stringValue = ""
-    }
 
 	@IBAction func nextLvl(sender: NSButton) {
 		vue.nextlvl()
@@ -86,6 +83,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             vue.current = vue.fin - 1
         addcar = false
 	}
+	
+	
 	
 	
 	
