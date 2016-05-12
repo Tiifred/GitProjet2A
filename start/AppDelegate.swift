@@ -23,6 +23,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         vue.controleur.plateau.lecture()
         vue.draw(self.ImgArea)
         container.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl)"
+		
+		for i in 1..<vue.controleur.plateau.cars.count{
+			supprimer.addItemWithObjectValue("\(i)")
+		}
+		supprimer.placeholderString = "n°"
     }
     
     
@@ -30,6 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
     
+	@IBOutlet weak var supprimer: NSComboBox!
     
     
 	var vue = Vue()
@@ -60,6 +66,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         vue.carnumber=0
         vue.draw(self.ImgArea)
     }
+	@IBAction func carDelete(sender: NSButton) {
+		vue.controleur.plateau.cars.removeAtIndex(Int(supprimer.intValue))
+		vue.controleur.plateau.update()
+		addcar = true
+		vue.draw(ImgArea)
+	}
     
     @IBAction func setlvl(sender: NSTextField) {
         vue.controleur.inilvl(Int(sender.intValue))
@@ -67,6 +79,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		container.stringValue = ""
 		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
 		afficheMove.stringValue = ""
+		supprimer.removeAllItems();
+		if(vue.controleur.plateau.cars.count != 0){
+		for i in 1..<vue.controleur.plateau.cars.count{
+			supprimer.addItemWithObjectValue("\(i)")
+		}
+		}
     }
 
     @IBAction func createlvl(sender: NSButton) {
@@ -74,6 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         vue.draw(self.ImgArea)
 		afficheMove.stringValue = ""
 		presentation.stringValue = "Nouveau niveau"
+		supprimer.removeAllItems()
     }
 
 
@@ -82,6 +101,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         vue.draw(self.ImgArea)
 		afficheMove.stringValue = ""
 		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
+		supprimer.removeAllItems();
+		for i in 1..<vue.controleur.plateau.cars.count{
+			supprimer.addItemWithObjectValue("\(i)")
+		}
 	}
 	
 	@IBAction func searchsolution(sender: NSButton) {
@@ -173,12 +196,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         vue.controleur.addManualy(Int(cboxX.stringValue)!, y:Int(cboxY.stringValue)!, Vertical:vue.controleur.plateau.datbool((cboxval.stringValue)), image:cbox.stringValue,length:2)
          vue.draw(self.ImgArea)
         addcar = true
+		supprimer.removeAllItems();
+		for i in 1..<vue.controleur.plateau.cars.count{
+			supprimer.addItemWithObjectValue("\(i)")
+		}
     }
     
     func myAction2(obj:AnyObject?){
         vue.controleur.addManualy(Int(cboxX.stringValue)!, y:Int(cboxY.stringValue)!, Vertical:vue.controleur.plateau.datbool((cboxval.stringValue)), image:cbox.stringValue,length:3)
         vue.draw(self.ImgArea)
         addcar = true
+		supprimer.removeAllItems();
+		for i in 1..<vue.controleur.plateau.cars.count{
+			supprimer.addItemWithObjectValue("\(i)")
+		}
     }
     
     
@@ -188,6 +219,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         vue.draw(self.ImgArea)
 		afficheMove.stringValue = ""
 		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
+		supprimer.removeAllItems();
+		for i in 1..<vue.controleur.plateau.cars.count{
+			supprimer.addItemWithObjectValue("\(i)")
+		}
 	}
 
 	@IBAction func previousMove(sender: NSButton) {
