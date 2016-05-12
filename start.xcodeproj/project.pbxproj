@@ -15,6 +15,7 @@
 		F0097C5F1CDA27EB00A3CFD2 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0097C5E1CDA27EB00A3CFD2 /* Main.swift */; };
 		F0097C631CDA36CC00A3CFD2 /* CardSet-1 in Resources */ = {isa = PBXBuildFile; fileRef = F0097C621CDA36CC00A3CFD2 /* CardSet-1 */; };
 		F03DCBFC1CE3164900D12C20 /* Vue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03DCBFB1CE3164900D12C20 /* Vue.swift */; };
+		F045CDF21CE46F820074E16C /* DnD.swift in Sources */ = {isa = PBXBuildFile; fileRef = F045CDF11CE46F820074E16C /* DnD.swift */; };
 		F0DC359C1CDC943200FD1927 /* Controleur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DC359B1CDC943200FD1927 /* Controleur.swift */; };
 		F0FD6A481CD899DE008C6A2C /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD6A471CD899DE008C6A2C /* Car.swift */; };
 		F0FD6A4A1CD8D8A5008C6A2C /* Plateau.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD6A491CD8D8A5008C6A2C /* Plateau.swift */; };
@@ -53,6 +54,7 @@
 		F0097C621CDA36CC00A3CFD2 /* CardSet-1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "CardSet-1"; sourceTree = "<group>"; };
 		F03A60BC1CD9EFA300C67B21 /* RecuperationFicher.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RecuperationFicher.playground; sourceTree = "<group>"; };
 		F03DCBFB1CE3164900D12C20 /* Vue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vue.swift; sourceTree = "<group>"; };
+		F045CDF11CE46F820074E16C /* DnD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DnD.swift; sourceTree = "<group>"; };
 		F0DC359B1CDC943200FD1927 /* Controleur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controleur.swift; sourceTree = "<group>"; };
 		F0FD6A471CD899DE008C6A2C /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 		F0FD6A491CD8D8A5008C6A2C /* Plateau.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plateau.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				F0097C621CDA36CC00A3CFD2 /* CardSet-1 */,
 				F00382A31CD88BF400E2BE66 /* AppDelegate.swift */,
 				F03DCBFB1CE3164900D12C20 /* Vue.swift */,
+				F045CDF11CE46F820074E16C /* DnD.swift */,
 				F00382A51CD88BF400E2BE66 /* Assets.xcassets */,
 				F0DC359B1CDC943200FD1927 /* Controleur.swift */,
 				F00382A71CD88BF400E2BE66 /* MainMenu.xib */,
@@ -274,6 +277,7 @@
 				F00382A41CD88BF400E2BE66 /* AppDelegate.swift in Sources */,
 				F0097C5F1CDA27EB00A3CFD2 /* Main.swift in Sources */,
 				F0FD6A4A1CD8D8A5008C6A2C /* Plateau.swift in Sources */,
+				F045CDF21CE46F820074E16C /* DnD.swift in Sources */,
 				F0DC359C1CDC943200FD1927 /* Controleur.swift in Sources */,
 				F03DCBFC1CE3164900D12C20 /* Vue.swift in Sources */,
 			);

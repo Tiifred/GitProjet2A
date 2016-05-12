@@ -28,12 +28,14 @@ class Controleur{
 	var sol = Plateau(lvl:1)
     var stop = 0
 	var calculed = false
+    var found = false
 	
 	init(){
 		tablist.append(self.plateau)
 	}
 	
 	func createPath(){
+        if(found){
 		print("******* Reconstitution  *********")
         for k in 0..<tablist.count{
             tablist[k].ID = k
@@ -58,8 +60,11 @@ class Controleur{
 			print("\(tablist[varid].afficheTab())")
 		}
 		print("il y a finalement \(path.count - 1)  deplacements necessaires")
+        }
+        else{
+            print("pas de solution pour ce niveau")
         
-	}
+        }}
 	
 	func mooving(){
         
@@ -108,7 +113,7 @@ class Controleur{
 											tmp.cars[i].movePlus(j)
 											tmp.ID = tablist.count
 											tmp.papa = current[z].key
-											tmp.move = "car :\(i+1) mouvement vertical plus de \(j) avec papa \(tmp.papa)"
+											tmp.move = "car \(i+1) : plus (\(j)) "
 											tmp.update()
                                             exist = false
 											for ind in 0..<tablist.count{
@@ -142,6 +147,7 @@ class Controleur{
 												
 												if(tmp.isSol()){
 													print ("solution trouvé")
+                                                    found = true
 													sol = tmp
                                                     b = false
 													print(tmp.afficheTab())
@@ -155,7 +161,7 @@ class Controleur{
 											tmp.cars[i].moveMinus(j)
 											tmp.ID = tablist.count
 											tmp.papa = current[z].key
-											tmp.move = "car :\(i+1) mouvement vertical moins de \(j) avec papa \(tmp.papa)"
+											tmp.move = "car \(i+1) :  moins (\(j)) "
 											tmp.update()
                                             exist = false
 											for ind in 0..<tablist.count{
@@ -187,6 +193,7 @@ class Controleur{
                                                 next.append(tmp)
 												if(tmp.isSol()){
 													print ("solution trouvé")
+                                                    found = true
 													sol = tmp
 													b = false
 													print(tmp.afficheTab())
@@ -205,7 +212,7 @@ class Controleur{
 											tmp.ID = tablist.count
 											tmp.papa = current[z].key
 											tmp.update()
-											tmp.move = "car :\(i+1) mouvement horizontal plus de \(j) avec papa \(tmp.papa)"
+											tmp.move = "car \(i+1) : plus (\(j))"
                                             exist = false
 											for ind in 0..<tablist.count{
                                                 if(tmp.key <= tablist[ind].key){
@@ -234,6 +241,7 @@ class Controleur{
                                                 next.append(tmp)
 												if(tmp.isSol()){
 													print ("solution trouvé")
+                                                    found = true
 													b = false
 													print(tmp.afficheTab())
                                                     sol = tmp
@@ -249,7 +257,7 @@ class Controleur{
 											tmp.ID = tablist.count
 											tmp.papa = current[z].key
 											tmp.update()
-											tmp.move = "car :\(i+1) mouvement horizontal moins de \(j) avec papa \(tmp.papa)"
+											tmp.move = "car \(i+1) : moins (\(j))"
                                             exist = false
 											for ind in 0..<tablist.count{
                                                 if(tmp.key <= tablist[ind].key){
@@ -280,6 +288,7 @@ class Controleur{
                                                  next.append(tmp)
 												if(tmp.isSol()){
 													print ("solution trouvé")
+                                                    found = true
 													sol = tmp
 													b = false
 													print(tmp.afficheTab())
@@ -322,6 +331,17 @@ class Controleur{
         }
         if(okk){
             plateau.cars.append(c)
+            plateau.update()
+            tablist = [Plateau]()
+            current = [Plateau]()
+            next = [Plateau]()
+            b = true
+            path = [Int]()
+            sol = Plateau(lvl:1)
+            stop = 0
+            calculed = false
+            tablist.append(self.plateau)
+            
         }
     }
 

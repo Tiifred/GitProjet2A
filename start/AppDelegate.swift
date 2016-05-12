@@ -12,9 +12,28 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    @IBOutlet weak var window: NSWindow!
+    @IBOutlet weak var afficheMove: NSTextField!
+    @IBOutlet weak var ImgArea: NSImageView!
+    @IBOutlet weak var label: NSTextField!
+    
+    func applicationDidFinishLaunching(aNotification: NSNotification) {
+        ImgArea.image = vue.grid
+        vue.controleur.plateau.lecture()
+        vue.draw(self.ImgArea)
+       // chooser.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl-1)"
+    }
+    
+    
+    func applicationWillTerminate(aNotification: NSNotification) {
+        // Insert code here to tear down your application
+    }
+    
+    
+    
 	var vue = Vue()
     var aaa = ""
-    var tralala = ""
+    var movecontains = ""
     let textFieldX = NSTextView()
     let textFieldY = NSTextView()
     let textFieldOri = NSTextView()
@@ -22,47 +41,52 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      var cboxval = NSComboBox()
      var cboxX = NSComboBox()
      var cboxY = NSComboBox()
+    var memoMove = [String]()
+    var addcar = false
 
-    
-    @IBOutlet weak var window: NSWindow!
-
-
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-        ImgArea.image = vue.grid
-		vue.controleur.plateau.lecture()
-		 vue.draw(self.ImgArea)
-        
-
+    @IBAction func changeImage(sender: NSButton) {
+        let openDlg = NSOpenPanel()
+        openDlg.allowsMultipleSelection = false
+        openDlg.canChooseFiles = true
+        openDlg.canChooseDirectories = false
+        if openDlg.runModal() == NSOKButton{
+            vue.pat = String(openDlg.URL!)
+        }
+        for _ in 0..<7{
+            vue.pat = String(vue.pat.characters.dropFirst())
+        }
+        vue.carnumber=0
+        vue.draw(self.ImgArea)
     }
     
+   
 
-
-
-    func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
+    @IBAction func createlvl(sender: NSButton) {
+        vue.inilvl(0)
+        vue.draw(self.ImgArea)
+        afficheMove.stringValue = ""
     }
 
-    @IBOutlet weak var ImgArea: NSImageView!
-    @IBOutlet weak var label: NSTextField!
-	
+    
+    @IBAction func enterlvl(sender: NSTextField) {
+        vue.inilvl(Int(sender.intValue))
+        vue.draw(self.ImgArea)
+         afficheMove.stringValue = ""
+    }
+
 	@IBAction func nextLvl(sender: NSButton) {
 		vue.nextlvl()
         vue.draw(self.ImgArea)
 	}
 	
 	@IBAction func searchsolution(sender: NSButton) {
-		vue.controleur.mooving()
-		vue.controleur.createPath()
-		vue.fin = vue.controleur.path.count
-		vue.current = vue.fin - 1
+            vue.controleur.mooving()
+            vue.controleur.createPath()
+            vue.fin = vue.controleur.path.count
+            vue.current = vue.fin - 1
+        addcar = false
 	}
 	
-	@IBOutlet weak var chooser: NSTextField!
-	@IBAction func chooselvl(sender: NSButton) {
-        vue.inilvl(Int(chooser.intValue))
-       
-        vue.draw(self.ImgArea)
-	}
 	
 	
     @IBAction func newWind(sender: NSButton) {
@@ -74,22 +98,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         win.title = "Add a Vehicule";
         win.center();
         
-        var butcar = NSButton(frame: NSMakeRect(150,50,90,30))
+        let butcar = NSButton(frame: NSMakeRect(150,50,90,30))
         butcar.title = "adding a car"
         butcar.target = self
-        butcar.action = Selector("myAction:")
+        butcar.action = #selector(AppDelegate.myAction(_:))
         win.contentView!.addSubview(butcar)
         
-        var buttruck = NSButton(frame: NSMakeRect(300,50,90,30))
+        let buttruck = NSButton(frame: NSMakeRect(300,50,90,30))
         buttruck.title = "adding a Truck"
         buttruck.target = self
-        buttruck.action = Selector("myAction2:")
+        buttruck.action = #selector(AppDelegate.myAction2(_:))
         win.contentView!.addSubview(buttruck)
         
         cbox = NSComboBox(frame: NSMakeRect(400,100,150,30))
         cbox.addItemWithObjectValue("CarH-blue")
         cbox.addItemWithObjectValue("CarH-cream")
-        cbox.addItemWithObjectValue("CarHdark-blue")
+        cbox.addItemWithObjectValue("CarH-darkblue")
         cbox.addItemWithObjectValue("CarH-green")
         cbox.addItemWithObjectValue("CarH-lightgreen")
         cbox.addItemWithObjectValue("CarH-marron")
@@ -132,7 +156,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //Add the window to the main viewer
         window.addChildWindow(win, ordered:NSWindowOrderingMode.Above);
         
-        var controller = NSWindowController(window: win);
+        let controller = NSWindowController(window: win);
         controller.showWindow(self);
         print("wind added")
         
@@ -141,37 +165,47 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func myAction(obj:AnyObject?){
         vue.controleur.addManualy(Int(cboxX.stringValue)!, y:Int(cboxY.stringValue)!, Vertical:vue.controleur.plateau.datbool((cboxval.stringValue)), image:cbox.stringValue,length:2)
          vue.draw(self.ImgArea)
+        addcar = true
     }
     
     func myAction2(obj:AnyObject?){
         vue.controleur.addManualy(Int(cboxX.stringValue)!, y:Int(cboxY.stringValue)!, Vertical:vue.controleur.plateau.datbool((cboxval.stringValue)), image:cbox.stringValue,length:3)
         vue.draw(self.ImgArea)
+        addcar = true
     }
     
     
 	
 	@IBAction func previousLvl(sender: NSButton) {
-		vue.previouslvl()
+        vue.previouslvl()
         vue.draw(self.ImgArea)
 	}
 
 	@IBAction func previousMove(sender: NSButton) {
-		if(vue.current != vue.fin-1 && vue.controleur.calculed){
-			vue.controleur.plateau = vue.controleur.tablist[vue.controleur.path[vue.current + 1]]
-			vue.draw(self.ImgArea)
-			vue.current = vue.current + 1
-		}
+        if(!addcar){
+            if(vue.current != vue.fin-1 && vue.controleur.calculed){
+                vue.controleur.plateau = vue.controleur.tablist[vue.controleur.path[vue.current + 1]]
+                vue.draw(self.ImgArea)
+                vue.current = vue.current + 1
+                memoMove.removeLast()
+                plotmove()
+            }
+        }
 	}
 
 	@IBAction func nextMove(sender: NSButton) {
+        if(!addcar){
 		if(vue.current != 0 && vue.controleur.calculed){
 			vue.controleur.plateau = vue.controleur.tablist[vue.controleur.path[vue.current - 1]]
 			vue.draw(self.ImgArea)
 			vue.current = vue.current - 1
+            memoMove.append(vue.controleur.tablist[vue.controleur.path[vue.current]].move)
+            plotmove()
 		}
+        }
 	}
     
-    @IBAction func test(sender: NSButton) {
+    @IBAction func test(sender: NSButton) { // change cardeset
         let openDlg = NSOpenPanel()
         openDlg.allowsMultipleSelection = false
         openDlg.canChooseFiles = true
@@ -187,9 +221,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
        // vue.controleur.plateau.path = aaa
         vue.inipath(1,path:aaa)
         vue.draw(self.ImgArea)
-        
-        
-        
+    }
+    
+    func plotmove(){
+        afficheMove.stringValue = ""
+        for i in 0..<memoMove.count{
+            afficheMove.stringValue += " \(memoMove[i]) \n "
+        }
     }
 
 }

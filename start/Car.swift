@@ -27,6 +27,7 @@ class Car{
 	var p :Plateau
     var img = ""
 	var orientation = ""
+    var url = ""
     
     
     

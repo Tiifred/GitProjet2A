@@ -20,10 +20,11 @@ class Plateau : Copyable{
     var table = [[Int]]()
     var papa = -1
 	var move = ""
-    var key = -1
+    var key = 0
     var corresp=[String]()
 	var lvl = 1
     var path = "/Users/projet2a/Documents/projet/start/start/CardSet-1"
+    var nbrlvl = 0
     
     
     
@@ -31,6 +32,7 @@ class Plateau : Copyable{
 	init(lvl:Int){
         self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
 		self.lvl = lvl
+        self.nbrlvl = detectnblvl()
     }
     
     
@@ -99,6 +101,21 @@ class Plateau : Copyable{
 			cars.append(Car(Id:i,length: Int(tablvl[i].words()[2])!,X:Int(tablvl[i].words()[0])!,Y:Int(tablvl[i].words()[1])!, isVertical: (datbool(tablvl[i].words()[3])), p: self, ori:(tablvl[i].words()[4]) ,img:foundimg(Int(tablvl[i].words()[5])!)))
         }
         
+    }
+    
+    func detectnblvl()->Int{
+        var count = 0
+        if let aStreamReader = StreamReader(path:self.path) {
+            defer {
+                aStreamReader.close()
+            }
+            while let line = aStreamReader.nextLine() {
+                if(line.matchPattern("level ")) {
+                    count += 1
+                }
+            }
+        }
+        return count
     }
     
     func catchlvl(lvl:Int)->String{

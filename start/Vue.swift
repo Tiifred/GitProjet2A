@@ -22,6 +22,8 @@ class Vue{
     var controleur = Controleur()
     var fin=0
     var current=0
+    var pat = ""
+    var carnumber = 1500
     // for i in 0..controleur.plateau.cars.count{
     
     //}
@@ -32,7 +34,7 @@ class Vue{
     }
     
     func nextlvl(){
-        if(controleur.plateau.lvl<41){
+        if(controleur.plateau.lvl<controleur.plateau.nbrlvl){
             controleur.tablist = [Plateau]()
             controleur.current = [Plateau]()
             controleur.next = [Plateau]()
@@ -48,7 +50,7 @@ class Vue{
     }
     
     func previouslvl(){
-        if(controleur.plateau.lvl>0){
+        if(controleur.plateau.lvl>1){
             controleur.tablist = [Plateau]()
             controleur.current = [Plateau]()
             controleur.next = [Plateau]()
@@ -63,8 +65,10 @@ class Vue{
         }
     }
     
+    
+    
     func inilvl(val:Int){
-        if((val)<42 && (val)>0 ){
+        if((val)<controleur.plateau.nbrlvl+1 && (val)>=0 ){
                 controleur.tablist = [Plateau]()
                 controleur.current = [Plateau]()
                 controleur.next = [Plateau]()
@@ -80,7 +84,7 @@ class Vue{
         }
     }
     func inipath(val:Int, path:String){
-        if((val)<42 && (val)>0 ){
+        if((val)<controleur.plateau.nbrlvl+1 && (val)>0 ){
             controleur.tablist = [Plateau]()
             controleur.current = [Plateau]()
             controleur.next = [Plateau]()
@@ -94,6 +98,10 @@ class Vue{
             controleur.calculed = false
             
         }
+    }
+    
+    func create(){
+        
     }
     
     
@@ -112,18 +120,30 @@ class Vue{
             v.removeFromSuperview()
         }
         for i in 0..<controleur.plateau.cars.count{
+            var imgtmp:NSImage
+            if(i != carnumber){
+            
+            let filePath1 = "/Users/projet2a/Documents/projet/start/Images/\(controleur.plateau.cars[i].img).png"
+            let file1 = NSURL(fileURLWithPath: filePath1, isDirectory: false)
+             imgtmp = NSImage(contentsOfURL: file1)!
+            }
+            else {
+                let filePath1 = pat
+                let file1 = NSURL(fileURLWithPath: filePath1, isDirectory: false)
+                 imgtmp = NSImage(contentsOfURL: file1)!
+
+            }
+            
             if(!(controleur.plateau.cars[i].isVertical)){
                 if(controleur.plateau.cars[i].length==2){
                     let x1 = (margegauche + (1 + 2*controleur.plateau.cars[i].y)*interstice + controleur.plateau.cars[i].y*carreau)
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x)*interstice + (6-controleur.plateau.cars[i].x-1)*57 )
-                    
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 119, height: 57))
-                    var imgtmp = NSImage(named : controleur.plateau.cars[i].img)
                     
                     if(controleur.plateau.cars[i].orientation == "f"){
-                        imgtmp = imgtmp?.imageRotatedByDegreess(180)
+                        imgtmp = imgtmp.imageRotatedByDegreess(180)
                     }
-                    if(imgtmp!.size.width < imgtmp!.size.height){
+                    if(imgtmp.size.width < imgtmp.size.height){
                         imgView.image = imgtmp
                         imgView.rotateByAngle(90)
                         ImgArea.addSubview(imgView)
@@ -140,13 +160,11 @@ class Vue{
                     
                     
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 180, height: 57))
-                    var imgtmp = NSImage(named : controleur.plateau.cars[i].img)
-                    
                     if(controleur.plateau.cars[i].orientation == "f"){
-                        imgtmp = imgtmp?.imageRotatedByDegreess(180)
+                        imgtmp = imgtmp.imageRotatedByDegreess(180)
                     }
                     
-                    if(imgtmp!.size.width < imgtmp!.size.height){
+                    if(imgtmp.size.width < imgtmp.size.height){
                         imgView.image = imgtmp
                         imgView.rotateByAngle(90)
                         ImgArea.addSubview(imgView)
@@ -163,13 +181,11 @@ class Vue{
                     
                     
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 57, height: 119))
-                    var imgtmp = NSImage(named : controleur.plateau.cars[i].img)
-                    
                     if(controleur.plateau.cars[i].orientation == "f"){
-                        imgtmp = imgtmp?.imageRotatedByDegreess(180)
+                        imgtmp = imgtmp.imageRotatedByDegreess(180)
                     }
                     
-                    if(imgtmp!.size.width > imgtmp!.size.height){
+                    if(imgtmp.size.width > imgtmp.size.height){
                         imgView.image = imgtmp
                         imgView.rotateByAngle(90)
                         ImgArea.addSubview(imgView)
@@ -185,12 +201,10 @@ class Vue{
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x-2)*interstice + (6-controleur.plateau.cars[i].x-3)*57 )
                     
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 57, height: 180))
-                    var imgtmp = NSImage(named : controleur.plateau.cars[i].img)
-                    
                     if(controleur.plateau.cars[i].orientation == "f"){
-                        imgtmp = imgtmp?.imageRotatedByDegreess(180)
+                        imgtmp = imgtmp.imageRotatedByDegreess(180)
                     }
-                    if(imgtmp!.size.width > imgtmp!.size.height){
+                    if(imgtmp.size.width > imgtmp.size.height){
                         imgView.image = imgtmp
                         imgView.rotateByAngle(90)
                         ImgArea.addSubview(imgView)
@@ -203,11 +217,5 @@ class Vue{
                 
             }
         }
-        
-        
-        
-        
     }
-
-    
 }
