@@ -345,7 +345,88 @@ class Controleur{
         }
     }
 
-    
-    
+	
+	func nextlvl(){
+		if(plateau.lvl1<41){
+			tablist = [Plateau]()
+			current = [Plateau]()
+			next = [Plateau]()
+			plateau = Plateau(lvl:plateau.lvl1+1)
+			b = true
+			path = [Int]()
+			sol = Plateau(lvl:plateau.lvl1+1)
+			stop = 0
+			tablist.append(plateau)
+			plateau.lecture()
+			calculed = false
+		}
+	}
+	
+	func previouslvl(){
+		if(plateau.lvl1>1){
+			tablist = [Plateau]()
+			current = [Plateau]()
+			next = [Plateau]()
+			plateau = Plateau(lvl:plateau.lvl1-1)
+			b = true
+			self.path = [Int]()
+			sol = Plateau(lvl:plateau.lvl1-1)
+			stop = 0
+			tablist.append(plateau)
+			plateau.lecture()
+			calculed = false
+		}
+	}
+	
+	
+	
+	func inilvl(val:Int){
+		if((val)<42 && (val)>0 ){
+			tablist = [Plateau]()
+			current = [Plateau]()
+			next = [Plateau]()
+			plateau = Plateau(lvl:val)
+			b = true
+			path = [Int]()
+			sol = Plateau(lvl:val)
+			stop = 0
+			tablist.append(plateau)
+			plateau.lecture()
+			calculed = false
+			
+		}
+	}
+	func inipath(val:Int, path:String){
+		if((val)<42 && (val)>0 ){
+			tablist = [Plateau]()
+			current = [Plateau]()
+			next = [Plateau]()
+			plateau = Plateau(lvl:val,path : path)
+			b = true
+			self.path = [Int]()
+			sol = Plateau(lvl:val, path:path)
+			stop = 0
+			tablist.append(plateau)
+			plateau.lecture()
+			calculed = false
+			
+		}
+	}
+	
+	func create(){
+		tablist = [Plateau]()
+		current = [Plateau]()
+		next = [Plateau]()
+		b = true
+		path = [Int]()
+		stop = 0
+		plateau.cars.removeAll();
+		plateau.cars.append(Car(Id: 1, length: 2, X: 2, Y: 0, isVertical: false, p: plateau, ori: "r", img: "CarV-X"))
+		plateau.update()
+
+		calculed = false
+	}
+
+	
 }
  

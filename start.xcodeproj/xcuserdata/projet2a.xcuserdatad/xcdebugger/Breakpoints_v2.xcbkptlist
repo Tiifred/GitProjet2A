@@ -41,29 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "start/AppDelegate.swift"
-            timestampString = "484751258.903853"
+            filePath = "start/Controleur.swift"
+            timestampString = "484763595.529714"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "changeImage(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "start/AppDelegate.swift"
-            timestampString = "484751260.399721"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "changeImage(_:)"
+            startingLineNumber = "406"
+            endingLineNumber = "406"
+            landmarkName = "inipath(_:path:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

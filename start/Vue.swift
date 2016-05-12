@@ -32,88 +32,7 @@ class Vue{
     init(){
         
     }
-    
-    func nextlvl(){
-        if(controleur.plateau.lvl1<41){
-            controleur.tablist = [Plateau]()
-            controleur.current = [Plateau]()
-            controleur.next = [Plateau]()
-            controleur.plateau = Plateau(lvl:controleur.plateau.lvl1+1)
-            controleur.b = true
-            controleur.path = [Int]()
-            controleur.sol = Plateau(lvl:controleur.plateau.lvl1+1)
-            controleur.stop = 0
-            controleur.tablist.append(controleur.plateau)
-            controleur.plateau.lecture()
-            controleur.calculed = false
-        }
-    }
-    
-    func previouslvl(){
-        if(controleur.plateau.lvl1>1){
-            controleur.tablist = [Plateau]()
-            controleur.current = [Plateau]()
-            controleur.next = [Plateau]()
-            controleur.plateau = Plateau(lvl:controleur.plateau.lvl1-1)
-            controleur.b = true
-            controleur.path = [Int]()
-            controleur.sol = Plateau(lvl:controleur.plateau.lvl1-1)
-            controleur.stop = 0
-            controleur.tablist.append(controleur.plateau)
-            controleur.plateau.lecture()
-            controleur.calculed = false
-        }
-    }
-    
-    
-    
-    func inilvl(val:Int){
-        if((val)<42 && (val)>0 ){
-                controleur.tablist = [Plateau]()
-                controleur.current = [Plateau]()
-                controleur.next = [Plateau]()
-                controleur.plateau = Plateau(lvl:val)
-                controleur.b = true
-                controleur.path = [Int]()
-                controleur.sol = Plateau(lvl:val)
-                controleur.stop = 0
-                controleur.tablist.append(controleur.plateau)
-                controleur.plateau.lecture()
-                controleur.calculed = false
-
-        }
-    }
-    func inipath(val:Int, path:String){
-        if((val)<42 && (val)>0 ){
-            controleur.tablist = [Plateau]()
-            controleur.current = [Plateau]()
-            controleur.next = [Plateau]()
-            controleur.plateau = Plateau(lvl:val,path : path)
-            controleur.b = true
-            controleur.path = [Int]()
-            controleur.sol = Plateau(lvl:val, path:path)
-            controleur.stop = 0
-            controleur.tablist.append(controleur.plateau)
-            controleur.plateau.lecture()
-            controleur.calculed = false
-            
-        }
-    }
-    
-    func create(){
-        controleur.tablist = [Plateau]()
-        controleur.current = [Plateau]()
-        controleur.next = [Plateau]()
-        controleur.plateau = Plateau(val )
-        controleur.b = true
-        controleur.path = [Int]()
-        controleur.sol = Plateau(lvl:val)
-        controleur.stop = 0
-        controleur.tablist.append(controleur.plateau)
-        controleur.plateau.lecture()
-        controleur.calculed = false
-    }
-    
+        
     
     func resize(image: NSImage, w: Int, h: Int) -> NSImage {
         let destSize = NSMakeSize(CGFloat(w), CGFloat(h))
@@ -133,7 +52,7 @@ class Vue{
             var imgtmp:NSImage
             if(i != carnumber){
             
-            let filePath1 = "/Users/projet2a/Documents/projet/start/Images/\(controleur.plateau.cars[i].img).png"
+            let filePath1 = "/Users/projet2a/Documents/GitProjet2A/Images/\(controleur.plateau.cars[i].img).png"
             let file1 = NSURL(fileURLWithPath: filePath1, isDirectory: false)
              imgtmp = NSImage(contentsOfURL: file1)!
             }

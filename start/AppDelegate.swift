@@ -16,12 +16,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var afficheMove: NSTextField!
     @IBOutlet weak var ImgArea: NSImageView!
     @IBOutlet weak var label: NSTextField!
+	@IBOutlet weak var presentation: NSTextField!
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         ImgArea.image = vue.grid
         vue.controleur.plateau.lecture()
         vue.draw(self.ImgArea)
-       // chooser.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl-1)"
+        container.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl)"
     }
     
     
@@ -43,6 +44,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      var cboxY = NSComboBox()
     var memoMove = [String]()
     var addcar = false
+	@IBOutlet weak var container: NSTextField!
 
     @IBAction func changeImage(sender: NSButton) {
         let openDlg = NSOpenPanel()
@@ -60,20 +62,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func setlvl(sender: NSTextField) {
-        vue.inilvl(Int(sender.intValue))
+        vue.controleur.inilvl(Int(sender.intValue))
         vue.draw(self.ImgArea)
+		container.stringValue = ""
+		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
+		afficheMove.stringValue = ""
     }
-   
 
     @IBAction func createlvl(sender: NSButton) {
-        vue.create()
+        vue.controleur.create()
         vue.draw(self.ImgArea)
+		afficheMove.stringValue = ""
+		presentation.stringValue = "Nouveau niveau"
     }
 
 
 	@IBAction func nextLvl(sender: NSButton) {
-		vue.nextlvl()
+		vue.controleur.nextlvl()
         vue.draw(self.ImgArea)
+		afficheMove.stringValue = ""
+		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
 	}
 	
 	@IBAction func searchsolution(sender: NSButton) {
@@ -90,7 +98,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
     @IBAction func newWind(sender: NSButton) {
         //Declare new subwindow
-        var win = NSWindow(contentRect: NSMakeRect(100, 100, 800, 200),
+        let win = NSWindow(contentRect: NSMakeRect(100, 100, 800, 200),
                            styleMask: 1 | 2 | 4 | 8,
                            backing: NSBackingStoreType.Buffered, defer: true);
         
@@ -176,8 +184,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
 	
 	@IBAction func previousLvl(sender: NSButton) {
-        vue.previouslvl()
+        vue.controleur.previouslvl()
         vue.draw(self.ImgArea)
+		afficheMove.stringValue = ""
+		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
 	}
 
 	@IBAction func previousMove(sender: NSButton) {
@@ -213,12 +223,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             aaa = String(openDlg.URL!)
         }
         
-        for i in 0..<7{
+        for _ in 0..<7{
             aaa = String(aaa.characters.dropFirst())
         }
         print(aaa)
        // vue.controleur.plateau.path = aaa
-        vue.inipath(1,path:aaa)
+        vue.controleur.inipath(1,path:aaa)
         vue.draw(self.ImgArea)
     }
     
