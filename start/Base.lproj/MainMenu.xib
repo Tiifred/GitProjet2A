@@ -18,6 +18,7 @@
                 <outlet property="afficheMove" destination="9p5-yX-1ji" id="h7Z-TQ-Qpr"/>
                 <outlet property="container" destination="jwv-iq-ERT" id="0lo-wm-bKw"/>
                 <outlet property="presentation" destination="lwR-Y4-2KK" id="HHU-UL-H5Y"/>
+                <outlet property="savelvl" destination="EiT-Mj-1SZ" id="TwH-eC-tyx"/>
                 <outlet property="searrchsolution" destination="Z40-sx-aZ4" id="XnP-Dm-kqU"/>
                 <outlet property="supprimer" destination="pu7-9l-tXR" id="7ZM-gd-JrT"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -693,7 +694,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wCu-mt-ldL">
-                        <rect key="frame" x="516" y="-4" width="169" height="32"/>
+                        <rect key="frame" x="550" y="1" width="169" height="32"/>
                         <buttonCell key="cell" type="push" title="Déplacement Suivant" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UBC-Tx-eBU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -721,7 +722,7 @@
                         </textFieldCell>
                     </textField>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-FL-1DT">
-                        <rect key="frame" x="256" y="31" width="421" height="449"/>
+                        <rect key="frame" x="292" y="38" width="421" height="449"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
                         <connections>
                             <action selector="testIt:" target="Voe-Tx-rLC" id="5Pe-Yh-iwi"/>
@@ -738,7 +739,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kkA-8j-DGO">
-                        <rect key="frame" x="82" y="102" width="147" height="32"/>
+                        <rect key="frame" x="82" y="169" width="147" height="32"/>
                         <buttonCell key="cell" type="push" title="Ajouter Voiture" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ff9-Kx-6ZW">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -766,7 +767,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XlF-Pc-CQK">
-                        <rect key="frame" x="82" y="192" width="147" height="32"/>
+                        <rect key="frame" x="31" y="273" width="160" height="32"/>
                         <buttonCell key="cell" type="push" title="Créer niveau" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wYA-UB-0av">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -787,7 +788,7 @@
                         </connections>
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwR-Y4-2KK">
-                        <rect key="frame" x="264" y="500" width="197" height="17"/>
+                        <rect key="frame" x="290" y="500" width="197" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vous etes au niveau 1" id="Y5G-Zd-73R">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -795,7 +796,7 @@
                         </textFieldCell>
                     </textField>
                     <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pu7-9l-tXR">
-                        <rect key="frame" x="20" y="163" width="63" height="26"/>
+                        <rect key="frame" x="11" y="227" width="63" height="26"/>
                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="jmh-4J-Dgg">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -803,7 +804,7 @@
                         </comboBoxCell>
                     </comboBox>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SCH-Rd-yDD">
-                        <rect key="frame" x="82" y="159" width="147" height="32"/>
+                        <rect key="frame" x="82" y="224" width="147" height="32"/>
                         <buttonCell key="cell" type="push" title="Supprimer Voiture" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="006-dX-aix">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -822,7 +823,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-Sm-mi5">
-                        <rect key="frame" x="250" y="-4" width="186" height="32"/>
+                        <rect key="frame" x="286" y="-4" width="186" height="32"/>
                         <buttonCell key="cell" type="push" title="Déplacement Précédent" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="skP-fk-KTm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -840,13 +841,23 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z40-sx-aZ4">
-                        <rect key="frame" x="508" y="490" width="152" height="32"/>
+                        <rect key="frame" x="567" y="489" width="152" height="32"/>
                         <buttonCell key="cell" type="push" title="Rechercher Solution" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XVd-NL-duS">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
                             <action selector="searchsolution:" target="Voe-Tx-rLC" id="4eS-0W-RsK"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wpD-sI-ppg">
+                        <rect key="frame" x="31" y="99" width="160" height="32"/>
+                        <buttonCell key="cell" type="push" title="Sauvegarder niveau" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dSY-yv-clW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="savelvl:" target="Voe-Tx-rLC" id="hyP-m3-Jfu"/>
                         </connections>
                     </button>
                 </subviews>

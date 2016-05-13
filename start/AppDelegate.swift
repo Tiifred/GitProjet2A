@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var ImgArea: NSImageView!
     @IBOutlet weak var label: NSTextField!
 	@IBOutlet weak var presentation: NSTextField!
+    @IBOutlet weak var container: NSTextField!
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         ImgArea.image = vue.grid
@@ -52,7 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var cboxY = NSComboBox()
     var memoMove = [String]()
     var addcar = false
-	@IBOutlet weak var container: NSTextField!
+	
 
     @IBAction func changeImage(sender: NSButton) {
         let openDlg = NSOpenPanel()
@@ -68,11 +69,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         vue.carnumber=0
         vue.draw(self.ImgArea)
     }
+    
 	@IBAction func carDelete(sender: NSButton) {
-		vue.controleur.plateau.cars.removeAtIndex(Int(supprimer.intValue))
+        if(supprimer.intValue>0 && Int(supprimer.intValue) < vue.controleur.plateau.cars.count){
+        vue.controleur.plateau.cars.removeAtIndex(Int(supprimer.intValue))
 		vue.controleur.plateau.update()
 		addcar = true
 		vue.draw(ImgArea)
+            supprimer.stringValue = ""
+        }
 	}
     
     @IBAction func setlvl(sender: NSTextField) {
@@ -212,6 +217,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		for i in 1..<vue.controleur.plateau.cars.count{
 			supprimer.addItemWithObjectValue("\(i)")
 		}
+        cbox.stringValue = ""
+        cboxX.stringValue = ""
+        cboxY.stringValue = ""
+        cboxval.stringValue = ""
     }
     
     func myAction2(obj:AnyObject?){
@@ -222,9 +231,36 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		for i in 1..<vue.controleur.plateau.cars.count{
 			supprimer.addItemWithObjectValue("\(i)")
 		}
+        cbox.stringValue = ""
+        cboxX.stringValue = ""
+        cboxY.stringValue = ""
+        cboxval.stringValue = ""
     }
     
     
+  
+    @IBAction func savelvl(sender: NSButton) {
+       var strBuffer : String = ""
+        
+        if let aStreamReader = StreamReader(path:vue.controleur.plateau.path) {
+            defer {
+                aStreamReader.close()
+            }
+            while let line = aStreamReader.nextLine() {
+                 strBuffer += line + "\r"
+            }
+        }
+           strBuffer += "\r #Level \(vue.controleur.plateau.nbrlvl+1)\r"
+        for i in 0..<vue.controleur.plateau.cars.count{
+            strBuffer += "\(vue.controleur.plateau.cars[i].x) \(vue.controleur.plateau.cars[i].y) \(vue.controleur.plateau.cars[i].length) \(vue.controleur.plateau.first(vue.controleur.plateau.cars[i].isVertical)) \(vue.controleur.plateau.cars[i].orientation) \(vue.controleur.plateau.convertName(vue.controleur.plateau.cars[i].img)) \r"
+        }
+        strBuffer += "\r\r"
+        
+        if let sw = StreamWriter(path:"/Users/projet2a/Documents/test"){
+            sw.println(strBuffer)
+            sw.close()
+        }
+    }
 	
 
 
@@ -276,5 +312,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             afficheMove.stringValue += " \(memoMove[i]) \n "
         }
     }
+    
+    
 
 }

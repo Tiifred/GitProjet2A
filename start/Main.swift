@@ -9,8 +9,6 @@
 import Foundation
 import Cocoa
 
-var str = "Hello, playground"
-
 extension String {
     func matchPattern(patStr:String)->Bool {
         var isMatch:Bool = false

@@ -155,7 +155,24 @@ class Plateau : Copyable{
                 
             }
         }
-        return strBuffer + "jbh \n"
+        return strBuffer + "\n"
+    }
+    
+    func convertName(name:String)->Int{
+        
+        var original = ""
+        for i in 0..<corresp.count-1{
+                let length = corresp[i].words()[0].length
+                original = corresp[i]
+                for _ in 0...length{
+                    original = String(original.characters.dropFirst()) // ello
+                }
+
+            if(original == name){
+                return Int(corresp[i].words()[0])!
+            }
+        }
+        return 1
     }
 
     func datbool(s:String)->Bool{
@@ -163,6 +180,13 @@ class Plateau : Copyable{
             return false
         }
         return true
+    }
+    
+    func first(b:Bool)->String{
+        if(b == true){
+            return "v"
+        }
+        return "h"
     }
     
     
