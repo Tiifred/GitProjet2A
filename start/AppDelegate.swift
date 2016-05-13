@@ -20,6 +20,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var container: NSTextField!
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        window.acceptsMouseMovedEvents = true
+      //  [window.makeFirstResponder:self.ImgArea];
         ImgArea.image = vue.grid
         vue.controleur.plateau.lecture()
         vue.draw(self.ImgArea)
@@ -62,12 +64,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openDlg.canChooseDirectories = false
         if openDlg.runModal() == NSOKButton{
             vue.pat = String(openDlg.URL!)
-        }
+        
         for _ in 0..<7{
             vue.pat = String(vue.pat.characters.dropFirst())
         }
         vue.carnumber=0
         vue.draw(self.ImgArea)
+        }
     }
     
 	@IBAction func carDelete(sender: NSButton) {
@@ -81,20 +84,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
     
     @IBAction func setlvl(sender: NSTextField) {
+        vue.carnumber = 1500
         vue.controleur.inilvl(Int(sender.intValue))
         vue.draw(self.ImgArea)
 		container.stringValue = ""
-		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
+		presentation.stringValue = "Vous êtes au niveau \(vue.controleur.plateau.lvl1) "
 		afficheMove.stringValue = ""
 		supprimer.removeAllItems();
 		if(vue.controleur.plateau.cars.count != 0){
-		for i in 1..<vue.controleur.plateau.cars.count{
-			supprimer.addItemWithObjectValue("\(i)")
-		}
+            for i in 1..<vue.controleur.plateau.cars.count{
+                supprimer.addItemWithObjectValue("\(i)")
+            }
 		}
     }
 
     @IBAction func createlvl(sender: NSButton) {
+        vue.carnumber = 1500
         vue.controleur.create()
         vue.draw(self.ImgArea)
 		afficheMove.stringValue = ""
@@ -104,20 +109,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
 	@IBAction func nextLvl(sender: NSButton) {
+        vue.carnumber = 1500
 		vue.controleur.nextlvl()
         vue.draw(self.ImgArea)
 		afficheMove.stringValue = ""
-		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
+		presentation.stringValue = "Vous êtes au niveau \(vue.controleur.plateau.lvl1) "
 		supprimer.removeAllItems();
 		for i in 1..<vue.controleur.plateau.cars.count{
 			supprimer.addItemWithObjectValue("\(i)")
 		}
 	}
     @IBAction func previousLvl(sender: NSButton) {
+        vue.carnumber = 1500
         vue.controleur.previouslvl()
         vue.draw(self.ImgArea)
+        
         afficheMove.stringValue = ""
-        presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
+        presentation.stringValue = "Vous êtes au niveau \(vue.controleur.plateau.lvl1) "
         supprimer.removeAllItems();
         for i in 1..<vue.controleur.plateau.cars.count{
             supprimer.addItemWithObjectValue("\(i)")
@@ -304,15 +312,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 aaa = String(aaa.characters.dropFirst())
             }
             vue.controleur.inipath(1,path:aaa)
-        }
-        else if openDlg.runModal() == NSCancelButton {
-            aaa = vue.controleur.plateau.cars[0].img
-        }
-        
-        
-        
 
         vue.draw(self.ImgArea)
+        }
     }
     
     func plotmove(){

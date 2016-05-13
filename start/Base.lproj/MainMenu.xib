@@ -760,7 +760,7 @@
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XlF-Pc-CQK">
                         <rect key="frame" x="31" y="273" width="160" height="32"/>
-                        <buttonCell key="cell" type="push" title="Créer niveau" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wYA-UB-0av">
+                        <buttonCell key="cell" type="push" title="Créer Niveau" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wYA-UB-0av">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -781,7 +781,7 @@
                     </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwR-Y4-2KK">
                         <rect key="frame" x="290" y="500" width="197" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vous etes au niveau 1" id="Y5G-Zd-73R">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vous êtes au niveau 1" id="Y5G-Zd-73R">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -826,8 +826,8 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zxY-MN-iuK">
-                        <rect key="frame" x="948" y="162" width="57" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Astuce : " id="Gmg-dh-gjF">
+                        <rect key="frame" x="948" y="162" width="64" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Astuces : " id="Gmg-dh-gjF">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -844,8 +844,8 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wpD-sI-ppg">
-                        <rect key="frame" x="31" y="99" width="160" height="32"/>
-                        <buttonCell key="cell" type="push" title="Sauvegarder niveau" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dSY-yv-clW">
+                        <rect key="frame" x="30" y="99" width="162" height="32"/>
+                        <buttonCell key="cell" type="push" title="Sauvegarder Niveau" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dSY-yv-clW">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
@@ -853,6 +853,14 @@
                             <action selector="savelvl:" target="Voe-Tx-rLC" id="hyP-m3-Jfu"/>
                         </connections>
                     </button>
+                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6A6-tE-CFk">
+                        <rect key="frame" x="810" y="14" width="352" height="41"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Appuyez sur &quot;Sauvegarder Niveau &quot; pour ajouter un niveau au CardSet" id="90l-SA-Y9u">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9R-7h-PJg">
                         <rect key="frame" x="123" y="452" width="94" height="32"/>
                         <buttonCell key="cell" type="push" title="Suivant" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="j5g-qI-3um">
