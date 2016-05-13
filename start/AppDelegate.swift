@@ -265,6 +265,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
 	@IBAction func previousMove(sender: NSButton) {
+        let nb = vue.controleur.plateau.nbrlvl
         if(!addcar){
             if(vue.current != vue.fin-1 && vue.controleur.calculed){
                 vue.controleur.plateau = vue.controleur.tablist[vue.controleur.path[vue.current + 1]]
@@ -274,9 +275,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 plotmove()
             }
         }
+        vue.controleur.plateau.nbrlvl = nb
 	}
 
 	@IBAction func nextMove(sender: NSButton) {
+       let nb = vue.controleur.plateau.nbrlvl
         if(!addcar){
 		if(vue.current != 0 && vue.controleur.calculed){
 			vue.controleur.plateau = vue.controleur.tablist[vue.controleur.path[vue.current - 1]]
@@ -286,6 +289,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             plotmove()
 		}
         }
+        vue.controleur.plateau.nbrlvl = nb
 	}
     
     @IBAction func test(sender: NSButton) { // change cardeset
@@ -295,14 +299,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         openDlg.canChooseDirectories = false
         if openDlg.runModal() == NSOKButton{
             aaa = String(openDlg.URL!)
+            
+            for _ in 0..<7{
+                aaa = String(aaa.characters.dropFirst())
+            }
+            vue.controleur.inipath(1,path:aaa)
+        }
+        else if openDlg.runModal() == NSCancelButton {
+            aaa = vue.controleur.plateau.cars[0].img
         }
         
-        for _ in 0..<7{
-            aaa = String(aaa.characters.dropFirst())
-        }
-        print(aaa)
-       // vue.controleur.plateau.path = aaa
-        vue.controleur.inipath(1,path:aaa)
+        
+        
+
         vue.draw(self.ImgArea)
     }
     
