@@ -44,7 +44,7 @@ class Vue{
         return NSImage(data: newImage.TIFFRepresentation!)!
     }
     
-    func draw(ImgArea: NSImageView!){
+  /*  func draw(ImgArea: NSImageView!){
         for v in ImgArea.subviews{
             v.removeFromSuperview()
         }
@@ -157,6 +157,6 @@ class Vue{
                 }
                 
             }
-        }
-    }
+        }*/
+    //}
 }

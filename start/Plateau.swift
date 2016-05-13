@@ -24,7 +24,7 @@ class Plateau : Copyable{
     var corresp=[String]()
 	var lvl1 = 1
     var path = "/Users/projet2a/Documents/projet/start/start/CardSet-1"
-    var nbrlvl = 0
+    //var nbrlvl = 0
     
     
     
@@ -32,7 +32,7 @@ class Plateau : Copyable{
 	init(lvl:Int){
         self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
 		self.lvl1 = lvl
-        self.nbrlvl = detectnblvl()
+        //self.nbrlvl = detectnblvl()
     }
     
     
@@ -103,7 +103,7 @@ class Plateau : Copyable{
         
     }
     
-    func detectnblvl()->Int{
+   /* func detectnblvl()->Int{
         var count = 0
         if let aStreamReader = StreamReader(path:self.path) {
             defer {
@@ -116,7 +116,7 @@ class Plateau : Copyable{
             }
         }
         return count
-    }
+    }*/
     
     func catchlvl(level:Int)->String{
         var strBuffer : String = ""

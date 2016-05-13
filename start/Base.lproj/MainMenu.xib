@@ -16,7 +16,6 @@
             <connections>
                 <outlet property="ImgArea" destination="a5w-FL-1DT" id="DH1-vt-Dxz"/>
                 <outlet property="afficheMove" destination="9p5-yX-1ji" id="h7Z-TQ-Qpr"/>
-                <outlet property="container" destination="jwv-iq-ERT" id="0lo-wm-bKw"/>
                 <outlet property="presentation" destination="lwR-Y4-2KK" id="HHU-UL-H5Y"/>
                 <outlet property="searrchsolution" destination="Z40-sx-aZ4" id="XnP-Dm-kqU"/>
                 <outlet property="supprimer" destination="pu7-9l-tXR" id="7ZM-gd-JrT"/>
@@ -775,17 +774,6 @@
                             <action selector="createlvl:" target="Voe-Tx-rLC" id="QuQ-SM-ILY"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jwv-iq-ERT">
-                        <rect key="frame" x="56" y="410" width="96" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="EvI-Lb-Txv">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <action selector="setlvl:" target="Voe-Tx-rLC" id="EbA-MG-cpY"/>
-                        </connections>
-                    </textField>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwR-Y4-2KK">
                         <rect key="frame" x="264" y="500" width="197" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vous etes au niveau 1" id="Y5G-Zd-73R">

@@ -21,14 +21,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         ImgArea.image = vue.grid
         vue.controleur.plateau.lecture()
-        vue.draw(self.ImgArea)
-        container.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl)"
+        //vue.draw(self.ImgArea)
 		
-		for i in 1..<vue.controleur.plateau.cars.count{
-			supprimer.addItemWithObjectValue("\(i)")
-		}
-		supprimer.placeholderString = "n°"
-    }
+	    }
     
     
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -50,7 +45,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      var cboxY = NSComboBox()
     var memoMove = [String]()
     var addcar = false
-	@IBOutlet weak var container: NSTextField!
 
     @IBAction func changeImage(sender: NSButton) {
         let openDlg = NSOpenPanel()
@@ -64,32 +58,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             vue.pat = String(vue.pat.characters.dropFirst())
         }
         vue.carnumber=0
-        vue.draw(self.ImgArea)
+     //   vue.draw(self.ImgArea)
     }
 	@IBAction func carDelete(sender: NSButton) {
 		vue.controleur.plateau.cars.removeAtIndex(Int(supprimer.intValue))
 		vue.controleur.plateau.update()
 		addcar = true
-		vue.draw(ImgArea)
+	//	vue.draw(ImgArea)
 	}
     
-    @IBAction func setlvl(sender: NSTextField) {
-        vue.controleur.inilvl(Int(sender.intValue))
-        vue.draw(self.ImgArea)
-		container.stringValue = ""
-		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
-		afficheMove.stringValue = ""
-		supprimer.removeAllItems();
-		if(vue.controleur.plateau.cars.count != 0){
-		for i in 1..<vue.controleur.plateau.cars.count{
-			supprimer.addItemWithObjectValue("\(i)")
-		}
-		}
-    }
-
+    
     @IBAction func createlvl(sender: NSButton) {
         vue.controleur.create()
-        vue.draw(self.ImgArea)
+      //  vue.draw(self.ImgArea)
 		afficheMove.stringValue = ""
 		presentation.stringValue = "Nouveau niveau"
 		supprimer.removeAllItems()
@@ -98,7 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 	@IBAction func nextLvl(sender: NSButton) {
 		vue.controleur.nextlvl()
-        vue.draw(self.ImgArea)
+      //  vue.draw(self.ImgArea)
 		afficheMove.stringValue = ""
 		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
 		supprimer.removeAllItems();
@@ -194,7 +175,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func myAction(obj:AnyObject?){
         vue.controleur.addManualy(Int(cboxX.stringValue)!, y:Int(cboxY.stringValue)!, Vertical:vue.controleur.plateau.datbool((cboxval.stringValue)), image:cbox.stringValue,length:2)
-         vue.draw(self.ImgArea)
+       //  vue.draw(self.ImgArea)
         addcar = true
 		supprimer.removeAllItems();
 		for i in 1..<vue.controleur.plateau.cars.count{
@@ -204,7 +185,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func myAction2(obj:AnyObject?){
         vue.controleur.addManualy(Int(cboxX.stringValue)!, y:Int(cboxY.stringValue)!, Vertical:vue.controleur.plateau.datbool((cboxval.stringValue)), image:cbox.stringValue,length:3)
-        vue.draw(self.ImgArea)
+       // vue.draw(self.ImgArea)
         addcar = true
 		supprimer.removeAllItems();
 		for i in 1..<vue.controleur.plateau.cars.count{
@@ -216,7 +197,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBAction func previousLvl(sender: NSButton) {
         vue.controleur.previouslvl()
-        vue.draw(self.ImgArea)
+     //   vue.draw(self.ImgArea)
 		afficheMove.stringValue = ""
 		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
 		supprimer.removeAllItems();
@@ -229,7 +210,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if(!addcar){
             if(vue.current != vue.fin-1 && vue.controleur.calculed){
                 vue.controleur.plateau = vue.controleur.tablist[vue.controleur.path[vue.current + 1]]
-                vue.draw(self.ImgArea)
+              //  vue.draw(self.ImgArea)
                 vue.current = vue.current + 1
                 memoMove.removeLast()
                 plotmove()
@@ -241,7 +222,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if(!addcar){
 		if(vue.current != 0 && vue.controleur.calculed){
 			vue.controleur.plateau = vue.controleur.tablist[vue.controleur.path[vue.current - 1]]
-			vue.draw(self.ImgArea)
+		//	vue.draw(self.ImgArea)
 			vue.current = vue.current - 1
             memoMove.append(vue.controleur.tablist[vue.controleur.path[vue.current]].move)
             plotmove()
@@ -264,7 +245,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print(aaa)
        // vue.controleur.plateau.path = aaa
         vue.controleur.inipath(1,path:aaa)
-        vue.draw(self.ImgArea)
+      //  vue.draw(self.ImgArea)
     }
     
     func plotmove(){
