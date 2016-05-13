@@ -44,9 +44,7 @@ class Controleur{
 		var varpapa :Int   // key papa
 		var varid = sol.ID // varid = position
         var dadID = 0                           // position papa
-		print(tablist[varid].move)
-		print("\(tablist[varid].afficheTab())")
-		path.append(varid)
+        path.append(varid)
 		while(tablist[varid].key != stop){
 			varpapa = tablist[varid].papa
             for k in 0..<tablist.count{
@@ -56,8 +54,6 @@ class Controleur{
             }
 			varid = tablist[dadID].ID
 			path.append(varid)
-			print(tablist[varid].move)
-			print("\(tablist[varid].afficheTab())")
 		}
 		print("il y a finalement \(path.count - 1)  deplacements necessaires")
         }
@@ -302,7 +298,6 @@ class Controleur{
 					}
 				}// END for z
 				count1 += 1
-				print("count incr \(count1)")
 			}
 			else {
 				b = false
@@ -347,7 +342,8 @@ class Controleur{
 
 	
 	func nextlvl(){
-		if(plateau.lvl1<41){
+		if(plateau.lvl1<plateau.nbrlvl){
+           let nb = plateau.nbrlvl
 			tablist = [Plateau]()
 			current = [Plateau]()
 			next = [Plateau]()
@@ -359,11 +355,13 @@ class Controleur{
 			tablist.append(plateau)
 			plateau.lecture()
 			calculed = false
+            plateau.nbrlvl = nb
 		}
 	}
 	
 	func previouslvl(){
 		if(plateau.lvl1>1){
+            let nb = plateau.nbrlvl
 			tablist = [Plateau]()
 			current = [Plateau]()
 			next = [Plateau]()
@@ -375,13 +373,15 @@ class Controleur{
 			tablist.append(plateau)
 			plateau.lecture()
 			calculed = false
+            plateau.nbrlvl = nb
 		}
 	}
 	
 	
 	
 	func inilvl(val:Int){
-		if((val)<42 && (val)>0 ){
+		if((val)<plateau.nbrlvl+1 && (val)>0 ){
+            let nb = plateau.nbrlvl
 			tablist = [Plateau]()
 			current = [Plateau]()
 			next = [Plateau]()
@@ -393,11 +393,13 @@ class Controleur{
 			tablist.append(plateau)
 			plateau.lecture()
 			calculed = false
+            plateau.nbrlvl = nb
 			
 		}
 	}
 	func inipath(val:Int, path:String){
-		if((val)<42 && (val)>0 ){
+		if((val)<plateau.nbrlvl+1 && (val)>0 ){
+            let nb = plateau.nbrlvl
 			tablist = [Plateau]()
 			current = [Plateau]()
 			next = [Plateau]()
@@ -409,6 +411,7 @@ class Controleur{
 			tablist.append(plateau)
 			plateau.lecture()
 			calculed = false
+            plateau.nbrlvl = nb
 			
 		}
 	}

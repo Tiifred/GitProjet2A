@@ -22,12 +22,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         ImgArea.image = vue.grid
         vue.controleur.plateau.lecture()
         vue.draw(self.ImgArea)
-        container.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl)"
-		
 		for i in 1..<vue.controleur.plateau.cars.count{
 			supprimer.addItemWithObjectValue("\(i)")
 		}
 		supprimer.placeholderString = "n°"
+        
+        vue.controleur.plateau.detectnblvl()
+        container.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl)"
+        
     }
     
     
@@ -45,9 +47,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let textFieldY = NSTextView()
     let textFieldOri = NSTextView()
     var cbox = NSComboBox()
-     var cboxval = NSComboBox()
-     var cboxX = NSComboBox()
-     var cboxY = NSComboBox()
+    var cboxval = NSComboBox()
+    var cboxX = NSComboBox()
+    var cboxY = NSComboBox()
     var memoMove = [String]()
     var addcar = false
 	@IBOutlet weak var container: NSTextField!
@@ -106,6 +108,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			supprimer.addItemWithObjectValue("\(i)")
 		}
 	}
+    @IBAction func previousLvl(sender: NSButton) {
+        vue.controleur.previouslvl()
+        vue.draw(self.ImgArea)
+        afficheMove.stringValue = ""
+        presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
+        supprimer.removeAllItems();
+        for i in 1..<vue.controleur.plateau.cars.count{
+            supprimer.addItemWithObjectValue("\(i)")
+        }
+    }
 	
 	@IBAction func searchsolution(sender: NSButton) {
             vue.controleur.mooving()
@@ -214,16 +226,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
 	
-	@IBAction func previousLvl(sender: NSButton) {
-        vue.controleur.previouslvl()
-        vue.draw(self.ImgArea)
-		afficheMove.stringValue = ""
-		presentation.stringValue = "Vous etes au niveau \(vue.controleur.plateau.lvl1) "
-		supprimer.removeAllItems();
-		for i in 1..<vue.controleur.plateau.cars.count{
-			supprimer.addItemWithObjectValue("\(i)")
-		}
-	}
+
 
 	@IBAction func previousMove(sender: NSButton) {
         if(!addcar){

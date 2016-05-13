@@ -32,7 +32,6 @@ class Plateau : Copyable{
 	init(lvl:Int){
         self.table = [[Int]](count:lignes, repeatedValue:[Int](count: colonnes, repeatedValue:-1))
 		self.lvl1 = lvl
-        self.nbrlvl = detectnblvl()
     }
     
     
@@ -103,7 +102,7 @@ class Plateau : Copyable{
         
     }
     
-    func detectnblvl()->Int{
+   func detectnblvl(){
         var count = 0
         if let aStreamReader = StreamReader(path:self.path) {
             defer {
@@ -115,7 +114,7 @@ class Plateau : Copyable{
                 }
             }
         }
-        return count
+        nbrlvl = count
     }
     
     func catchlvl(level:Int)->String{

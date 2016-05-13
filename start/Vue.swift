@@ -68,7 +68,7 @@ class Vue{
                     let x1 = (margegauche + (1 + 2*controleur.plateau.cars[i].y)*interstice + controleur.plateau.cars[i].y*carreau)
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x)*interstice + (6-controleur.plateau.cars[i].x-1)*57 )
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 119, height: 57))
-                    let txtView = NSTextView(frame:NSRect(x: x1+50 , y: y1-20, width: 119, height: 57))
+                    let txtView = NSTextView(frame:NSRect(x: x1+50 , y: y1+5, width: 30, height: 30))
 					txtView.drawsBackground = false
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)
@@ -90,7 +90,7 @@ class Vue{
                     let x1 = (margegauche + (1 + 2*controleur.plateau.cars[i].y)*interstice + controleur.plateau.cars[i].y*carreau)
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x)*interstice + (6-controleur.plateau.cars[i].x-1)*57 )
                     
-                    let txtView = NSTextView(frame:NSRect(x: x1+90 , y: y1-20, width: 180, height: 57))
+                    let txtView = NSTextView(frame:NSRect(x: x1+80 , y: y1+5, width: 35, height: 30))
 					txtView.drawsBackground = false
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 180, height: 57))
                     if(controleur.plateau.cars[i].orientation == "f"){
@@ -114,7 +114,7 @@ class Vue{
                     let x1 = (margegauche + (1 + 2*controleur.plateau.cars[i].y)*interstice + controleur.plateau.cars[i].y*carreau)
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x-1)*interstice + (6-controleur.plateau.cars[i].x-2)*57 )
                     
-                    let txtView = NSTextView(frame:NSRect(x: x1+20 , y: y1-50, width: 57, height: 119))
+                    let txtView = NSTextView(frame:NSRect(x: x1+20 , y: y1+40, width: 30, height: 30))
 					txtView.drawsBackground = false
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 57, height: 119))
                     if(controleur.plateau.cars[i].orientation == "f"){
@@ -137,7 +137,7 @@ class Vue{
                 else{
                     let x1 = (margegauche + (1 + 2*controleur.plateau.cars[i].y)*interstice + controleur.plateau.cars[i].y*carreau)
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x-2)*interstice + (6-controleur.plateau.cars[i].x-3)*57 )
-                    let txtView = NSTextView(frame:NSRect(x: x1+20 , y: y1-90 ,width: 57, height: 180))
+                    let txtView = NSTextView(frame:NSRect(x: x1+20 , y: y1+70 ,width: 30, height: 30))
 					txtView.drawsBackground = false
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 57, height: 180))
                     if(controleur.plateau.cars[i].orientation == "f"){
