@@ -20,9 +20,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var container: NSTextField!
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        window.acceptsMouseMovedEvents = true
-      //  [window.makeFirstResponder:self.ImgArea];
-        ImgArea.image = vue.grid
+       // window.acceptsMouseMovedEvents = true
+		ImgArea.editable = true
+		
+		let grid = NSImage(named: "grid")
+        ImgArea.image = grid
         vue.controleur.plateau.lecture()
         vue.draw(self.ImgArea)
 		for i in 1..<vue.controleur.plateau.cars.count{
