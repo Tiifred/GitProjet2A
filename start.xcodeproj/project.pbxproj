@@ -16,6 +16,7 @@
 		F0097C631CDA36CC00A3CFD2 /* CardSet-1 in Resources */ = {isa = PBXBuildFile; fileRef = F0097C621CDA36CC00A3CFD2 /* CardSet-1 */; };
 		F03DCBFC1CE3164900D12C20 /* Vue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03DCBFB1CE3164900D12C20 /* Vue.swift */; };
 		F0A9457E1CECFC28006C14C3 /* MyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A9457D1CECFC28006C14C3 /* MyView.swift */; };
+		F0A945801CED0444006C14C3 /* WriteIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A9457F1CED0444006C14C3 /* WriteIn.swift */; };
 		F0DC359C1CDC943200FD1927 /* Controleur.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DC359B1CDC943200FD1927 /* Controleur.swift */; };
 		F0DF72871CE5C4D400146508 /* writter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DF72861CE5C4D400146508 /* writter.swift */; };
 		F0FD6A481CD899DE008C6A2C /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FD6A471CD899DE008C6A2C /* Car.swift */; };
@@ -56,6 +57,7 @@
 		F03A60BC1CD9EFA300C67B21 /* RecuperationFicher.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = RecuperationFicher.playground; sourceTree = "<group>"; };
 		F03DCBFB1CE3164900D12C20 /* Vue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vue.swift; sourceTree = "<group>"; };
 		F0A9457D1CECFC28006C14C3 /* MyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyView.swift; sourceTree = "<group>"; };
+		F0A9457F1CED0444006C14C3 /* WriteIn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteIn.swift; sourceTree = "<group>"; };
 		F0DC359B1CDC943200FD1927 /* Controleur.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Controleur.swift; sourceTree = "<group>"; };
 		F0DF72861CE5C4D400146508 /* writter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = writter.swift; sourceTree = "<group>"; };
 		F0FD6A471CD899DE008C6A2C /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				F0097C621CDA36CC00A3CFD2 /* CardSet-1 */,
 				F00382A31CD88BF400E2BE66 /* AppDelegate.swift */,
 				F03DCBFB1CE3164900D12C20 /* Vue.swift */,
+				F0A9457F1CED0444006C14C3 /* WriteIn.swift */,
 				F00382A51CD88BF400E2BE66 /* Assets.xcassets */,
 				F0DC359B1CDC943200FD1927 /* Controleur.swift */,
 				F00382A71CD88BF400E2BE66 /* MainMenu.xib */,
@@ -284,6 +287,7 @@
 				F0DF72871CE5C4D400146508 /* writter.swift in Sources */,
 				F0DC359C1CDC943200FD1927 /* Controleur.swift in Sources */,
 				F03DCBFC1CE3164900D12C20 /* Vue.swift in Sources */,
+				F0A945801CED0444006C14C3 /* WriteIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

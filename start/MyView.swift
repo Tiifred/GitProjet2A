@@ -16,16 +16,28 @@ class MyView:NSImageView{
 	var diffY :CGFloat = 0.0
 	
 	var vue = NSView()
+	var Tvue = NSView()
 	var pointstart = CGPoint(x:0,y:0)
 	var pointend = CGPoint(x:0,y:0)
 	
 	override func mouseDown(theEvent: NSEvent) {
+		 vue = NSView()
+		Tvue = NSView()
 		for v in self.subviews{
 			if (v .isKindOfClass(NSImageView)){
 				pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 				pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
 				if (v.frame.contains(pointstart)){
 					vue = v
+					Swift.print("selected")
+					
+				}
+			}
+		}
+		for v in self.subviews{
+			if (v .isKindOfClass(NSTextView)){
+				if (vue.frame.contains(v.frame.origin)){
+					Tvue = v
 					Swift.print("selected")
 					
 				}
@@ -55,12 +67,14 @@ class MyView:NSImageView{
 					if (v == vue){
 						if(v.frame.width>v.frame.height){
 							v.frame.origin.x += pointend.x - pointstart.x
+							Tvue.frame.origin.x += pointend.x - pointstart.x
 							pointstart.x = pointend.x
 							pointstart.y = pointend.y
 							
 						}
 						else{
 							v.frame.origin.y += pointend.y - pointstart.y
+							Tvue.frame.origin.y += pointend.y - pointstart.y
 							pointstart.x = pointend.x
 							pointstart.y = pointend.y
 							
@@ -104,13 +118,11 @@ class MyView:NSImageView{
 									if v.frame.contains(ptmoins){
 										here = true
 										break
-										Swift.print("true")
 									}
 								}
 								if(vue.frame.origin.x<27){
 									here = true
 									break
-									Swift.print("true2")
 								}
 							}
 						}
