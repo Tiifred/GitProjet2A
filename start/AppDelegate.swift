@@ -34,6 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         vue.controleur.plateau.detectnblvl()
         container.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl)"
+		window.initialFirstResponder = self.ImgArea
         
     }
     

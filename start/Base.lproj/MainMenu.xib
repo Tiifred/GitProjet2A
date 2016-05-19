@@ -867,7 +867,7 @@
                     </button>
                     <imageView focusRingType="exterior" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-FL-1DT" customClass="MyView" customModule="start" customModuleProvider="target">
                         <rect key="frame" x="292" y="38" width="421" height="449"/>
-                        <imageCell key="cell" selectable="YES" editable="YES" continuous="YES" focusRingType="exterior" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
+                        <imageCell key="cell" selectable="YES" editable="YES" continuous="YES" refusesFirstResponder="YES" focusRingType="exterior" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
                         <connections>
                             <action selector="testIt:" target="Voe-Tx-rLC" id="5Pe-Yh-iwi"/>
                         </connections>
