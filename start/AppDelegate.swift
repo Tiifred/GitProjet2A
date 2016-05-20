@@ -35,7 +35,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         vue.controleur.plateau.detectnblvl()
         container.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl)"
 		window.initialFirstResponder = self.ImgArea
-        
+		
+        intro()
     }
     
     
@@ -216,7 +217,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let controller = NSWindowController(window: win);
         controller.showWindow(self);
-        print("wind added")
         
     }
     
@@ -326,7 +326,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             afficheMove.stringValue += " \(memoMove[i]) \n "
         }
     }
-    
-    
+	
+	
+	func intro(){
+		
+		let win = NSWindow(contentRect: NSMakeRect(100, 100, 800, 200),
+		                   styleMask: 1 | 2 | 4 | 8,
+		                   backing: NSBackingStoreType.Buffered, defer: true);
+		
+		win.title = "Fonctionnement";
+		win.center();
+		
+		
+		let multi = NSTextField(frame: NSMakeRect(0,0,800,200))
+			win.contentView!.addSubview(multi)
+		multi.editable = false
+		multi.backgroundColor = NSColor.clearColor()
+		multi.stringValue = "\t \t \t \t\t\t\t\t\t\t\t Principe de fonctionnement \n\n" + "\t * Mode Semi - Automatique :\n - Choisissez un niveau en entrant son numéro ou à l'aide des touches directionnelles haut et bas\n - Cherchez la solution en cliquant sur le bouton\n - Déplacez les véhicules à l'aide des touches directionnelles droite et gauche\n\n " + " \t * Mode Manuel : \n - Cliquez sur la grille, à un endroit où il n'y a pas de voiture (le contour de la grille doit être bleu)\n - Placez le curseur de la souris sur un véhicule\n - Maintenez le bouton gauche de la souris et déplacer la souris\n - Relâcher le bouton"
+		
+		
+		//Add the window to the main viewer
+		window.addChildWindow(win, ordered:NSWindowOrderingMode.Above);
+		
+		let controller = NSWindowController(window: win);
+		controller.showWindow(self)
+	}
+	
 
 }
