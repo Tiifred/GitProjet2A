@@ -23,10 +23,13 @@ class MyView:NSImageView{
 	override func mouseDown(theEvent: NSEvent) {
 		 vue = NSView()
 		Tvue = NSView()
+         pointstart = CGPoint(x:0,y:0)
+         pointend = CGPoint(x:0,y:0)
 		for v in self.subviews{
+            pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
+            pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
 			if (v .isKindOfClass(NSImageView)){
-				pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
-				pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
+
 				if (v.frame.contains(pointstart)){
 					vue = v
 					Swift.print("selected")

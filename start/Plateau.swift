@@ -23,7 +23,7 @@ class Plateau : Copyable{
     var key = -1
     var corresp=[String]()
 	var lvl1 = 1
-    var path = "/Users/projet2a/Documents/CardSet-1"
+    var path = "/Users/projet2a/Documents/projet/start/start/CardSet-1"
     var nbrlvl = 0
     
     
