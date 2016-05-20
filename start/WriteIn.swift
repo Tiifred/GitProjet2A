@@ -9,15 +9,7 @@
 import Foundation
 import Cocoa
 
-class WriteIn : NSObject {
+class WriteIn : NSString {
 	
-	
-	var textEditingImage:NSImage = NSImage(named: "NSFontPanel")!
-	
-	var preferencesOptionTableImageList : [[String:NSImage]]
-	
-	override init() {
-		preferencesOptionTableImageList = [["image":textEditingImage]]
-		super.init()
- }
+   
 }

@@ -10,10 +10,12 @@ import Foundation
 import Cocoa
 
 
+
 class MyView:NSImageView{
 	
 	var diffX :CGFloat = 0.0
 	var diffY :CGFloat = 0.0
+    var detected = false
 	
 	var vue = NSView()
 	var Tvue = NSView()
@@ -23,24 +25,21 @@ class MyView:NSImageView{
 	override func mouseDown(theEvent: NSEvent) {
 		 vue = NSView()
 		Tvue = NSView()
-		
+        pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
+        pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
 		for v in self.subviews{
 			if (v .isKindOfClass(NSImageView) && v != self){
-				Swift.print("yolo")
-				pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
-				pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
+				
 				if (v.frame.contains(pointstart)){
 					vue = v
-					
+                    detected = true
 				}
-			}
+            }
 		}
 		for v in self.subviews{
-			if (v .isKindOfClass(NSTextView)){
-				Swift.print("yolo2")
+			if (v .isKindOfClass(NSTextView) && detected){
 				if (vue.frame.contains(v.frame.origin)){
 					Tvue = v
-					Swift.print("selected")
 					
 				}
 			}
@@ -51,9 +50,7 @@ class MyView:NSImageView{
 	
 	override func mouseUp(theEvent: NSEvent) {
 		var b : Bool = false
-		Swift.print("mouseUp \(theEvent.locationInWindow)")
-		Swift.print("mouseUp \(vue.frame.origin.y)")
-		
+        if(detected){
 		
 		if (vue.frame.width>vue.frame.height){
 			for index in 0..<10{
@@ -84,14 +81,12 @@ class MyView:NSImageView{
 			//let y1 = (margebas + (6-controleur.plateau.cars[i].x)*interstice + (6-controleur.plateau.cars[i].x-1)*57 )
 				
 			}
+            vue = NSView()
+            Tvue = NSView()
 		}
 		else {
 			for index in 0..<10{
-				Swift.print("dfxxx")
-
 				let y1 = (45 + (1+2*index)*4 + (index*54))
-				Swift.print("\(vue.frame.origin.y ) \( CGFloat(y1))")
-				
 				if (vue.frame.origin.y - CGFloat(y1) < CGFloat(32) && vue.frame.origin.y - CGFloat(y1) > CGFloat(0) && !b){
 					vue.frame.origin.y = CGFloat(y1)
 					if(vue.frame.height > 150){
@@ -101,7 +96,6 @@ class MyView:NSImageView{
 						Tvue.frame.origin.y = CGFloat(y1+40)
 					}
 					b = true
-					Swift.print("df")
 					
 				}
 				if (vue.frame.origin.y - CGFloat(y1) > -32 && vue.frame.origin.y - CGFloat(y1) < 0 && !b){
@@ -113,18 +107,20 @@ class MyView:NSImageView{
 						Tvue.frame.origin.y = CGFloat(y1+40)
 					}
 					b = true
-					Swift.print("df")
 
 				}
+            }
 
 		}
 		
 	}
 	}
+    
+    
+
 	
 	override func mouseDragged(theEvent: NSEvent) {
-		//	Swift.print("mouseDragged \(theEvent.locationInWindow)")
-		//	self.superview.aaa = ""
+        if(detected){
 		pointend.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 		pointend.y = (theEvent.locationInWindow.y - self.frame.origin.y)
 		diffX = pointend.x - pointstart.x
@@ -151,6 +147,7 @@ class MyView:NSImageView{
 				}
 			}
 		}
+        }
 	}
 	
 	
@@ -160,22 +157,18 @@ class MyView:NSImageView{
 			if(v != self.vue){
 				if (v .isKindOfClass(NSImageView)){
 					if(vue.frame.width>vue.frame.height){
-						Swift.print("hori")
 						if(diffX>0){
 							for i in 0...Int(diffX){
 								for j in 0...Int(vue.frame.height){
 									let ptplus = CGPoint(x:vue.frame.origin.x + vue.frame.width + CGFloat(i) ,y:vue.frame.origin.y+CGFloat(j))
 									if (v.frame.contains(ptplus) && !here){
 										here = true
-										
-										Swift.print("true")
 										break
 									}
 								}
 							}
 							if(vue.frame.origin.x + diffX + vue.frame.width>self.frame.width-27 && !here){
 								here = true
-								Swift.print("true 1")
 								break
 							}
 						}
@@ -197,19 +190,16 @@ class MyView:NSImageView{
 						
 					}
 					else {
-						Swift.print("verti")
 						if(diffY>0){
 							for i in 0...Int(diffY){
 								for j in 0...Int(vue.frame.width){
 									let ptplus = CGPoint(x:vue.frame.origin.x+CGFloat(j),y:vue.frame.origin.y + vue.frame.height + CGFloat(i))
 									if (v.frame.contains(ptplus) && !here){
 										here = true
-										Swift.print("true")
-										break
+                                        break
 									}
 									if(vue.frame.origin.y + diffY + vue.frame.height>418 && !here){
 										here = true
-										Swift.print("true")
 										break
 									}
 								}
@@ -228,7 +218,6 @@ class MyView:NSImageView{
 								}
 								if(vue.frame.origin.y + diffY<47){
 									here = true
-									Swift.print("true")
 									break
 								}
 							}
@@ -241,3 +230,4 @@ class MyView:NSImageView{
 		return here
 	}
 }
+

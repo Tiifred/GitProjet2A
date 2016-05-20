@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -15,12 +15,24 @@
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="start" customModuleProvider="target">
             <connections>
                 <outlet property="ImgArea" destination="a5w-FL-1DT" id="DH1-vt-Dxz"/>
+                <outlet property="addcar" destination="kkA-8j-DGO" id="gfk-5l-fnJ"/>
                 <outlet property="afficheMove" destination="9p5-yX-1ji" id="h7Z-TQ-Qpr"/>
+                <outlet property="caradd" destination="kkA-8j-DGO" id="Edr-7M-fLS"/>
+                <outlet property="changecard" destination="48d-16-qxq" id="Hfn-6e-YJl"/>
+                <outlet property="changeprison" destination="OIv-kq-LcT" id="muR-Qz-Mph"/>
                 <outlet property="container" destination="jwv-iq-ERT" id="0lo-wm-bKw"/>
+                <outlet property="createlevel" destination="XlF-Pc-CQK" id="UH8-rV-6hd"/>
+                <outlet property="deletecar" destination="SCH-Rd-yDD" id="9X4-ZF-1CX"/>
+                <outlet property="nextmove" destination="wCu-mt-ldL" id="eMQ-IX-idj"/>
                 <outlet property="presentation" destination="lwR-Y4-2KK" id="HHU-UL-H5Y"/>
+                <outlet property="previousmove" destination="QeX-Sm-mi5" id="m2Q-mX-k4Z"/>
+                <outlet property="reset" destination="ABC-Kl-hct" id="acB-1Z-n7o"/>
+                <outlet property="savelevel" destination="wpD-sI-ppg" id="jVg-kB-0ML"/>
                 <outlet property="savelvl" destination="EiT-Mj-1SZ" id="TwH-eC-tyx"/>
                 <outlet property="searrchsolution" destination="Z40-sx-aZ4" id="XnP-Dm-kqU"/>
+                <outlet property="solution" destination="Z40-sx-aZ4" id="Lu8-Ke-yDO"/>
                 <outlet property="supprimer" destination="pu7-9l-tXR" id="7ZM-gd-JrT"/>
+                <outlet property="test" destination="V9R-7h-PJg" id="MwV-Ad-YMa"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
@@ -678,12 +690,12 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="1180" height="525"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="745"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="1180" height="525"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wCu-mt-ldL">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wCu-mt-ldL">
                         <rect key="frame" x="550" y="-4" width="169" height="32"/>
                         <buttonCell key="cell" type="push" title="Déplacement Suivant" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UBC-Tx-eBU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -694,7 +706,7 @@
                             <action selector="nextMove:" target="Voe-Tx-rLC" id="CGz-Y9-h5n"/>
                         </connections>
                     </button>
-                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ch-Pg-GXa">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ch-Pg-GXa">
                         <rect key="frame" x="5" y="452" width="103" height="32"/>
                         <buttonCell key="cell" type="push" title="Précédent" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QO7-fJ-xTz">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -806,7 +818,7 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-Sm-mi5">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-Sm-mi5">
                         <rect key="frame" x="286" y="-4" width="186" height="32"/>
                         <buttonCell key="cell" type="push" title="Déplacement Précédent" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="skP-fk-KTm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -836,7 +848,7 @@
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wpD-sI-ppg">
-                        <rect key="frame" x="30" y="99" width="162" height="32"/>
+                        <rect key="frame" x="31" y="119" width="162" height="32"/>
                         <buttonCell key="cell" type="push" title="Sauvegarder Niveau" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dSY-yv-clW">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -845,7 +857,7 @@
                             <action selector="savelvl:" target="Voe-Tx-rLC" id="hyP-m3-Jfu"/>
                         </connections>
                     </button>
-                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9R-7h-PJg">
+                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="V9R-7h-PJg">
                         <rect key="frame" x="123" y="452" width="94" height="32"/>
                         <buttonCell key="cell" type="push" title="Suivant" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="j5g-qI-3um">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -856,13 +868,6 @@
                             <action selector="nextLvl:" target="Voe-Tx-rLC" id="NdY-Dx-kbl"/>
                         </connections>
                     </button>
-                    <imageView focusRingType="exterior" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-FL-1DT" customClass="MyView" customModule="start" customModuleProvider="target">
-                        <rect key="frame" x="292" y="38" width="421" height="449"/>
-                        <imageCell key="cell" selectable="YES" editable="YES" continuous="YES" refusesFirstResponder="YES" focusRingType="exterior" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
-                        <connections>
-                            <action selector="testIt:" target="Voe-Tx-rLC" id="5Pe-Yh-iwi"/>
-                        </connections>
-                    </imageView>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6A6-tE-CFk">
                         <rect key="frame" x="810" y="96" width="352" height="41"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Appuyez sur &quot;Sauvegarder Niveau &quot; pour ajouter un niveau au CardSet" id="90l-SA-Y9u">
@@ -871,6 +876,33 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8lX-wa-xmO">
+                        <rect key="frame" x="72" y="374" width="78" height="18"/>
+                        <buttonCell key="cell" type="check" title="Jouer" bezelStyle="regularSquare" imagePosition="left" alignment="left" inset="2" id="amA-de-tWN">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="play:" target="Voe-Tx-rLC" id="3Tz-WJ-uRW"/>
+                        </connections>
+                    </button>
+                    <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ABC-Kl-hct">
+                        <rect key="frame" x="31" y="335" width="160" height="32"/>
+                        <buttonCell key="cell" type="push" title="Recommencer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QZL-Gs-fhT">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="resetlvl:" target="Voe-Tx-rLC" id="vm6-bi-tQV"/>
+                        </connections>
+                    </button>
+                    <imageView focusRingType="exterior" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-FL-1DT" customClass="MyView" customModule="start" customModuleProvider="target">
+                        <rect key="frame" x="292" y="38" width="421" height="449"/>
+                        <imageCell key="cell" selectable="YES" editable="YES" continuous="YES" refusesFirstResponder="YES" focusRingType="exterior" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
+                        <connections>
+                            <action selector="testIt:" target="Voe-Tx-rLC" id="5Pe-Yh-iwi"/>
+                        </connections>
+                    </imageView>
                 </subviews>
             </view>
             <point key="canvasLocation" x="783" y="308.5"/>

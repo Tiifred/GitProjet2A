@@ -83,6 +83,7 @@ extension NSImage {
 }
 
 
+
 class StreamReader  {
     
     let encoding : UInt

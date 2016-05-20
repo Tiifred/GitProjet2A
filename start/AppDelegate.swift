@@ -12,6 +12,20 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+   
+    
+    @IBOutlet weak var reset: NSButton!
+    @IBOutlet weak var solution: NSButton!
+    
+    @IBOutlet weak var previousmove: NSButton!
+    
+    @IBOutlet weak var nextmove: NSButton!
+    @IBOutlet weak var changeprison: NSButton!
+    @IBOutlet weak var changecard: NSButton!
+    @IBOutlet weak var savelevel: NSButton!
+    @IBOutlet weak var caradd: NSButton!
+    @IBOutlet weak var deletecar: NSButton!
+    @IBOutlet weak var createlevel: NSButton!
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var afficheMove: NSTextField!
     @IBOutlet weak var ImgArea: NSImageView!
@@ -221,6 +235,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func myAction(obj:AnyObject?){
+        if(cbox.stringValue != "" && cboxX.stringValue != "" && cboxY.stringValue != "" && cboxval.stringValue != ""){
+        
         vue.controleur.addManualy(Int(cboxX.stringValue)!, y:Int(cboxY.stringValue)!, Vertical:vue.controleur.plateau.datbool((cboxval.stringValue)), image:cbox.stringValue,length:2)
          vue.draw(self.ImgArea)
         addcar = true
@@ -232,9 +248,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         cboxX.stringValue = ""
         cboxY.stringValue = ""
         cboxval.stringValue = ""
+        }
     }
     
     func myAction2(obj:AnyObject?){
+        if(cbox.stringValue != "" && cboxX.stringValue != "" && cboxY.stringValue != "" && cboxval.stringValue != ""){
+            
+
         vue.controleur.addManualy(Int(cboxX.stringValue)!, y:Int(cboxY.stringValue)!, Vertical:vue.controleur.plateau.datbool((cboxval.stringValue)), image:cbox.stringValue,length:3)
         vue.draw(self.ImgArea)
         addcar = true
@@ -247,8 +267,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         cboxY.stringValue = ""
         cboxval.stringValue = ""
     }
+    }
     
-    
+    @IBAction func play(sender: NSButton) {
+        solution.hidden = !solution.hidden
+        nextmove.hidden = !nextmove.hidden
+        previousmove.hidden = !previousmove.hidden
+        changeprison.hidden = !changeprison.hidden
+       changecard.hidden = !changecard.hidden
+        savelevel.hidden = !savelevel.hidden
+        caradd.hidden = !caradd.hidden
+        deletecar.hidden = !deletecar.hidden
+        createlevel.hidden = !createlevel.hidden
+        reset.hidden = !reset.hidden
+        supprimer.hidden = !supprimer.hidden
+    }
   
     @IBAction func savelvl(sender: NSButton) {
        var strBuffer : String = ""
@@ -327,6 +360,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 	
+    @IBAction func resetlvl(sender: NSButton) {
+       vue.draw(self.ImgArea)
+    }
 	
 	func intro(){
 		

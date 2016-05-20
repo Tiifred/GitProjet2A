@@ -38,10 +38,50 @@ class Vue{
         let destSize = NSMakeSize(CGFloat(w), CGFloat(h))
         let newImage = NSImage(size: destSize)
         newImage.lockFocus()
+        
         image.drawInRect(NSMakeRect(0, 0, destSize.width, destSize.height), fromRect: NSMakeRect(0, 0, image.size.width, image.size.height), operation: NSCompositingOperation.CompositeSourceOver, fraction: CGFloat(1))
         newImage.unlockFocus()
         newImage.size = destSize
         return NSImage(data: newImage.TIFFRepresentation!)!
+    }
+    
+    func addtext(image:NSImage, text:NSString, point:NSPoint) -> NSImage{
+        image.lockFocus()
+        
+        let textFont = NSFont(name: "Arial", size: 12)
+        let textColor = NSColor.blackColor()
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.alignment = .Center
+        
+        
+        
+        //Setups up the font attributes that will be later used to dictate how the text should be drawn
+
+        
+        let multipleAttributes = [
+            NSForegroundColorAttributeName: NSColor.greenColor(),
+            NSBackgroundColorAttributeName: NSColor.yellowColor(),
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleDouble.rawValue ]
+        
+        //Put the image into a rectangle as large as the original image.
+        image.drawInRect(CGRectMake(0, 0, image.size.width, image.size.height))
+        
+        // Creating a point within the space that is as bit as the image.
+        let rect: CGRect = CGRectMake(point.x, point.y, image.size.width, image.size.height)
+        
+        //Now Draw the text into an image.
+        text.drawInRect(rect, withAttributes: multipleAttributes)
+        
+        // Create a new image out of the images we have created
+       // var newImage: NSImage
+        // End the context now that we have the image we need
+       image.unlockFocus()
+        
+        //And pass it back up to the caller.
+        return image
+        
+    
     }
     
     func draw(ImgArea: NSImageView!){
@@ -63,13 +103,22 @@ class Vue{
 
             }
             
+            
             if(!(controleur.plateau.cars[i].isVertical)){
                 if(controleur.plateau.cars[i].length==2){
+                    
+                    
                     let x1 = (margegauche + (1 + 2*controleur.plateau.cars[i].y)*interstice + controleur.plateau.cars[i].y*carreau)
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x)*interstice + (6-controleur.plateau.cars[i].x-1)*57 )
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 119, height: 57))
+   
+                    imgtmp = addtext(imgtmp, text: "ojnl",point:imgView.frame.origin)
+
+                    
+
                     let txtView = NSTextView(frame:NSRect(x: x1+50 , y: y1+5, width: 30, height: 30))
 					txtView.drawsBackground = false
+                    txtView.selectable = false
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)
                     }
@@ -92,10 +141,12 @@ class Vue{
                     
                     let txtView = NSTextView(frame:NSRect(x: x1+80 , y: y1+5, width: 35, height: 30))
 					txtView.drawsBackground = false
+                    txtView.selectable = false
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 180, height: 57))
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)
                     }
+                    
                     
                     if(imgtmp.size.width < imgtmp.size.height){
                         imgView.image = imgtmp
@@ -116,6 +167,7 @@ class Vue{
                     
                     let txtView = NSTextView(frame:NSRect(x: x1+20 , y: y1+40, width: 30, height: 30))
 					txtView.drawsBackground = false
+                    txtView.selectable = false
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 57, height: 119))
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)
@@ -139,6 +191,7 @@ class Vue{
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x-2)*interstice + (6-controleur.plateau.cars[i].x-3)*57 )
                     let txtView = NSTextView(frame:NSRect(x: x1+20 , y: y1+70 ,width: 30, height: 30))
 					txtView.drawsBackground = false
+                    txtView.selectable = false
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 57, height: 180))
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)
