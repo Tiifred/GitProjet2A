@@ -10,7 +10,6 @@ import Foundation
 import Cocoa
 
 class Vue{
-    
     // *** Description plateau ***
     let margebas=47
     let margegauche=25
@@ -74,7 +73,7 @@ class Vue{
         text.drawInRect(rect, withAttributes: multipleAttributes)
         
         // Create a new image out of the images we have created
-       // var newImage: NSImage
+       // var newImage = image.
         // End the context now that we have the image we need
        image.unlockFocus()
         
@@ -88,9 +87,12 @@ class Vue{
         for v in ImgArea.subviews{
             v.removeFromSuperview()
         }
+
         for i in 0..<controleur.plateau.cars.count{
+             let number = "\(i)"
             var imgtmp:NSImage
             if(i != carnumber){
+               
             
             let filePath1 = "/Users/projet2a/Documents/projet/start/Images/\(controleur.plateau.cars[i].img).png"
             let file1 = NSURL(fileURLWithPath: filePath1, isDirectory: false)
@@ -112,27 +114,44 @@ class Vue{
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x)*interstice + (6-controleur.plateau.cars[i].x-1)*57 )
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 119, height: 57))
    
-                    imgtmp = addtext(imgtmp, text: "ojnl",point:imgView.frame.origin)
+                    //imgtmp = addtext(imgtmp, text: "ojnl",point:imgView.frame.origin)
 
                     
 
                     let txtView = NSTextView(frame:NSRect(x: x1+50 , y: y1+5, width: 30, height: 30))
 					txtView.drawsBackground = false
                     txtView.selectable = false
+                    txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)
                     }
                     if(imgtmp.size.width < imgtmp.size.height){
                         imgView.image = imgtmp
+                        let point = NSPoint(x: 55, y: 20)
                         imgView.rotateByAngle(90)
+                        imgtmp.lockFocus()
+                        number.drawAtPoint(point,withAttributes: nil)
+                        imgtmp.unlockFocus()
+
+                        
+                   /*     var lbl : NSLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 20)];
+                        
+                        [yourLabel setTextColor:[UIColor blackColor]];
+                        [yourLabel setBackgroundColor:[UIColor clearColor]];
+                        [yourLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
+                        [yourSuperView addSubview:yourLabel];*/
                         ImgArea.addSubview(imgView)
                     }
                     else{
                         imgView.image = imgtmp
+                        let point = NSPoint(x: 55, y: 20)
+                        imgtmp.lockFocus()
+                        number.drawAtPoint(point,withAttributes: nil)
+                        imgtmp.unlockFocus()
+
                         ImgArea.addSubview(imgView)
                     }
-					ImgArea.addSubview(txtView)
-					txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
+				//	ImgArea.addSubview(txtView)
                     
                 }
                 else{
@@ -142,6 +161,7 @@ class Vue{
                     let txtView = NSTextView(frame:NSRect(x: x1+80 , y: y1+5, width: 35, height: 30))
 					txtView.drawsBackground = false
                     txtView.selectable = false
+                    txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 180, height: 57))
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)
@@ -149,16 +169,27 @@ class Vue{
                     
                     
                     if(imgtmp.size.width < imgtmp.size.height){
+                        imgView.drawRect(imgView.frame)
                         imgView.image = imgtmp
+                        let point = NSPoint(x: 85, y: 20)
                         imgView.rotateByAngle(90)
+                        imgtmp.lockFocus()
+                        number.drawAtPoint(point,withAttributes: nil)
+                        imgtmp.unlockFocus()
+
                         ImgArea.addSubview(imgView)
                     }
                     else{
                         imgView.image = imgtmp
+                        imgtmp.lockFocus()
+                        let point = NSPoint(x: 85, y: 20)
+                        number.drawAtPoint(point,withAttributes: nil)
+                        imgtmp.unlockFocus()
+
                         ImgArea.addSubview(imgView)
                     }
-					ImgArea.addSubview(txtView)
-					txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
+					//ImgArea.addSubview(txtView)
+					//imgView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
                 }
             }else{
                 if(controleur.plateau.cars[i].length==2){
@@ -175,15 +206,26 @@ class Vue{
                     
                     if(imgtmp.size.width > imgtmp.size.height){
                         imgView.image = imgtmp
+                        
+                        let point = NSPoint(x: 58, y: 20)
+                        imgtmp.lockFocus()
+                        number.drawAtPoint(point,withAttributes: nil)
+                        imgtmp.unlockFocus()
                         imgView.rotateByAngle(90)
+
                         ImgArea.addSubview(imgView)
                     }
                     else{
                         imgView.image = imgtmp
+                        let point = NSPoint(x: 58, y: 20)
+                        imgtmp.lockFocus()
+                        number.drawAtPoint(point,withAttributes: nil)
+                        imgtmp.unlockFocus()
+
                         ImgArea.addSubview(imgView)
                     }
-					ImgArea.addSubview(txtView)
-					txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
+				//	ImgArea.addSubview(txtView)
+					//txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
                     
                 }
                 else{
@@ -199,14 +241,24 @@ class Vue{
                     if(imgtmp.size.width > imgtmp.size.height){
                         imgView.image = imgtmp
                         imgView.rotateByAngle(90)
+                        let point = NSPoint(x: 85, y: 20)
+                        imgtmp.lockFocus()
+                        number.drawAtPoint(point,withAttributes: nil)
+                        imgtmp.unlockFocus()
+
                         ImgArea.addSubview(imgView)
                     }
                     else{
                         imgView.image = imgtmp
+                        let point = NSPoint(x: 85, y: 20)
+                        imgtmp.lockFocus()
+                        number.drawAtPoint(point,withAttributes: nil)
+                        imgtmp.unlockFocus()
+
                         ImgArea.addSubview(imgView)
                     }
-					ImgArea.addSubview(txtView)
-					txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
+					//ImgArea.addSubview(txtView)
+					//txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
                 }
                 
             }

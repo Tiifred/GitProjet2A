@@ -35,6 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
        // window.acceptsMouseMovedEvents = true
+        ImgArea.becomeFirstResponder()
 		ImgArea.editable = true
 		
 		let grid = NSImage(named: "grid")
@@ -62,6 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
 	var vue = Vue()
+    //var mv = MyView()
     var aaa = ""
     var movecontains = ""
     let textFieldX = NSTextView()
@@ -200,7 +202,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         cbox.addItemWithObjectValue("CarV-X")
         cbox.addItemWithObjectValue("DS21")
         cbox.addItemWithObjectValue("TruckH-blue")
-        cbox.addItemWithObjectValue("TruckH-volet")
+        cbox.addItemWithObjectValue("TruckH-violet")
         cbox.addItemWithObjectValue("TruckH-lightgreen")
         cbox.addItemWithObjectValue("TruckH-yellow")
         cbox.addItemWithObjectValue("TruckV-blue")
@@ -281,6 +283,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         createlevel.hidden = !createlevel.hidden
         reset.hidden = !reset.hidden
         supprimer.hidden = !supprimer.hidden
+       // mv.isallow = !mv.isallow
     }
   
     @IBAction func savelvl(sender: NSButton) {
