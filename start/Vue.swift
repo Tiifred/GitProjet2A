@@ -42,45 +42,7 @@ class Vue{
         return NSImage(data: newImage.TIFFRepresentation!)!
     }
     
-    func addtext(image:NSImage, text:NSString, point:NSPoint) -> NSImage{
-        image.lockFocus()
-        
-        let textFont = NSFont(name: "Arial", size: 12)
-        let textColor = NSColor.blackColor()
-        
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.alignment = .Center
-        
-        
-        
-        //Setups up the font attributes that will be later used to dictate how the text should be drawn
-
-        
-        let multipleAttributes = [
-            NSForegroundColorAttributeName: NSColor.greenColor(),
-            NSBackgroundColorAttributeName: NSColor.yellowColor(),
-            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleDouble.rawValue ]
-        
-        //Put the image into a rectangle as large as the original image.
-        image.drawInRect(CGRectMake(0, 0, image.size.width, image.size.height))
-        
-        // Creating a point within the space that is as bit as the image.
-        let rect: CGRect = CGRectMake(point.x, point.y, image.size.width, image.size.height)
-        
-        //Now Draw the text into an image.
-        text.drawInRect(rect, withAttributes: multipleAttributes)
-        
-        // Create a new image out of the images we have created
-       // var newImage = image.
-        // End the context now that we have the image we need
-       image.unlockFocus()
-        
-        //And pass it back up to the caller.
-        return image
-        
-    
-    }
-    
+	
     func draw(ImgArea: NSImageView!){
         for v in ImgArea.subviews{
             v.removeFromSuperview()
@@ -89,15 +51,15 @@ class Vue{
         for i in 0..<controleur.plateau.cars.count{
              let number = "\(i)"
             var imgtmp:NSImage
-            if(i != carnumber){
-               
-            
-            let filePath1 = "/Users/projet2a/Documents/projet/start/Images/\(controleur.plateau.cars[i].img).png"
+            //if(i != carnumber){
+				if((controleur.plateau.cars[i].img.characters.first) != "/"){
+					
+            let filePath1 = "/Users/projet2a/Documents/GitProjet2A/Images/\(controleur.plateau.cars[i].img).png"
             let file1 = NSURL(fileURLWithPath: filePath1, isDirectory: false)
              imgtmp = NSImage(contentsOfURL: file1)!
             }
             else {
-                let filePath1 = pat
+                let filePath1 = controleur.plateau.cars[i].img
                 let file1 = NSURL(fileURLWithPath: filePath1, isDirectory: false)
                  imgtmp = NSImage(contentsOfURL: file1)!
 
@@ -110,11 +72,7 @@ class Vue{
                     
                     let x1 = (margegauche + (1 + 2*controleur.plateau.cars[i].y)*interstice + controleur.plateau.cars[i].y*carreau)
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x)*interstice + (6-controleur.plateau.cars[i].x-1)*57 )
-                    let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 119, height: 57))
-   
-                    //imgtmp = addtext(imgtmp, text: "ojnl",point:imgView.frame.origin)
-
-                    
+                    let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 119, height: 57))                  
 
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)

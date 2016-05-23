@@ -24,11 +24,9 @@ class MyView:NSImageView{
     var pointstart = CGPoint(x:0,y:0)
     var pointend = CGPoint(x:0,y:0)
     let winPoint = CGPoint(x:370,y:260)
-    
-    var car = Car(Id: -1, length: 2, X: -1, Y: -1, isVertical: true, p: Plateau(lvl: 1), ori: "r", img: "")
-    
+	
     override func mouseDown(theEvent: NSEvent) {
-        let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+		
         var ca = 0
         if(isallow){
             Vue = NSImageView()
@@ -45,9 +43,7 @@ class MyView:NSImageView{
                         Vue = v
                         detected = true
                         ind = ca
-                        car = d.vue.controleur.plateau.cars[ca]
-                        Swift.print( "car number \(ca)")
-                        //     self.popUpMenu(theEvent)
+
                     }
                 }
                ca += 1
@@ -58,25 +54,42 @@ class MyView:NSImageView{
     override var acceptsFirstResponder: Bool{
         return true
     }
-    
-    
+	
+	override func rightMouseUp(theEvent: NSEvent) {
+		pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
+		pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
+		inipoint.x = (theEvent.locationInWindow.x - self.frame.origin.x)
+		inipoint.y = (theEvent.locationInWindow.y - self.frame.origin.y)
+		var ca = 0
+		for v in self.subviews{
+			if (v .isKindOfClass(NSImageView) && v != self){
+				if (v.frame.contains(pointstart)){
+					ind = ca
+					self.popUpMenu(theEvent)
+				}
+			}
+			ca += 1
+		}
+
+	}
+	
+	
     override func mouseUp(theEvent: NSEvent) {
         let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-        
+		var sign = ""
+		
         if(isallow){
-            var b : Bool = false
-            if(detected && !here){
-                
+            if(detected){
                 if (Vue.frame.width>Vue.frame.height){
-                    if(!b){
-                        let xx = -inipoint.x + pointend.x
-                        Swift.print("\(Int(round(xx/58)))")
-                        car.y += Int(round(xx/58))
-                        d.vue.draw(d.ImgArea)
-                    }
-                    
-                    
-                    
+					if (diffX<0) { sign = "minus"}
+					else {sign = "plus"}
+					
+					let xx = -inipoint.x + pointend.x
+					Swift.print("\(abs(Int(round(xx/58))))")
+					if(d.vue.controleur.plateau.cars[ind].isAllowed(sign,val: abs(Int(round(xx/58)))+1)){
+						d.vue.controleur.plateau.cars[ind].y += Int(round(xx/58))
+						d.vue.draw(d.ImgArea)
+					}
                     if(subviews[0].frame.contains(winPoint)){
                         Swift.print("you win  !")
                         isallow = false
@@ -84,12 +97,21 @@ class MyView:NSImageView{
                     
                 }
                 else {
-                    if(!b){
-                        let yy = inipoint.y - pointend.y
-                        //     var tmp : Int = xx/58 - (xx/58) as Int
-                        d.vue.controleur.plateau.cars[ind].x += Int(round(yy/58))
-                        d.vue.draw(d.ImgArea)
-                    }
+					 let yy = -inipoint.y + pointend.y
+					if (diffY<0) {
+						sign = "plus"
+						if(d.vue.controleur.plateau.cars[ind].isAllowed(sign,val: abs(Int(round(yy/58)))+1)){
+							d.vue.controleur.plateau.cars[ind].x += -Int(round(yy/58))
+							d.vue.draw(d.ImgArea)
+						}
+					}
+					else {
+						sign = "minus"
+						if(d.vue.controleur.plateau.cars[ind].isAllowed(sign,val: abs(Int(round(yy/58)))+1)){
+							d.vue.controleur.plateau.cars[ind].x += -Int(round(yy/58))
+							d.vue.draw(d.ImgArea)
+						}
+					}
                 }
                 
             }
@@ -211,5 +233,38 @@ class MyView:NSImageView{
         }
         return here
     }
+	func popUpMenu(event: NSEvent) {
+		let theMenu = NSMenu(title: "Contextual menu")
+		theMenu.addItemWithTitle("change image", action: #selector(self.action1(_:)), keyEquivalent: "")
+		theMenu.addItemWithTitle("Action 2", action: #selector(self.action2(_:)), keyEquivalent: "")
+		//theMenu.autoenablesItems = false
+		NSMenu.popUpContextMenu(theMenu, withEvent:event, forView:self)
+	}
+	func action1(sender: AnyObject) {
+		var path = ""
+		Swift.print("Urk, action 2")
+		let openDlg = NSOpenPanel()
+		openDlg.allowsMultipleSelection = false
+		openDlg.canChooseFiles = true
+		openDlg.canChooseDirectories = false
+		if openDlg.runModal() == NSOKButton{
+			path = String(openDlg.URL!)
+			
+			for _ in 0..<7{
+				path = String(path.characters.dropFirst())
+			}
+			 let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+			d.vue.controleur.plateau.cars[ind].img = path
+			d.vue.draw(d.ImgArea)
+		}
+
+	}
+	
+	func action2(sender: AnyObject) {
+		Swift.print("Urk, action 2")
+	}
+
+	
+	
 }
 

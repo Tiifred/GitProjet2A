@@ -89,7 +89,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             vue.pat = String(vue.pat.characters.dropFirst())
         }
             
-        vue.carnumber=0
+        vue.controleur.plateau.cars[0].img = vue.pat
+		
         vue.draw(self.ImgArea)
         }
     }
