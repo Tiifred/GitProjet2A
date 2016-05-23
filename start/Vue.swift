@@ -23,11 +23,9 @@ class Vue{
     var current=0
     var pat = ""
     var carnumber = 1500
-    // for i in 0..controleur.plateau.cars.count{
-    
-    //}
-    var grid = NSImage(named: "grid")
 
+    var grid = NSImage(named: "grid")
+    
     init(){
         
     }
@@ -118,10 +116,6 @@ class Vue{
 
                     
 
-                    let txtView = NSTextView(frame:NSRect(x: x1+50 , y: y1+5, width: 30, height: 30))
-					txtView.drawsBackground = false
-                    txtView.selectable = false
-                    txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)
                     }
@@ -132,14 +126,6 @@ class Vue{
                         imgtmp.lockFocus()
                         number.drawAtPoint(point,withAttributes: nil)
                         imgtmp.unlockFocus()
-
-                        
-                   /*     var lbl : NSLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 20)];
-                        
-                        [yourLabel setTextColor:[UIColor blackColor]];
-                        [yourLabel setBackgroundColor:[UIColor clearColor]];
-                        [yourLabel setFont:[UIFont fontWithName: @"Trebuchet MS" size: 14.0f]];
-                        [yourSuperView addSubview:yourLabel];*/
                         ImgArea.addSubview(imgView)
                     }
                     else{
@@ -151,17 +137,14 @@ class Vue{
 
                         ImgArea.addSubview(imgView)
                     }
-				//	ImgArea.addSubview(txtView)
+				
                     
                 }
                 else{
                     let x1 = (margegauche + (1 + 2*controleur.plateau.cars[i].y)*interstice + controleur.plateau.cars[i].y*carreau)
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x)*interstice + (6-controleur.plateau.cars[i].x-1)*57 )
                     
-                    let txtView = NSTextView(frame:NSRect(x: x1+80 , y: y1+5, width: 35, height: 30))
-					txtView.drawsBackground = false
-                    txtView.selectable = false
-                    txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
+                    
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 180, height: 57))
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)
@@ -188,17 +171,14 @@ class Vue{
 
                         ImgArea.addSubview(imgView)
                     }
-					//ImgArea.addSubview(txtView)
-					//imgView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
+					
                 }
             }else{
                 if(controleur.plateau.cars[i].length==2){
                     let x1 = (margegauche + (1 + 2*controleur.plateau.cars[i].y)*interstice + controleur.plateau.cars[i].y*carreau)
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x-1)*interstice + (6-controleur.plateau.cars[i].x-2)*57 )
                     
-                    let txtView = NSTextView(frame:NSRect(x: x1+20 , y: y1+40, width: 30, height: 30))
-					txtView.drawsBackground = false
-                    txtView.selectable = false
+       
                     let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 57, height: 119))
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)
@@ -224,17 +204,13 @@ class Vue{
 
                         ImgArea.addSubview(imgView)
                     }
-				//	ImgArea.addSubview(txtView)
-					//txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
+
                     
                 }
                 else{
                     let x1 = (margegauche + (1 + 2*controleur.plateau.cars[i].y)*interstice + controleur.plateau.cars[i].y*carreau)
                     let y1 = (margebas + (6-controleur.plateau.cars[i].x-2)*interstice + (6-controleur.plateau.cars[i].x-3)*57 )
-                    let txtView = NSTextView(frame:NSRect(x: x1+20 , y: y1+70 ,width: 30, height: 30))
-					txtView.drawsBackground = false
-                    txtView.selectable = false
-                    let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 57, height: 180))
+                                       let imgView = NSImageView(frame:NSRect(x: x1 , y: y1, width: 57, height: 180))
                     if(controleur.plateau.cars[i].orientation == "f"){
                         imgtmp = imgtmp.imageRotatedByDegreess(180)
                     }
@@ -257,8 +233,7 @@ class Vue{
 
                         ImgArea.addSubview(imgView)
                     }
-					//ImgArea.addSubview(txtView)
-					//txtView.textStorage?.appendAttributedString(NSAttributedString(string: "\(i)"))
+					
                 }
                 
             }

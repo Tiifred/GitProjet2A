@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var container: NSTextField!
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-       // window.acceptsMouseMovedEvents = true
+      
         ImgArea.becomeFirstResponder()
 		ImgArea.editable = true
 		
@@ -49,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         vue.controleur.plateau.detectnblvl()
         container.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl)"
-		window.initialFirstResponder = self.ImgArea
+		//window.initialFirstResponder = self.ImgArea
 		
         intro()
     }
@@ -63,7 +63,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
 	var vue = Vue()
-    //var mv = MyView()
+    //var test
     var aaa = ""
     var movecontains = ""
     let textFieldX = NSTextView()
@@ -88,6 +88,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         for _ in 0..<7{
             vue.pat = String(vue.pat.characters.dropFirst())
         }
+            
         vue.carnumber=0
         vue.draw(self.ImgArea)
         }
@@ -160,6 +161,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         addcar = false
 	}
 	
+    func popUpMenu(event: NSEvent) {
+        let theMenu = NSMenu(title: "Contextual menu")
+        theMenu.addItemWithTitle("Action 1", action: #selector(self.action1(_:)), keyEquivalent: "")
+        theMenu.addItemWithTitle("Action 2", action: #selector(self.action2(_:)), keyEquivalent: "")
+        //theMenu.autoenablesItems = false
+        NSMenu.popUpContextMenu(theMenu, withEvent:event, forView:ImgArea)
+    }
+    func action1(sender: AnyObject) {
+        Swift.print("Urk, action 2")
+    }
+    
+    func action2(sender: AnyObject) {
+        Swift.print("Urk, action 2")
+    }
+
 	
 	
 	

@@ -9,7 +9,10 @@
 import Foundation
 import Cocoa
 
-class WriteIn : NSString {
-	
-   
+var vu = Vue()
+
+class WriteIn {
+    
+    
+    
 }
