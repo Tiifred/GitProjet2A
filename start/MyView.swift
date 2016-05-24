@@ -56,7 +56,7 @@ class MyView:NSImageView{
 	
 	override func rightMouseUp(theEvent: NSEvent) {
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-		if(d.isallow){
+		if(!d.isallow){
 		pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 		pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
 		inipoint.x = (theEvent.locationInWindow.x - self.frame.origin.x)
@@ -105,7 +105,7 @@ class MyView:NSImageView{
 					
 					if(subviews[0].frame.contains(winPoint)){
 						Swift.print("you win  !")
-                        finish()
+                        d.finish()
 						d.isallow = false
 					}
 					
@@ -343,27 +343,7 @@ class MyView:NSImageView{
 		d.vue.draw(d.ImgArea)
 	}
 	
-    func finish(){
-        let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-        
-        let win = NSWindow(contentRect: NSMakeRect(100, 100, 300, 30),
-                           styleMask: 1 | 2 | 4 | 8,
-                           backing: NSBackingStoreType.Buffered, defer: true);
-        
-        win.title = "Fin de la partie";
-        win.center();
-        
-        
-        let multi = NSTextField(frame: NSMakeRect(0,0,300,30))
-        win.contentView!.addSubview(multi)
-        multi.editable = false
-        multi.backgroundColor = NSColor.clearColor()
-        multi.stringValue = "vous avez terminé la partie, félicitations"
-        
-        
-        //Add the window to the main viewer
-       d.window.addChildWindow(win, ordered:NSWindowOrderingMode.Above);
-    }
+
 	
 	
 }

@@ -29,6 +29,7 @@ class Controleur{
     var stop = 0
 	var calculed = false
     var found = false
+	var add = false
 	
 	init(){
 		tablist.append(self.plateau)
@@ -309,19 +310,16 @@ class Controleur{
 
     func addManualy(x:Int, y:Int, Vertical:Bool, image:String, length:Int){
         var i = 0
-        var okk = true
+		var okk = true
         i = plateau.cars.count + 1
-        
         let c = Car(Id: i, length: length, X: x, Y: y, isVertical: Vertical, p: plateau, ori: "r", img: image)
         plateau.update()
         for k in 0..<length{
             if (!c.isVertical && plateau.table[c.x][c.y+k] != -1){
                okk = false
-                // plateau.cars.append(c)
             }
              if (c.isVertical && plateau.table[c.x+k][c.y] != -1) {
                 okk = false
-                // plateau.cars.append(c)
             }
         }
         if(okk){
@@ -336,8 +334,12 @@ class Controleur{
             stop = 0
             calculed = false
             tablist.append(self.plateau)
+			add = true
             
         }
+		else{
+			add = false
+		}
     }
 
 	
@@ -425,6 +427,8 @@ class Controleur{
         for _ in 0..<plateau.cars.count-1{
 		plateau.cars.removeLast();
         }
+		plateau.cars[0].y=0
+		tablist.append(self.plateau)
 		plateau.update()
 
 		calculed = false

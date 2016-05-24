@@ -33,6 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var label: NSTextField!
 	@IBOutlet weak var presentation: NSTextField!
     @IBOutlet weak var container: NSTextField!
+	var correspond = [String]()
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
       
@@ -49,7 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		supprimer.placeholderString = "n°"
         vue.controleur.plateau.detectnblvl()
         container.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl)"
-		
+		correspond = vue.controleur.plateau.corresp
         intro()
     }
     
@@ -119,6 +120,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 supprimer.addItemWithObjectValue("\(i)")
             }
 		}
+		if(playbutton.state == 1){
+			isallow = true
+		}
+		else {
+			isallow = false
+		}
+		
     }
 
     @IBAction func createlvl(sender: NSButton) {
@@ -127,6 +135,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		afficheMove.stringValue = ""
 		presentation.stringValue = "Nouveau niveau"
 		supprimer.removeAllItems()
+		vue.controleur.plateau.corresp = correspond
+		if(playbutton.state == 1){
+			isallow = true
+		}
+		else {
+			isallow = false
+		}
     }
 
 
@@ -140,6 +155,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		for i in 1..<vue.controleur.plateau.cars.count{
 			supprimer.addItemWithObjectValue("\(i)")
 		}
+		if(playbutton.state == 1){
+			isallow = true
+		}
+		else {
+			isallow = false
+		}
 	}
     @IBAction func previousLvl(sender: NSButton) {
         vue.carnumber = 1500
@@ -152,6 +173,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         for i in 1..<vue.controleur.plateau.cars.count{
             supprimer.addItemWithObjectValue("\(i)")
         }
+		
+		if(playbutton.state == 1){
+			isallow = true
+		}
+		else {
+			isallow = false
+		}
     }
 	
 	@IBAction func searchsolution(sender: NSButton) {
@@ -162,26 +190,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         addcar = false
 	}
 	
-    func popUpMenu(event: NSEvent) {
-        let theMenu = NSMenu(title: "Contextual menu")
-        theMenu.addItemWithTitle("Action 1", action: #selector(self.action1(_:)), keyEquivalent: "")
-        theMenu.addItemWithTitle("Action 2", action: #selector(self.action2(_:)), keyEquivalent: "")
-        //theMenu.autoenablesItems = false
-        NSMenu.popUpContextMenu(theMenu, withEvent:event, forView:ImgArea)
-    }
-    func action1(sender: AnyObject) {
-        Swift.print("Urk, action 2")
-    }
-    
-    func action2(sender: AnyObject) {
-        Swift.print("Urk, action 2")
-    }
-
 	
-	
-	
-	
-    @IBAction func newWind(sender: NSButton) {
+    @IBAction func newWind(sender: NSButton) { // adding a car
         //Declare new subwindow
         let win = NSWindow(contentRect: NSMakeRect(100, 100, 800, 200),
                            styleMask: 1 | 2 | 4 | 8,
@@ -190,19 +200,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         win.title = "Add a Vehicule";
         win.center();
         
-        let butcar = NSButton(frame: NSMakeRect(150,50,90,30))
+        let butcar = NSButton(frame: NSMakeRect(300,50,90,30))
         butcar.title = "adding a car"
         butcar.target = self
         butcar.action = #selector(AppDelegate.myAction(_:))
         win.contentView!.addSubview(butcar)
         
-        let buttruck = NSButton(frame: NSMakeRect(300,50,90,30))
+        let buttruck = NSButton(frame: NSMakeRect(450,50,90,30))
         buttruck.title = "adding a Truck"
         buttruck.target = self
         buttruck.action = #selector(AppDelegate.myAction2(_:))
         win.contentView!.addSubview(buttruck)
+		
+		let imv = NSImageView(frame: NSMakeRect(100,20,100,100))
+		let filePath1 = "/Users/projet2a/Documents/GitProjet2A/Images/echelle.png"
+		let file1 = NSURL(fileURLWithPath: filePath1, isDirectory: false)
+
+		imv.image = NSImage(byReferencingURL: file1)
+		 win.contentView!.addSubview(imv)
         
-        cbox = NSComboBox(frame: NSMakeRect(400,100,150,30))
+        cbox = NSComboBox(frame: NSMakeRect(400,150,150,30))
         cbox.addItemWithObjectValue("CarH-blue")
         cbox.addItemWithObjectValue("CarH-cream")
         cbox.addItemWithObjectValue("CarH-darkblue")
@@ -225,10 +242,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         cbox.addItemWithObjectValue("TruckV-blue")
         win.contentView!.addSubview(cbox)
         
-        cboxX = NSComboBox(frame: NSMakeRect(0,100,150,30))
+        cboxX = NSComboBox(frame: NSMakeRect(5,150,150,30))
         cbox.placeholderString = "Image"
         cboxX.placeholderString = " Position x"
-        cboxY = NSComboBox(frame: NSMakeRect(200,100,150,30))
+        cboxY = NSComboBox(frame: NSMakeRect(200,150,150,30))
         cboxY.placeholderString = "position Y"
         for j in 0..<vue.controleur.plateau.lignes{
             cboxX.addItemWithObjectValue(j)
@@ -236,7 +253,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         for j in 0..<vue.controleur.plateau.colonnes{
             cboxY.addItemWithObjectValue(j)
         }
-         cboxval = NSComboBox(frame: NSMakeRect(600,100,150,30))
+         cboxval = NSComboBox(frame: NSMakeRect(600,150,150,30))
         cboxval.placeholderString = "Orientation"
             cboxval.addItemWithObjectValue("v")
             cboxval.addItemWithObjectValue("h")
@@ -244,6 +261,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
          win.contentView!.addSubview(cboxX)
          win.contentView!.addSubview(cboxY)
          win.contentView!.addSubview(cboxval)
+		
+		
         
         //Add the window to the main viewer
         window.addChildWindow(win, ordered:NSWindowOrderingMode.Above);
@@ -268,6 +287,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         cboxY.stringValue = ""
         cboxval.stringValue = ""
         }
+		else {
+			seterror("Veuillez remplir tous les champs ")
+		}
+		if(!vue.controleur.add){
+			seterror("Cette position est occupée")
+		}
     }
     
     func myAction2(obj:AnyObject?){
@@ -286,6 +311,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         cboxY.stringValue = ""
         cboxval.stringValue = ""
     }
+		else {
+			seterror("Veuillez remplir tous les champs")
+		}
     }
     
     @IBAction func play(sender: NSButton) {
@@ -386,7 +414,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 	
     @IBAction func resetlvl(sender: NSButton) {
-       vue.draw(self.ImgArea)
+		vue.controleur.inilvl(vue.controleur.plateau.lvl1)
+		vue.draw(self.ImgArea)
+		container.stringValue = ""
+		presentation.stringValue = "Vous êtes au niveau \(vue.controleur.plateau.lvl1) "
+		afficheMove.stringValue = ""
+		supprimer.removeAllItems();
+		if(vue.controleur.plateau.cars.count != 0){
+			for i in 1..<vue.controleur.plateau.cars.count{
+				supprimer.addItemWithObjectValue("\(i)")
+			}
+		}
+		if(playbutton.state == 1){
+			isallow = true
+		}
+		else {
+			isallow = false
+		}
+
     }
 	
 	func intro(){
@@ -414,4 +459,49 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	}
 	
 
+	func finish(){
+		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+		
+		let win = NSWindow(contentRect: NSMakeRect(100, 100, 300, 30),
+		                   styleMask: 1 | 2 | 4 | 8,
+		                   backing: NSBackingStoreType.Buffered, defer: true);
+		
+		win.title = "Fin de la partie";
+		win.center();
+		
+		
+		let multi = NSTextField(frame: NSMakeRect(0,0,300,30))
+		win.contentView!.addSubview(multi)
+		multi.editable = false
+		multi.backgroundColor = NSColor.clearColor()
+		multi.stringValue = "vous avez terminé la partie, félicitations"
+		
+		d.window.addChildWindow(win, ordered:NSWindowOrderingMode.Above);
+		let controller = NSWindowController(window: win);
+		controller.showWindow(self)
+	
+	}
+	
+	func seterror(str:String){
+		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+		
+		let win = NSWindow(contentRect: NSMakeRect(100, 100, 300, 30),
+		                   styleMask: 1 | 2 | 4 | 8,
+		                   backing: NSBackingStoreType.Buffered, defer: true);
+		
+		win.title = "erreur création véhicule";
+		win.center();
+		
+		
+		let multi = NSTextField(frame: NSMakeRect(0,0,300,30))
+		win.contentView!.addSubview(multi)
+		multi.editable = false
+		multi.backgroundColor = NSColor.clearColor()
+		multi.stringValue = str
+		
+		d.window.addChildWindow(win, ordered:NSWindowOrderingMode.Above);
+		let controller = NSWindowController(window: win);
+		controller.showWindow(self)
+		
+	}
 }
