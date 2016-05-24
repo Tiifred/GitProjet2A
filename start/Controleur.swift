@@ -418,13 +418,13 @@ class Controleur{
 	
 	func create(){
 		tablist = [Plateau]()
-		current = [Plateau]()
 		next = [Plateau]()
 		b = true
 		path = [Int]()
 		stop = 0
-		plateau.cars.removeAll();
-		plateau.cars.append(Car(Id: 1, length: 2, X: 2, Y: 0, isVertical: false, p: plateau, ori: "r", img: "CarV-X"))
+        for _ in 0..<plateau.cars.count-1{
+		plateau.cars.removeLast();
+        }
 		plateau.update()
 
 		calculed = false

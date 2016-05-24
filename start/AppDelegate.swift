@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var reset: NSButton!
     @IBOutlet weak var solution: NSButton!
+    @IBOutlet weak var playbutton: NSButton!
     
     @IBOutlet weak var previousmove: NSButton!
     
@@ -46,10 +47,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			supprimer.addItemWithObjectValue("\(i)")
 		}
 		supprimer.placeholderString = "n°"
-        
         vue.controleur.plateau.detectnblvl()
         container.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl)"
-		//window.initialFirstResponder = self.ImgArea
 		
         intro()
     }
@@ -102,6 +101,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		vue.controleur.plateau.update()
 		addcar = true
 		vue.draw(ImgArea)
+            supprimer.removeItemAtIndex(vue.controleur.plateau.cars.count-1)
             supprimer.stringValue = ""
         }
 	}
@@ -122,7 +122,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @IBAction func createlvl(sender: NSButton) {
-        vue.carnumber = 1500
         vue.controleur.create()
         vue.draw(self.ImgArea)
 		afficheMove.stringValue = ""
@@ -301,7 +300,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         createlevel.hidden = !createlevel.hidden
         reset.hidden = !reset.hidden
         supprimer.hidden = !supprimer.hidden
-       isallow = !isallow
+        if(playbutton.state == 1){
+            isallow = true
+        }
+        else {
+            isallow = false
+        }
     }
   
     @IBAction func savelvl(sender: NSButton) {

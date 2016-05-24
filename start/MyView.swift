@@ -28,7 +28,8 @@ class MyView:NSImageView{
 		
 		var ca = 0
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-		
+		Swift.print("\(self.frame.width)")
+
 		if(d.isallow){
 			Vue = NSImageView()
 			pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
@@ -37,14 +38,11 @@ class MyView:NSImageView{
 			inipoint.y = (theEvent.locationInWindow.y - self.frame.origin.y)
 			
 			for v in self.subviews{
-				
 				if (v .isKindOfClass(NSImageView) && v != self){
-					
 					if (v.frame.contains(pointstart)){
 						Vue = v
 						detected = true
 						ind = ca
-						
 					}
 				}
 				ca += 1
@@ -107,6 +105,7 @@ class MyView:NSImageView{
 					
 					if(subviews[0].frame.contains(winPoint)){
 						Swift.print("you win  !")
+                        finish()
 						d.isallow = false
 					}
 					
@@ -250,6 +249,13 @@ class MyView:NSImageView{
 				}
 			}
 		}
+        if(self.subviews.count == 1){
+            
+    
+            
+            if(self.subviews[0].frame.origin.x+diffX<27){here = true}
+           if(self.subviews[0].frame.origin.x+self.subviews[0].frame.width+diffX>self.frame.width-27){here = true}
+        }
 		return here
 	}
 	func popUpMenu(event: NSEvent) {
@@ -283,11 +289,6 @@ class MyView:NSImageView{
 	func action2(sender: AnyObject) {
 		var boolean = true
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-		Swift.print("Rotation 90")
-		Swift.print("ind = \(ind)")
-		Swift.print("\(d.vue.controleur.plateau.afficheTab())")
-		
-		
 		if(ind != 0){
 			if (!d.vue.controleur.plateau.cars[ind].isVertical){
 				
@@ -330,7 +331,6 @@ class MyView:NSImageView{
 	}
 	
 	func action3(sender: AnyObject) {
-		Swift.print("rotation 180")
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
 		
 		if (d.vue.controleur.plateau.cars[ind].orientation == "r"){
@@ -343,6 +343,27 @@ class MyView:NSImageView{
 		d.vue.draw(d.ImgArea)
 	}
 	
+    func finish(){
+        let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+        
+        let win = NSWindow(contentRect: NSMakeRect(100, 100, 300, 30),
+                           styleMask: 1 | 2 | 4 | 8,
+                           backing: NSBackingStoreType.Buffered, defer: true);
+        
+        win.title = "Fin de la partie";
+        win.center();
+        
+        
+        let multi = NSTextField(frame: NSMakeRect(0,0,300,30))
+        win.contentView!.addSubview(multi)
+        multi.editable = false
+        multi.backgroundColor = NSColor.clearColor()
+        multi.stringValue = "vous avez terminé la partie, félicitations"
+        
+        
+        //Add the window to the main viewer
+       d.window.addChildWindow(win, ordered:NSWindowOrderingMode.Above);
+    }
 	
 	
 }
