@@ -12,7 +12,6 @@ import Cocoa
 
 
 class MyView:NSImageView{
-	var isallow = true
 	var ind = 0
 	
 	var diffX :CGFloat = 0.0
@@ -28,7 +27,9 @@ class MyView:NSImageView{
 	override func mouseDown(theEvent: NSEvent) {
 		
 		var ca = 0
-		if(isallow){
+		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+		
+		if(d.isallow){
 			Vue = NSImageView()
 			pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 			pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
@@ -56,6 +57,8 @@ class MyView:NSImageView{
 	}
 	
 	override func rightMouseUp(theEvent: NSEvent) {
+		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+		if(d.isallow){
 		pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 		pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
 		inipoint.x = (theEvent.locationInWindow.x - self.frame.origin.x)
@@ -71,48 +74,62 @@ class MyView:NSImageView{
 			}
 			ca += 1
 		}
-		
+		}
 	}
 	
 	
 	override func mouseUp(theEvent: NSEvent) {
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
 		var sign = ""
-		
-		if(isallow){
+		var b = false
+		if(d.isallow){
 			if(detected){
 				if (Vue.frame.width>Vue.frame.height){
-					if (diffX<0) { sign = "minus"}
-					else {sign = "plus"}
-					
-					let xx = -inipoint.x + pointend.x
-					Swift.print("\(abs(Int(round(xx/58))))")
-					if(d.vue.controleur.plateau.cars[ind].isAllowed(sign,val: abs(Int(round(xx/58)))+1)){
-						d.vue.controleur.plateau.cars[ind].y += Int(round(xx/58))
-						d.vue.draw(d.ImgArea)
+					for index in 0..<10{
+						let x1 = (24 + (1 + 2*index)*4 + index*54)
+						
+						if (Vue.frame.origin.x - CGFloat(x1) < CGFloat(32) && Vue.frame.origin.x - CGFloat(x1) > CGFloat(0) && !b){
+							
+							
+							d.vue.controleur.plateau.cars[ind].y = (abs(Int(round((CGFloat(x1)-24)/60))))
+							d.vue.draw(d.ImgArea)
+							
+							b = true
+							
+						}
+						if (Vue.frame.origin.x - CGFloat(x1) > -32 && Vue.frame.origin.x - CGFloat(x1) < 0 && !b){
+							d.vue.controleur.plateau.cars[ind].y = (abs(Int(round((CGFloat(x1)-24)/60))))
+							d.vue.draw(d.ImgArea)
+							
+							b = true
+						}
 					}
+					
 					if(subviews[0].frame.contains(winPoint)){
 						Swift.print("you win  !")
-						isallow = false
+						d.isallow = false
 					}
 					
 				}
 				else {
-					let yy = -inipoint.y + pointend.y
-					if (diffY<0) {
-						sign = "plus"
-						if(d.vue.controleur.plateau.cars[ind].isAllowed(sign,val: abs(Int(round(yy/58)))+2)){
-							d.vue.controleur.plateau.cars[ind].x += -Int(round(yy/58))
+					for index in 0..<10{
+						let y1 = (45 + (1+2*index)*4 + (index*54))
+						if (Vue.frame.origin.y - CGFloat(y1) < CGFloat(32) && Vue.frame.origin.y - CGFloat(y1) > CGFloat(0) && !b){
+							Swift.print("\(abs(Int(round((CGFloat(y1)-40)/58))))")
+							d.vue.controleur.plateau.cars[ind].x = 6-(abs(Int(round((CGFloat(y1)-40)/60))))-d.vue.controleur.plateau.cars[ind].length
 							d.vue.draw(d.ImgArea)
+							b = true
+							
+						}
+						if (Vue.frame.origin.y - CGFloat(y1) > -32 && Vue.frame.origin.y - CGFloat(y1) < 0 && !b){
+							Swift.print("\(abs(Int(round((CGFloat(y1)-40)/58))))")
+							d.vue.controleur.plateau.cars[ind].x = 6-(abs(Int(round((CGFloat(y1)-40)/60))))-d.vue.controleur.plateau.cars[ind].length
+							d.vue.draw(d.ImgArea)
+							b = true
+							
 						}
 					}
-					else {
-						sign = "minus"
-						if(d.vue.controleur.plateau.cars[ind].isAllowed(sign,val: abs(Int(round(yy/58)))+1)){
-							d.vue.controleur.plateau.cars[ind].x += -Int(round(yy/58))
-							d.vue.draw(d.ImgArea)
-						}
-					}
+					
 				}
 				
 			}
@@ -125,7 +142,8 @@ class MyView:NSImageView{
 	
 	
 	override func mouseDragged(theEvent: NSEvent) {
-		if(isallow){
+		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+		if(d.isallow){
 			if(detected){
 				pointend.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 				pointend.y = (theEvent.locationInWindow.y - self.frame.origin.y)
@@ -266,32 +284,48 @@ class MyView:NSImageView{
 		var boolean = true
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
 		Swift.print("Rotation 90")
+		Swift.print("ind = \(ind)")
+		Swift.print("\(d.vue.controleur.plateau.afficheTab())")
+		
+		
 		if(ind != 0){
-		if (d.vue.controleur.plateau.cars[ind].isVertical){
-		for i in 0..<d.vue.controleur.plateau.cars[ind].length{
-		if((d.vue.controleur.plateau.table[d.vue.controleur.plateau.cars[self.ind].x][d.vue.controleur.plateau.cars[self.ind].y+i] != -1) && (d.vue.controleur.plateau.table[d.vue.controleur.plateau.cars[self.ind].x][d.vue.controleur.plateau.cars[self.ind].y+i] != ind) ) {
-		boolean = false
-		}
-		}
-		
-		if(boolean){
-		d.vue.controleur.plateau.cars[self.ind].isVertical = !d.vue.controleur.plateau.cars[self.ind].isVertical
-		d.vue.draw(d.ImgArea)
-		}
-		}
-		else {
-		
-		for i in 0..<d.vue.controleur.plateau.cars[ind].length{
-		if((d.vue.controleur.plateau.table[d.vue.controleur.plateau.cars[self.ind].x+i][d.vue.controleur.plateau.cars[self.ind].y] != -1) && (d.vue.controleur.plateau.table[d.vue.controleur.plateau.cars[self.ind].x+i][d.vue.controleur.plateau.cars[self.ind].y] != ind) ) {
-		boolean = false
-		}
-		}
-		
-		if(boolean){
-		d.vue.controleur.plateau.cars[self.ind].isVertical = !d.vue.controleur.plateau.cars[self.ind].isVertical
-		d.vue.draw(d.ImgArea)
-		}
-		}
+			if (!d.vue.controleur.plateau.cars[ind].isVertical){
+				
+				for i in 0..<d.vue.controleur.plateau.cars[ind].length{
+					
+					if(d.vue.controleur.plateau.cars[ind].x+i<6){
+						if((d.vue.controleur.plateau.table[d.vue.controleur.plateau.cars[ind].x+i][d.vue.controleur.plateau.cars[ind].y] != -1) && (d.vue.controleur.plateau.table[d.vue.controleur.plateau.cars[ind].x+i][d.vue.controleur.plateau.cars[ind].y] != ind+1)) {
+							boolean = false
+						}
+					}
+					else {
+						boolean = false
+					}
+				}
+				
+				if(boolean){
+					d.vue.controleur.plateau.cars[ind].isVertical = !d.vue.controleur.plateau.cars[ind].isVertical
+					d.vue.draw(d.ImgArea)
+				}
+			}
+			else {
+				
+				for i in 0..<d.vue.controleur.plateau.cars[ind].length{
+					if(d.vue.controleur.plateau.cars[ind].y+i<6){
+						if((d.vue.controleur.plateau.table[d.vue.controleur.plateau.cars[ind].x][d.vue.controleur.plateau.cars[ind].y+i] != -1) && (d.vue.controleur.plateau.table[d.vue.controleur.plateau.cars[ind].x][d.vue.controleur.plateau.cars[ind].y+i] != ind+1)) {
+							boolean = false
+						}
+					}
+					else {
+						boolean = false
+					}
+				}
+				
+				if(boolean){
+					d.vue.controleur.plateau.cars[self.ind].isVertical = !d.vue.controleur.plateau.cars[self.ind].isVertical
+					d.vue.draw(d.ImgArea)
+				}
+			}
 		}
 	}
 	

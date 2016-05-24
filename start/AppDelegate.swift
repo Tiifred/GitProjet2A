@@ -75,6 +75,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var cboxY = NSComboBox()
     var memoMove = [String]()
     var addcar = false
+	var isallow = false
 	
 
     @IBAction func changeImage(sender: NSButton) {
@@ -300,7 +301,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         createlevel.hidden = !createlevel.hidden
         reset.hidden = !reset.hidden
         supprimer.hidden = !supprimer.hidden
-       // mv.isallow = !mv.isallow
+       isallow = !isallow
     }
   
     @IBAction func savelvl(sender: NSButton) {
