@@ -19,36 +19,36 @@ class MyView:NSImageView{
 	var detected = false
 	
 	var Vue = NSView()
-	var inipoint = CGPoint(x:0,y:0)
 	var pointstart = CGPoint(x:0,y:0)
 	var pointend = CGPoint(x:0,y:0)
 	let winPoint = CGPoint(x:370,y:260)
 	
 	override func mouseDown(theEvent: NSEvent) {
-		
+					Swift.print("mouse down start")
+		Vue = NSImageView()
+
 		var ca = 0
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-		Swift.print("\(self.frame.width)")
 
 		if(d.isallow){
-			Vue = NSImageView()
 			pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 			pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
-			inipoint.x = (theEvent.locationInWindow.x - self.frame.origin.x)
-			inipoint.y = (theEvent.locationInWindow.y - self.frame.origin.y)
-			
+			Swift.print("\(pointstart.x)   \(pointstart.y)")
+			Swift.print("\(theEvent.locationInWindow.x)   \(theEvent.locationInWindow.y)")
 			for v in self.subviews{
 				if (v .isKindOfClass(NSImageView) && v != self){
 					if (v.frame.contains(pointstart)){
 						Vue = v
 						detected = true
 						ind = ca
+						Swift.print("vue numéro \(ind)")
 					}
 				}
 				ca += 1
 			}
 			
 		}
+		Swift.print("mouse down end\n")
 	}
 	override var acceptsFirstResponder: Bool{
 		return true
@@ -59,8 +59,6 @@ class MyView:NSImageView{
 		if(!d.isallow){
 		pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 		pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
-		inipoint.x = (theEvent.locationInWindow.x - self.frame.origin.x)
-		inipoint.y = (theEvent.locationInWindow.y - self.frame.origin.y)
 		var ca = 0
 		for v in self.subviews{
 			if (v .isKindOfClass(NSImageView) && v != self){
@@ -77,8 +75,8 @@ class MyView:NSImageView{
 	
 	
 	override func mouseUp(theEvent: NSEvent) {
+					Swift.print("mouse up start")
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-		var sign = ""
 		var b = false
 		if(d.isallow){
 			if(detected){
@@ -87,8 +85,7 @@ class MyView:NSImageView{
 						let x1 = (24 + (1 + 2*index)*4 + index*54)
 						
 						if (Vue.frame.origin.x - CGFloat(x1) < CGFloat(32) && Vue.frame.origin.x - CGFloat(x1) > CGFloat(0) && !b){
-							
-							
+							Swift.print("mouse up hori : vue numéro \(ind) ")
 							d.vue.controleur.plateau.cars[ind].y = (abs(Int(round((CGFloat(x1)-24)/60))))
 							d.vue.draw(d.ImgArea)
 							
@@ -97,6 +94,7 @@ class MyView:NSImageView{
 						}
 						if (Vue.frame.origin.x - CGFloat(x1) > -32 && Vue.frame.origin.x - CGFloat(x1) < 0 && !b){
 							d.vue.controleur.plateau.cars[ind].y = (abs(Int(round((CGFloat(x1)-24)/60))))
+							Swift.print("mouse up hori vue numéro \(ind)")
 							d.vue.draw(d.ImgArea)
 							
 							b = true
@@ -104,7 +102,6 @@ class MyView:NSImageView{
 					}
 					
 					if(subviews[0].frame.contains(winPoint)){
-						Swift.print("you win  !")
                         d.finish()
 						d.isallow = false
 					}
@@ -114,27 +111,29 @@ class MyView:NSImageView{
 					for index in 0..<10{
 						let y1 = (45 + (1+2*index)*4 + (index*54))
 						if (Vue.frame.origin.y - CGFloat(y1) < CGFloat(32) && Vue.frame.origin.y - CGFloat(y1) > CGFloat(0) && !b){
-							Swift.print("\(abs(Int(round((CGFloat(y1)-40)/58))))")
+							Swift.print("mouse up veri : vue numéro \(ind)")
 							d.vue.controleur.plateau.cars[ind].x = 6-(abs(Int(round((CGFloat(y1)-40)/60))))-d.vue.controleur.plateau.cars[ind].length
 							d.vue.draw(d.ImgArea)
 							b = true
 							
 						}
 						if (Vue.frame.origin.y - CGFloat(y1) > -32 && Vue.frame.origin.y - CGFloat(y1) < 0 && !b){
-							Swift.print("\(abs(Int(round((CGFloat(y1)-40)/58))))")
+							Swift.print("mouse up verti vue numéro \(ind)\n\n")
 							d.vue.controleur.plateau.cars[ind].x = 6-(abs(Int(round((CGFloat(y1)-40)/60))))-d.vue.controleur.plateau.cars[ind].length
 							d.vue.draw(d.ImgArea)
 							b = true
-							
 						}
 					}
-					
 				}
-				
 			}
-			Vue = NSView()
 		}
+		Vue = NSView()
 		ind = 0
+		pointstart = NSPoint(x: 0, y: 0)
+		pointend = NSPoint(x: 0, y: 0)
+		diffX = 0
+		diffY = 0
+					Swift.print("mouse up end\n")
 	}
 	
 	
@@ -268,7 +267,6 @@ class MyView:NSImageView{
 	}
 	func action1(sender: AnyObject) {
 		var path = ""
-		Swift.print("Urk, action 2")
 		let openDlg = NSOpenPanel()
 		openDlg.allowsMultipleSelection = false
 		openDlg.canChooseFiles = true
