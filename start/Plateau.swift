@@ -103,7 +103,7 @@ class Plateau : Copyable{
         
     }
     
-   func detectnblvl(){
+   /*func detectnblvl(){
         var count = 0
         if let aStreamReader = StreamReader(path:self.path) {
             defer {
@@ -116,7 +116,7 @@ class Plateau : Copyable{
             }
         }
         nbrlvl = count
-    }
+    }*/
     
     func catchlvl(level:Int)->String{
         var strBuffer : String = ""

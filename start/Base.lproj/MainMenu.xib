@@ -887,14 +887,6 @@
                             <action selector="play:" target="Voe-Tx-rLC" id="3Tz-WJ-uRW"/>
                         </connections>
                     </button>
-                    <imageView focusRingType="exterior" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-FL-1DT" customClass="MyView" customModule="start">
-                        <rect key="frame" x="292" y="38" width="421" height="449"/>
-                        <imageCell key="cell" selectable="YES" editable="YES" continuous="YES" focusRingType="exterior" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
-                        <accessibility identifier="idvue"/>
-                        <connections>
-                            <action selector="testIt:" target="Voe-Tx-rLC" id="5Pe-Yh-iwi"/>
-                        </connections>
-                    </imageView>
                     <button hidden="YES" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ABC-Kl-hct">
                         <rect key="frame" x="31" y="335" width="160" height="32"/>
                         <buttonCell key="cell" type="push" title="Recommencer" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QZL-Gs-fhT">
@@ -905,6 +897,14 @@
                             <action selector="resetlvl:" target="Voe-Tx-rLC" id="vm6-bi-tQV"/>
                         </connections>
                     </button>
+                    <imageView focusRingType="exterior" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-FL-1DT">
+                        <rect key="frame" x="292" y="38" width="421" height="449"/>
+                        <imageCell key="cell" selectable="YES" editable="YES" continuous="YES" focusRingType="exterior" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
+                        <accessibility identifier="idvue"/>
+                        <connections>
+                            <action selector="testIt:" target="Voe-Tx-rLC" id="5Pe-Yh-iwi"/>
+                        </connections>
+                    </imageView>
                 </subviews>
             </view>
             <point key="canvasLocation" x="762" y="309.5"/>

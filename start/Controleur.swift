@@ -22,7 +22,7 @@ class Controleur{
 	var tablist = [Plateau]()
     var current = [Plateau]()
     var next = [Plateau]()
-	var plateau = Plateau(lvl:1)
+	var plateau = Plateau(lvl:13)
 	var b = true
 	var path = [Int]()
 	var sol = Plateau(lvl:1)

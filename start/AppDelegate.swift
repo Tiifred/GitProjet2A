@@ -36,8 +36,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	var correspond = [String]()
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-      
-        ImgArea.becomeFirstResponder()
+       vue.controleur.plateau.lecture()
+        /*ImgArea.becomeFirstResponder()
 		ImgArea.editable = true
 		
 		let grid = NSImage(named: "grid")
@@ -48,10 +48,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			supprimer.addItemWithObjectValue("\(i)")
 		}
 		supprimer.placeholderString = "n°"
-        vue.controleur.plateau.detectnblvl()
+       // vue.controleur.plateau.detectnblvl()
         container.placeholderString = "  1 - \(vue.controleur.plateau.nbrlvl)"
 		correspond = vue.controleur.plateau.corresp
-        intro()
+       // intro()*/
     }
     
     
@@ -64,7 +64,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
 	var vue = Vue()
     //var test
-    var aaa = ""
+  /*  var aaa = ""
     var movecontains = ""
     let textFieldX = NSTextView()
     let textFieldY = NSTextView()
@@ -75,10 +75,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var cboxY = NSComboBox()
     var memoMove = [String]()
     var addcar = false
-	var isallow = false
+	var isallow = false*/
 	
 
-    @IBAction func changeImage(sender: NSButton) {
+   /* @IBAction func changeImage(sender: NSButton) {
         let openDlg = NSOpenPanel()
         openDlg.allowsMultipleSelection = false
         openDlg.canChooseFiles = true
@@ -181,14 +181,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			isallow = false
 		}
     }
-	
+	*/
 	@IBAction func searchsolution(sender: NSButton) {
             vue.controleur.mooving()
-            vue.controleur.createPath()
-            vue.fin = vue.controleur.path.count
-            vue.current = vue.fin - 1
-        addcar = false
-	}
+         //   vue.controleur.createPath()
+          //  vue.fin = vue.controleur.path.count
+           // vue.current = vue.fin - 1
+      //  addcar = false
+	}/*
 	
 	
     @IBAction func newWind(sender: NSButton) { // adding a car
@@ -503,5 +503,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		let controller = NSWindowController(window: win);
 		controller.showWindow(self)
 		
-	}
+	}*/
 }
