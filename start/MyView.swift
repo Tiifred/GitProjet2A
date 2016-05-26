@@ -13,6 +13,12 @@ import Cocoa
 
 class MyView:NSImageView{
 	var ind = 0
+	var bug = false
+	var bugcount = 0
+	var bugpoint = CGPoint(x:0,y:0)
+	var bugvue = -1
+	var bugplateau = Plateau(lvl: 1)
+	
 	
 	var diffX :CGFloat = 0.0
 	var diffY :CGFloat = 0.0
@@ -24,31 +30,37 @@ class MyView:NSImageView{
 	let winPoint = CGPoint(x:370,y:260)
 	
 	override func mouseDown(theEvent: NSEvent) {
-					Swift.print("mouse down start")
 		Vue = NSImageView()
-
 		var ca = 0
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-
+		/*if(bugcount != 1){
+			Swift.print("dont change error detected")
+			bugplateau = d.vue.controleur.plateau
+		}*/
+		Swift.print("mouse down start")
+//		for v in 0..<subviews.count{
+//		Swift.print(" vue \(v) : \(d.vue.controleur.plateau.cars[v].x)  \(d.vue.controleur.plateau.cars[v].y)")
+//		}
 		if(d.isallow){
 			pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 			pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
-			Swift.print("\(pointstart.x)   \(pointstart.y)")
-			Swift.print("\(theEvent.locationInWindow.x)   \(theEvent.locationInWindow.y)")
 			for v in self.subviews{
 				if (v .isKindOfClass(NSImageView) && v != self){
 					if (v.frame.contains(pointstart)){
 						Vue = v
 						detected = true
+						
+						bug = true
 						ind = ca
-						Swift.print("vue numéro \(ind)")
+						Swift.print(" vue \(ind) : \(d.vue.controleur.plateau.cars[ind].x)  \(d.vue.controleur.plateau.cars[ind].y)")
+						Swift.print("\(ind) moved")
 					}
 				}
 				ca += 1
 			}
 			
 		}
-		Swift.print("mouse down end\n")
+		
 	}
 	override var acceptsFirstResponder: Bool{
 		return true
@@ -56,6 +68,9 @@ class MyView:NSImageView{
 	
 	override func rightMouseUp(theEvent: NSEvent) {
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+		for v in 0..<subviews.count{
+			Swift.print(" vue \(v) : \(d.vue.controleur.plateau.cars[v].x)  \(d.vue.controleur.plateau.cars[v].y)")
+		}
 		if(!d.isallow){
 		pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 		pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
@@ -76,7 +91,9 @@ class MyView:NSImageView{
 	
 	override func mouseUp(theEvent: NSEvent) {
 					Swift.print("mouse up start")
+		
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+		Swift.print(" vue \(ind) : \(d.vue.controleur.plateau.cars[ind].x)  \(d.vue.controleur.plateau.cars[ind].y)")
 		var b = false
 		if(d.isallow){
 			if(detected){
@@ -84,18 +101,17 @@ class MyView:NSImageView{
 					for index in 0..<10{
 						let x1 = (24 + (1 + 2*index)*4 + index*54)
 						
-						if (Vue.frame.origin.x - CGFloat(x1) < CGFloat(32) && Vue.frame.origin.x - CGFloat(x1) > CGFloat(0) && !b){
-							Swift.print("mouse up hori : vue numéro \(ind) ")
+						if (Vue.frame.origin.x - CGFloat(x1) < CGFloat(32) && Vue.frame.origin.x - CGFloat(x1) >= CGFloat(0) && !b){
 							d.vue.controleur.plateau.cars[ind].y = (abs(Int(round((CGFloat(x1)-24)/60))))
 							d.vue.draw(d.ImgArea)
-							
+							bug = false
 							b = true
 							
 						}
-						if (Vue.frame.origin.x - CGFloat(x1) > -32 && Vue.frame.origin.x - CGFloat(x1) < 0 && !b){
+						if (Vue.frame.origin.x - CGFloat(x1) > -32 && Vue.frame.origin.x - CGFloat(x1) <= 0 && !b){
 							d.vue.controleur.plateau.cars[ind].y = (abs(Int(round((CGFloat(x1)-24)/60))))
-							Swift.print("mouse up hori vue numéro \(ind)")
 							d.vue.draw(d.ImgArea)
+							bug = false
 							
 							b = true
 						}
@@ -110,23 +126,68 @@ class MyView:NSImageView{
 				else {
 					for index in 0..<10{
 						let y1 = (45 + (1+2*index)*4 + (index*54))
-						if (Vue.frame.origin.y - CGFloat(y1) < CGFloat(32) && Vue.frame.origin.y - CGFloat(y1) > CGFloat(0) && !b){
-							Swift.print("mouse up veri : vue numéro \(ind)")
+						if (Vue.frame.origin.y - CGFloat(y1) < CGFloat(32) && Vue.frame.origin.y - CGFloat(y1) >= CGFloat(0) && !b){
 							d.vue.controleur.plateau.cars[ind].x = 6-(abs(Int(round((CGFloat(y1)-40)/60))))-d.vue.controleur.plateau.cars[ind].length
 							d.vue.draw(d.ImgArea)
 							b = true
+							bug = false
 							
 						}
-						if (Vue.frame.origin.y - CGFloat(y1) > -32 && Vue.frame.origin.y - CGFloat(y1) < 0 && !b){
-							Swift.print("mouse up verti vue numéro \(ind)\n\n")
+						if (Vue.frame.origin.y - CGFloat(y1) > -32 && Vue.frame.origin.y - CGFloat(y1) <= 0 && !b){
 							d.vue.controleur.plateau.cars[ind].x = 6-(abs(Int(round((CGFloat(y1)-40)/60))))-d.vue.controleur.plateau.cars[ind].length
 							d.vue.draw(d.ImgArea)
 							b = true
+							bug = false
 						}
 					}
 				}
 			}
 		}
+		if(ind != 0 && bug == true){
+						bugcount = 2
+			bugvue = ind
+			Swift.print("*****   bug is here  \(bugvue) \n ******")
+			Swift.print ("\(subviews[bugvue].frame.origin.x)   \(bugpoint.x)")
+			Swift.print ("\(subviews[bugvue].frame.origin.y)   \(bugpoint.y)")
+			bugpoint.x = subviews[bugvue].frame.origin.x
+			bugpoint.y = subviews[bugvue].frame.origin.y
+			
+			
+		}
+		
+		if(bugcount==1){
+			//d.vue.controleur.plateau = bugplateau
+			//d.vue.draw(d.ImgArea)
+			Swift.print ("**** act now  ****")
+//			Swift.print ("\(subviews[bugvue].frame.origin.x)   \(bugpoint.x)")
+//			Swift.print ("\(subviews[bugvue].frame.origin.y)   \(bugpoint.y)")
+		//	subviews[bugvue].frame.origin.x = bugpoint.x
+			//subviews[bugvue].frame.origin.y = bugpoint.y
+//						if (subviews[bugvue].frame.width>subviews[bugvue].frame.height){
+//				for index in 0..<10{
+//					let x1 = (24 + (1 + 2*index)*4 + index*54)
+//					
+//					if (subviews[bugvue].frame.origin.x - CGFloat(x1) < CGFloat(32) && subviews[bugvue].frame.origin.x - CGFloat(x1) > CGFloat(0) && !b){
+//						d.vue.controleur.plateau.cars[bugvu].y = (abs(Int(round((CGFloat(x1)-24)/60))))
+//						d.vue.draw(d.ImgArea)
+//						bug = false
+//						b = true
+//						
+//					}
+//					if (subviews[bugvue].frame.origin.x - CGFloat(x1) > -32 && subviews[bugvue].frame.origin.x - CGFloat(x1) < 0 && !b){
+//						d.vue.controleur.plateau.cars[bugvue].y = (abs(Int(round((CGFloat(x1)-24)/60))))
+//						d.vue.draw(d.ImgArea)
+//						bug = false
+//						
+//						b = true
+//					}
+//				}
+//			}
+			
+		}
+		//d.vue.draw(d.ImgArea)
+		Swift.print(" vue \(ind) : \(d.vue.controleur.plateau.cars[ind].x)  \(d.vue.controleur.plateau.cars[ind].y)")
+		bugcount -= 1
 		Vue = NSView()
 		ind = 0
 		pointstart = NSPoint(x: 0, y: 0)
@@ -134,6 +195,12 @@ class MyView:NSImageView{
 		diffX = 0
 		diffY = 0
 					Swift.print("mouse up end\n")
+		/*for v in 0..<subviews.count{
+			Swift.print(" vue v : \(subviews[v].frame.origin.x)  \(subviews[v].frame.origin.y)")
+		}*/
+		//for v in 0..<subviews.count{
+			//Swift.print(" vue \(ind) : \(d.vue.controleur.plateau.cars[ind].x)  \(d.vue.controleur.plateau.cars[ind].y)")
+		//}
 	}
 	
 	
