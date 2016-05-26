@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -19,7 +19,6 @@
                 <outlet property="afficheMove" destination="9p5-yX-1ji" id="h7Z-TQ-Qpr"/>
                 <outlet property="caradd" destination="kkA-8j-DGO" id="Edr-7M-fLS"/>
                 <outlet property="changecard" destination="48d-16-qxq" id="Hfn-6e-YJl"/>
-                <outlet property="changeprison" destination="OIv-kq-LcT" id="muR-Qz-Mph"/>
                 <outlet property="container" destination="jwv-iq-ERT" id="0lo-wm-bKw"/>
                 <outlet property="createlevel" destination="XlF-Pc-CQK" id="UH8-rV-6hd"/>
                 <outlet property="deletecar" destination="SCH-Rd-yDD" id="9X4-ZF-1CX"/>
@@ -691,13 +690,13 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="1180" height="525"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="745"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="1180" height="525"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wCu-mt-ldL">
-                        <rect key="frame" x="550" y="-4" width="169" height="32"/>
+                        <rect key="frame" x="586" y="-7" width="169" height="32"/>
                         <buttonCell key="cell" type="push" title="Déplacement Suivant" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UBC-Tx-eBU">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -747,23 +746,13 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9p5-yX-1ji">
-                        <rect key="frame" x="798" y="246" width="337" height="234"/>
+                        <rect key="frame" x="810" y="176" width="325" height="304"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="sfd-CS-zhP">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OIv-kq-LcT">
-                        <rect key="frame" x="123" y="-4" width="93" height="32"/>
-                        <buttonCell key="cell" type="push" title="Prisonnier " bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="89Q-6p-pA3">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="changeImage:" target="Voe-Tx-rLC" id="hdO-RL-OBm"/>
-                        </connections>
-                    </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XlF-Pc-CQK">
                         <rect key="frame" x="31" y="273" width="160" height="32"/>
                         <buttonCell key="cell" type="push" title="Créer Niveau" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wYA-UB-0av">
@@ -785,14 +774,6 @@
                             <action selector="setlvl:" target="Voe-Tx-rLC" id="EbA-MG-cpY"/>
                         </connections>
                     </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwR-Y4-2KK">
-                        <rect key="frame" x="290" y="500" width="197" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vous êtes au niveau 1" id="Y5G-Zd-73R">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
                     <comboBox verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pu7-9l-tXR">
                         <rect key="frame" x="11" y="227" width="63" height="26"/>
                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="jmh-4J-Dgg">
@@ -812,7 +793,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oXf-p3-yun">
-                        <rect key="frame" x="810" y="152" width="352" height="39"/>
+                        <rect key="frame" x="810" y="71" width="352" height="39"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="création de niveau : appuyez sur &quot;créer niveau&quot; puis &quot;ajouter voiture&quot;" id="bf1-mO-Vi9">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -820,7 +801,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeX-Sm-mi5">
-                        <rect key="frame" x="286" y="-4" width="186" height="32"/>
+                        <rect key="frame" x="322" y="-4" width="186" height="32"/>
                         <buttonCell key="cell" type="push" title="Déplacement Précédent" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="skP-fk-KTm">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -831,7 +812,7 @@
                         </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zxY-MN-iuK">
-                        <rect key="frame" x="940" y="212" width="64" height="17"/>
+                        <rect key="frame" x="954" y="140" width="64" height="17"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Astuces : " id="Gmg-dh-gjF">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -839,7 +820,7 @@
                         </textFieldCell>
                     </textField>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z40-sx-aZ4">
-                        <rect key="frame" x="567" y="489" width="152" height="32"/>
+                        <rect key="frame" x="134" y="-4" width="152" height="32"/>
                         <buttonCell key="cell" type="push" title="Rechercher Solution" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="XVd-NL-duS">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
@@ -870,7 +851,7 @@
                         </connections>
                     </button>
                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6A6-tE-CFk">
-                        <rect key="frame" x="810" y="96" width="352" height="41"/>
+                        <rect key="frame" x="810" y="6" width="352" height="41"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="Appuyez sur &quot;Sauvegarder Niveau &quot; pour ajouter un niveau au CardSet" id="90l-SA-Y9u">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -888,7 +869,7 @@
                         </connections>
                     </button>
                     <imageView focusRingType="exterior" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a5w-FL-1DT" customClass="MyView" customModule="start">
-                        <rect key="frame" x="292" y="38" width="421" height="449"/>
+                        <rect key="frame" x="328" y="38" width="421" height="449"/>
                         <imageCell key="cell" selectable="YES" editable="YES" continuous="YES" focusRingType="exterior" alignment="left" imageScaling="proportionallyDown" id="wEt-o7-2h4"/>
                         <accessibility identifier="idvue"/>
                         <connections>
@@ -905,6 +886,14 @@
                             <action selector="resetlvl:" target="Voe-Tx-rLC" id="vm6-bi-tQV"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwR-Y4-2KK">
+                        <rect key="frame" x="492" y="498" width="197" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Vous êtes au niveau 1" id="Y5G-Zd-73R">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
             </view>
             <point key="canvasLocation" x="762" y="309.5"/>

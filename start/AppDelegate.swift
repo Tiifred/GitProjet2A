@@ -21,7 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var previousmove: NSButton!
     
     @IBOutlet weak var nextmove: NSButton!
-    @IBOutlet weak var changeprison: NSButton!
     @IBOutlet weak var changecard: NSButton!
     @IBOutlet weak var savelevel: NSButton!
     @IBOutlet weak var caradd: NSButton!
@@ -78,24 +77,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	var isallow = false
 	
 
-    @IBAction func changeImage(sender: NSButton) {
-        let openDlg = NSOpenPanel()
-        openDlg.allowsMultipleSelection = false
-        openDlg.canChooseFiles = true
-        openDlg.canChooseDirectories = false
-        if openDlg.runModal() == NSOKButton{
-            vue.pat = String(openDlg.URL!)
-        
-        for _ in 0..<7{
-            vue.pat = String(vue.pat.characters.dropFirst())
-        }
-            
-        vue.controleur.plateau.cars[0].img = vue.pat
-		
-        vue.draw(self.ImgArea)
-        }
-    }
-    
 	@IBAction func carDelete(sender: NSButton) {
         if(supprimer.intValue>0 && Int(supprimer.intValue) < vue.controleur.plateau.cars.count){
         vue.controleur.plateau.cars.removeAtIndex(Int(supprimer.intValue))
@@ -184,9 +165,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	
 	@IBAction func searchsolution(sender: NSButton) {
             vue.controleur.mooving()
+        print("end algo")
             vue.controleur.createPath()
             vue.fin = vue.controleur.path.count
             vue.current = vue.fin - 1
+        afficheMove.stringValue = ""
         addcar = false
 	}
 	
@@ -315,13 +298,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			seterror("Veuillez remplir tous les champs")
 		}
     }
-    
+
     @IBAction func play(sender: NSButton) {
         solution.hidden = !solution.hidden
         nextmove.hidden = !nextmove.hidden
         previousmove.hidden = !previousmove.hidden
-        changeprison.hidden = !changeprison.hidden
-       changecard.hidden = !changecard.hidden
+        changecard.hidden = !changecard.hidden
         savelevel.hidden = !savelevel.hidden
         caradd.hidden = !caradd.hidden
         deletecar.hidden = !deletecar.hidden
@@ -334,6 +316,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         else {
             isallow = false
         }
+        vue.controleur.calculed = false
+        afficheMove.stringValue = ""
     }
   
     @IBAction func savelvl(sender: NSButton) {

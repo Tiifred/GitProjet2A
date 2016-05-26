@@ -44,6 +44,7 @@ class MyView:NSImageView{
 		if(d.isallow){
 			pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 			pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
+            Swift.print("\(pointstart.x)")
 			for v in self.subviews{
 				if (v .isKindOfClass(NSImageView) && v != self){
 					if (v.frame.contains(pointstart)){
@@ -97,7 +98,7 @@ class MyView:NSImageView{
 		var b = false
 		if(d.isallow){
 			if(detected){
-				if (Vue.frame.width>Vue.frame.height){
+				if (Vue.frame.width>Vue.frame.height ){
 					for index in 0..<10{
 						let x1 = (24 + (1 + 2*index)*4 + index*54)
 						
@@ -141,6 +142,12 @@ class MyView:NSImageView{
 						}
 					}
 				}
+                if(Vue.frame.origin.x<0){
+                    Vue.frame.origin.x=0
+                    d.vue.controleur.plateau.cars[ind].y=0
+                    d.vue.draw(d.ImgArea)
+                    
+                }
 			}
 		}
 		if(ind != 0 && bug == true){
@@ -235,6 +242,7 @@ class MyView:NSImageView{
 					}
 				}
 			}
+            
 		}
 	}
 	

@@ -54,7 +54,7 @@ class Vue{
             //if(i != carnumber){
 				if((controleur.plateau.cars[i].img.characters.first) != "/"){
 					
-            let filePath1 = "/Users/projet2a/Documents/GitProjet2A/Images/\(controleur.plateau.cars[i].img).png"
+            let filePath1 = "/Users/projet2a/Documents/projet/start/Images/\(controleur.plateau.cars[i].img).png"
             let file1 = NSURL(fileURLWithPath: filePath1, isDirectory: false)
              imgtmp = NSImage(contentsOfURL: file1)!
             }

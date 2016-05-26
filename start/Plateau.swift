@@ -12,7 +12,7 @@ var abc=""
 
 
 
-class Plateau : Copyable{
+class Plateau {
     var ID = 0
     let lignes = 6
     let colonnes = 6
@@ -23,8 +23,8 @@ class Plateau : Copyable{
     var key = -1
     var corresp=[String]()
 	var lvl1 = 1
-   // var path = "/Users/projet2a/Documents/projet/start/start/CardSet-1"
-	var path = "/Users/projet2a/Documents/CardSet-1"
+   var path = "/Users/projet2a/Documents/projet/start/start/CardSet-1"
+	//var path = "/Users/projet2a/Documents/CardSet-1"
     var nbrlvl = 0
     
     
@@ -42,10 +42,7 @@ class Plateau : Copyable{
         self.path = path
     }
     
-    required init(instance: Plateau) {
-        self.table = instance.table
-        self.cars = instance.cars
-    }
+    
     
     func update(){
         key = 0
