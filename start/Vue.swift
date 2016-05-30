@@ -33,9 +33,9 @@ class Vue{
     
     func nextlvl(){
         if(controleur.plateau.lvl<41){
-            controleur.tablist = [Plateau]()
-            controleur.current = [Plateau]()
-            controleur.next = [Plateau]()
+			controleur.tablist  = Array()
+			controleur.current  = Array()
+			controleur.next = Array()
             controleur.plateau = Plateau(lvl:controleur.plateau.lvl+1)
             controleur.b = true
             controleur.path = [Int]()
@@ -49,10 +49,10 @@ class Vue{
     
     func previouslvl(){
         if(controleur.plateau.lvl>0){
-            controleur.tablist = [Plateau]()
-            controleur.current = [Plateau]()
-            controleur.next = [Plateau]()
-            controleur.plateau = Plateau(lvl:controleur.plateau.lvl-1)
+            controleur.tablist = Array()
+            controleur.current =  Array()
+            controleur.next =  Array()
+			controleur.plateau = Plateau(lvl:controleur.plateau.lvl-1)
             controleur.b = true
             controleur.path = [Int]()
             controleur.sol = Plateau(lvl:controleur.plateau.lvl-1)
@@ -65,9 +65,9 @@ class Vue{
     
     func inilvl(val:Int){
         if((val)<42 && (val)>0 ){
-                controleur.tablist = [Plateau]()
-                controleur.current = [Plateau]()
-                controleur.next = [Plateau]()
+                controleur.tablist = Array()
+                controleur.current = Array()
+                controleur.next =  Array()
                 controleur.plateau = Plateau(lvl:val)
                 controleur.b = true
                 controleur.path = [Int]()

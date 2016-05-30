@@ -47,7 +47,7 @@ class Plateau : Copyable{
                         table[cars[i].x+j][cars[i].y] = cars[i].Id
                     }
                 }else{
-                    for k in 0..<cars[i].length{
+                   for k in 0..<cars[i].length{
                         table[cars[i].x][cars[i].y+k] = cars[i].Id
                     }
                     key = key * self.colonnes+1-cars[i].length + cars[i].y

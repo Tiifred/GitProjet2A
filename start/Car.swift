@@ -69,14 +69,15 @@ class Car{
         return "car \(Id), x\(x) , y\(y) "
     }
     
-    func isAllowed(s:String, val:Int)->Bool{
+    func isAllowed(val:Int)->Bool{
         var ok = true
-        if(s == "plus"){
+        if(val>0){
             if(!(self.isVertical)){
                 if(self.y + val + self.length<=p.colonnes){
                     for k in 1..<val + 1 + self.length {
                         if (((p.table[self.x][self.y + k - 1]) != -1) && ((p.table[self.x][self.y + k - 1]) != self.Id)) {
                             ok=false
+							break
                         }
                     }
                     if(ok) {
@@ -90,6 +91,7 @@ class Car{
                     for k in 1..<val+1 + self.length {
                         if (((p.table[self.x + k - 1][self.y]) != -1) && ((p.table[self.x + k-1][self.y]) != self.Id)) {
                             ok=false
+							break
                         }
                     }
                     if(ok) {
@@ -99,12 +101,13 @@ class Car{
             }
             return false
         }
-        else if (s == "minus"){
+        else{
             if(!(self.isVertical)){
-                if(self.y-val>=0){
-                    for k in 1..<val+1{
+                if(self.y+val>=0){
+                    for k in 1..<abs(val)+1{
                         if (((p.table[self.x][self.y-k]) != -1) && ((p.table[self.x][self.y-k]) != self.Id)) {
                             ok=false
+							break
                         }
                     }
                     if(ok) {
@@ -114,10 +117,11 @@ class Car{
                 ok = true
             }
             else {
-                if(self.x-val>=0){
-                    for k in 1..<val+1{
+                if(self.x+val>=0){
+                    for k in 1..<abs(val)+1{
                         if (((p.table[self.x-k][self.y]) != -1) && ((p.table[self.x-k][self.y]) != self.Id)) {
                             ok=false
+							break
                         }
                     }
                     if(ok) {
