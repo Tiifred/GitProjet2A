@@ -55,10 +55,10 @@ class Car{
     
     func moveMinus(val:Int){
         if(!(self.isVertical)){
-            self.y = self.y+val
+            self.y = self.y-val
         }
         else {
-            self.x = self.x+val
+            self.x = self.x-val
         }
         p.update()
 

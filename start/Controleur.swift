@@ -162,8 +162,8 @@ class Controleur{
 								}
 								
 								
-								for j in -plateau.colonnes+1...(-1) {
-									if (current[z].cars[i].isAllowed(j)){
+								for j in 1..<plateau.colonnes {
+									if (current[z].cars[i].isAllowed(-j)){
 										var tmp : Plateau
 										tmp = current[z].tryy(current[z])
 										tmp.cars[i].moveMinus(j)
@@ -204,6 +204,9 @@ class Controleur{
 											}
 										}
 										exist = false
+									}
+									else{
+										break
 									}
 								}
 								
@@ -259,8 +262,8 @@ class Controleur{
 									}
 									
 								}
-								for j in -current[z].lignes+1...(-1){
-									if (current[z].cars[i].isAllowed(j)){
+								for j in 1..<plateau.lignes{
+									if (current[z].cars[i].isAllowed(-j)){
 										var tmp : Plateau
 										tmp = current[z].tryy(current[z])
 										tmp.cars[i].moveMinus(j)
@@ -300,6 +303,9 @@ class Controleur{
 											}
 										}
 										exist = false
+									}
+									else{
+										break
 									}
 								}
 								
