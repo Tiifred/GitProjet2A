@@ -55,10 +55,10 @@ class Car{
     
     func moveMinus(val:Int){
         if(!(self.isVertical)){
-            self.y = self.y-val
+            self.y = self.y+val
         }
         else {
-            self.x = self.x-val
+            self.x = self.x+val
         }
         p.update()
 
@@ -69,70 +69,66 @@ class Car{
         return "car \(Id), x\(x) , y\(y) "
     }
     
-    func isAllowed(val:Int)->Bool{
-        var ok = true
-        if(val>0){
-            if(!(self.isVertical)){
-                if(self.y + val + self.length<=p.colonnes){
-                    for k in 1..<val + 1 + self.length {
-                        if (((p.table[self.x][self.y + k - 1]) != -1) && ((p.table[self.x][self.y + k - 1]) != self.Id)) {
-                            ok=false
-							break
-                        }
-                    }
-                    if(ok) {
-                        return true
-                    }
-                }
-                ok = true
-            }
-            else {
-                if(self.x+val+self.length<=p.lignes){
-                    for k in 1..<val+1 + self.length {
-                        if (((p.table[self.x + k - 1][self.y]) != -1) && ((p.table[self.x + k-1][self.y]) != self.Id)) {
-                            ok=false
-							break
-                        }
-                    }
-                    if(ok) {
-                        return true
-                    }
-                }
-            }
-            return false
-        }
-        else{
-            if(!(self.isVertical)){
-                if(self.y+val>=0){
-                    for k in 1..<abs(val)+1{
-                        if (((p.table[self.x][self.y-k]) != -1) && ((p.table[self.x][self.y-k]) != self.Id)) {
-                            ok=false
-							break
-                        }
-                    }
-                    if(ok) {
-                        return true
-                    }
-                }
-                ok = true
-            }
-            else {
-                if(self.x+val>=0){
-                    for k in 1..<abs(val)+1{
-                        if (((p.table[self.x-k][self.y]) != -1) && ((p.table[self.x-k][self.y]) != self.Id)) {
-                            ok=false
-							break
-                        }
-                    }
-                    if(ok) {
-                        return true
-                    }
-                }
-            }
-            return false
-
-        }
-        return false
-    }
+	func isAllowed(val:Int)->Bool{
+		var ok = true
+		if(val>0){
+			if(!(self.isVertical)){
+				if(self.y + val + self.length<=p.colonnes){
+					for k in 1..<val + 1 + self.length {
+						if (((p.table[self.x][self.y + k - 1]) != -1) && ((p.table[self.x][self.y + k - 1]) != self.Id)) {
+							ok=false
+						}
+					}
+					if(ok) {
+						return true
+					}
+				}
+				ok = true
+			}
+			else {
+				if(self.x+val+self.length<=p.lignes){
+					for k in 1..<val+1 + self.length {
+						if (((p.table[self.x + k - 1][self.y]) != -1) && ((p.table[self.x + k-1][self.y]) != self.Id)) {
+							ok=false
+						}
+					}
+					if(ok) {
+						return true
+					}
+				}
+			}
+			return false
+		}
+		else{
+			if(!(self.isVertical)){
+				if(self.y+val>=0){
+					for k in 1..<(-val)+1{
+						if (((p.table[self.x][self.y-k]) != -1) && ((p.table[self.x][self.y-k]) != self.Id)) {
+							ok=false
+						}
+					}
+					if(ok) {
+						return true
+					}
+				}
+				ok = true
+			}
+			else {
+				if(self.x+val>=0){
+					for k in 1..<(-val)+1{
+						if (((p.table[self.x-k][self.y]) != -1) && ((p.table[self.x-k][self.y]) != self.Id)) {
+							ok=false
+						}
+					}
+					if(ok) {
+						return true
+					}
+				}
+			}
+			return false
+			
+		}
+		return false
+	}
 }
 

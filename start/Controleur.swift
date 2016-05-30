@@ -106,7 +106,7 @@ class Controleur{
 						for i in 0..<plateau.cars.count{ // pour chaque vehicule
 							if (plateau.cars[i].isVertical){
 								for j in 1..<plateau.colonnes { // j : toutes la valeurs possible de deplacement
-									if (current[z].cars[i].isAllowed(j)){
+									if (current[z].cars[i].isAllowed(j) ){
 										var tmp : Plateau
 										tmp = current[z].tryy(current[z])
 										tmp.cars[i].movePlus(j)
@@ -162,8 +162,8 @@ class Controleur{
 								}
 								
 								
-								for j in 1..<plateau.colonnes {
-									if (current[z].cars[i].isAllowed(j-plateau.colonnes)){
+								for j in -plateau.colonnes+1...(-1) {
+									if (current[z].cars[i].isAllowed(j)){
 										var tmp : Plateau
 										tmp = current[z].tryy(current[z])
 										tmp.cars[i].moveMinus(j)
@@ -204,10 +204,6 @@ class Controleur{
 											}
 										}
 										exist = false
-									}
-										
-									else {
-										break
 									}
 								}
 								
@@ -263,8 +259,8 @@ class Controleur{
 									}
 									
 								}
-								for j in 1..<current[z].lignes{
-									if (current[z].cars[i].isAllowed(j-plateau.colonnes)){
+								for j in -current[z].lignes+1...(-1){
+									if (current[z].cars[i].isAllowed(j)){
 										var tmp : Plateau
 										tmp = current[z].tryy(current[z])
 										tmp.cars[i].moveMinus(j)
@@ -305,9 +301,6 @@ class Controleur{
 										}
 										exist = false
 									}
-									else{
-										break
-									}
 								}
 								
 							}
@@ -329,8 +322,9 @@ class Controleur{
 			
 		} // END WHILe
 		calculed = true
-	}
-	
+ }
+
+
 	func addCarManualy(x:Int, y:Int, isVertical:Bool, image:String){
 		var i = 0
 		i = plateau.cars.count + 1
@@ -346,7 +340,7 @@ class Controleur{
 		}
 		else {print("Place occupé !")}
 	}
-	
-	
-	
+
+
+
 }
