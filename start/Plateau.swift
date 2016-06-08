@@ -23,8 +23,8 @@ class Plateau {
     var key = -1
     var corresp=[String]()
 	var lvl1 = 1
-   var path = "/Users/projet2a/Documents/projet/start/start/CardSet-1"
-	//var path = "/Users/projet2a/Documents/CardSet-1"
+   //var path = "/Users/projet2a/Documents/projet/start/start/CardSet-1"
+	var path = "/Users/projet2a/Documents/CardSet-1"
     var nbrlvl = 0
     
     
@@ -131,7 +131,6 @@ class Plateau {
                 if(line.matchPattern("level \(level)")) {
                     strBuffer = ""
                     copy = true
-                    print("founded")
                 }
                 
                 if(line == "" && copy) {
@@ -214,13 +213,11 @@ class Plateau {
                 for _ in 0...length{
                     original = String(original.characters.dropFirst()) // ello
                 }
-                print("founded \(val)")
                 return original
             }
             
         }
-        print("not founded")
-        return ""
+		return ""
     }
     
 }

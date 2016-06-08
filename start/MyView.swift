@@ -33,18 +33,10 @@ class MyView:NSImageView{
 		Vue = NSImageView()
 		var ca = 0
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-		/*if(bugcount != 1){
-			Swift.print("dont change error detected")
-			bugplateau = d.vue.controleur.plateau
-		}*/
-		Swift.print("mouse down start")
-//		for v in 0..<subviews.count{
-//		Swift.print(" vue \(v) : \(d.vue.controleur.plateau.cars[v].x)  \(d.vue.controleur.plateau.cars[v].y)")
-//		}
+		
 		if(d.isallow){
 			pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 			pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
-            Swift.print("\(pointstart.x)")
 			for v in self.subviews{
 				if (v .isKindOfClass(NSImageView) && v != self){
 					if (v.frame.contains(pointstart)){
@@ -53,8 +45,6 @@ class MyView:NSImageView{
 						
 						bug = true
 						ind = ca
-						Swift.print(" vue \(ind) : \(d.vue.controleur.plateau.cars[ind].x)  \(d.vue.controleur.plateau.cars[ind].y)")
-						Swift.print("\(ind) moved")
 					}
 				}
 				ca += 1
@@ -69,9 +59,6 @@ class MyView:NSImageView{
 	
 	override func rightMouseUp(theEvent: NSEvent) {
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-		for v in 0..<subviews.count{
-			Swift.print(" vue \(v) : \(d.vue.controleur.plateau.cars[v].x)  \(d.vue.controleur.plateau.cars[v].y)")
-		}
 		if(!d.isallow){
 		pointstart.x = (theEvent.locationInWindow.x - self.frame.origin.x)
 		pointstart.y = (theEvent.locationInWindow.y - self.frame.origin.y)
@@ -91,10 +78,7 @@ class MyView:NSImageView{
 	
 	
 	override func mouseUp(theEvent: NSEvent) {
-					Swift.print("mouse up start")
-		
 		let d : AppDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-		Swift.print(" vue \(ind) : \(d.vue.controleur.plateau.cars[ind].x)  \(d.vue.controleur.plateau.cars[ind].y)")
 		var b = false
 		if(d.isallow){
 			if(detected){
@@ -153,47 +137,13 @@ class MyView:NSImageView{
 		if(ind != 0 && bug == true){
 						bugcount = 2
 			bugvue = ind
-			Swift.print("*****   bug is here  \(bugvue) \n ******")
-			Swift.print ("\(subviews[bugvue].frame.origin.x)   \(bugpoint.x)")
-			Swift.print ("\(subviews[bugvue].frame.origin.y)   \(bugpoint.y)")
 			bugpoint.x = subviews[bugvue].frame.origin.x
 			bugpoint.y = subviews[bugvue].frame.origin.y
 			
 			
 		}
 		
-		if(bugcount==1){
-			//d.vue.controleur.plateau = bugplateau
-			//d.vue.draw(d.ImgArea)
-			Swift.print ("**** act now  ****")
-//			Swift.print ("\(subviews[bugvue].frame.origin.x)   \(bugpoint.x)")
-//			Swift.print ("\(subviews[bugvue].frame.origin.y)   \(bugpoint.y)")
-		//	subviews[bugvue].frame.origin.x = bugpoint.x
-			//subviews[bugvue].frame.origin.y = bugpoint.y
-//						if (subviews[bugvue].frame.width>subviews[bugvue].frame.height){
-//				for index in 0..<10{
-//					let x1 = (24 + (1 + 2*index)*4 + index*54)
-//					
-//					if (subviews[bugvue].frame.origin.x - CGFloat(x1) < CGFloat(32) && subviews[bugvue].frame.origin.x - CGFloat(x1) > CGFloat(0) && !b){
-//						d.vue.controleur.plateau.cars[bugvu].y = (abs(Int(round((CGFloat(x1)-24)/60))))
-//						d.vue.draw(d.ImgArea)
-//						bug = false
-//						b = true
-//						
-//					}
-//					if (subviews[bugvue].frame.origin.x - CGFloat(x1) > -32 && subviews[bugvue].frame.origin.x - CGFloat(x1) < 0 && !b){
-//						d.vue.controleur.plateau.cars[bugvue].y = (abs(Int(round((CGFloat(x1)-24)/60))))
-//						d.vue.draw(d.ImgArea)
-//						bug = false
-//						
-//						b = true
-//					}
-//				}
-//			}
-			
-		}
-		//d.vue.draw(d.ImgArea)
-		Swift.print(" vue \(ind) : \(d.vue.controleur.plateau.cars[ind].x)  \(d.vue.controleur.plateau.cars[ind].y)")
+
 		bugcount -= 1
 		Vue = NSView()
 		ind = 0
@@ -201,13 +151,6 @@ class MyView:NSImageView{
 		pointend = NSPoint(x: 0, y: 0)
 		diffX = 0
 		diffY = 0
-					Swift.print("mouse up end\n")
-		/*for v in 0..<subviews.count{
-			Swift.print(" vue v : \(subviews[v].frame.origin.x)  \(subviews[v].frame.origin.y)")
-		}*/
-		//for v in 0..<subviews.count{
-			//Swift.print(" vue \(ind) : \(d.vue.controleur.plateau.cars[ind].x)  \(d.vue.controleur.plateau.cars[ind].y)")
-		//}
 	}
 	
 	

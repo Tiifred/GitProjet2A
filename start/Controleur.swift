@@ -19,9 +19,9 @@ extension Copyable {
 }
 
 class Controleur{
-	var tablist = [Plateau]()
-    var current = [Plateau]()
-    var next = [Plateau]()
+	var tablist : Array<Plateau> = Array()
+    var current : Array<Plateau> = Array()
+    var next : Array<Plateau> = Array()
 	var plateau = Plateau(lvl:1)
 	var b = true
 	var path = [Int]()
@@ -36,59 +36,43 @@ class Controleur{
 	}
 	
 	func createPath(){
-        if(found){
-		print("******* Reconstitution  *********")
-        for k in 0..<tablist.count{
-            tablist[k].ID = k
-        }
-        
-		var varpapa :Int   // key papa
-		var varid = sol.ID // varid = position
-        var dadID = 0                           // position papa
-        path.append(varid)
-		while(tablist[varid].key != stop){
-			varpapa = tablist[varid].papa
-            for k in 0..<tablist.count{
-                if(tablist[k].key == varpapa){
-                    dadID = tablist[k].ID
-                }
-            }
-			varid = tablist[dadID].ID
+		if(found){
+			for k in 0..<tablist.count{
+				tablist[k].ID = k
+			}
+			
+			var varpapa :Int   // key papa
+			var varid = sol.ID // varid = position
+			var dadID = 0                           // position papa
 			path.append(varid)
+			while(tablist[varid].key != stop){
+				varpapa = tablist[varid].papa
+				for k in 0..<tablist.count{
+					if(tablist[k].key == varpapa){
+						dadID = tablist[k].ID
+					}
+				}
+				varid = tablist[dadID].ID
+				path.append(varid)
+			}
 		}
-		print("il y a finalement \(path.count - 1)  deplacements necessaires")
-        }
-        else{
-            print("pas de solution pour ce niveau")
-        
-        }}
+	}
 	
 	func mooving(){
-        
 		
-		//tmp = self.plateau
-		print("starting ")
         var count1 = 0
         var counter = 0
-        var mem = [Int]()
-        
-        mem.append(0)
-        mem.append(counter)
+		
         var exist = false
         
         let nee = tablist[0].tryy(tablist[0])
         current.append(nee)
         stop = nee.key
-        print(nee.key)
         
 		while(b){
             var pos = 0
             counter = tablist.count
-            print("\(counter)")
-            if(counter != mem[mem.count-1]){
-                mem.append(counter)
-            }
-            
+			
             if(counter != 1){
                 current.removeAll()
                 for c in 0..<next.count{
@@ -102,55 +86,62 @@ class Controleur{
                 for z in 0..<current.count{
                     if (b){
 						for i in 0..<plateau.cars.count{
-							if (plateau.cars[i].isVertical && b){
+							if (plateau.cars[i].isVertical){
 								for j in 1..<plateau.colonnes {
-										if (current[z].cars[i].isAllowed("plus", val: j) && b ){
+										if (current[z].cars[i].isAllowed("plus", val: j)){
 											var tmp : Plateau
 											tmp = current[z].tryy(current[z])
 											tmp.cars[i].movePlus(j)
-											tmp.ID = tablist.count
 											tmp.papa = current[z].key
 											tmp.move = "car \(i+1) : plus (\(j)) "
 											tmp.update()
                                             exist = false
-											for ind in 0..<tablist.count{
-                                                
-                                                if(tmp.key <= tablist[ind].key){
-                                                    if ( (tmp.key == tablist[ind].key) && !exist){
-                                                        exist = true
-                                                        break
-                                                    }
-                                                
-                                                }
+											pos = 0
+											//on détermine la position à laquelle sera le plateau
+											for ind2 in 0..<tablist.count{
+												if(tablist[ind2].key < tmp.key){
+													pos += 1
+												}
+												else {
+													break
+												}
 											}
+											
+											//On test si le tableau exist
+											if(pos<tablist.count){
+												if ((tmp.key == tablist[pos].key)){
+													exist = true
+												}
+											}
+											
+											
 											if(!exist){
-                                                pos=0
-                                                
-                                                for ind2 in 0..<tablist.count{
-                                                    if(tablist[ind2].key < tmp.key){
-                                                    pos += 1
-                                                    }
-                                                }
-                                                if(pos<tablist.count){
-                                                   
-                                                    tablist.insert(tmp, atIndex: pos)
-                                                }
-                                                else{
-                                                    tablist.append(tmp)
-                                                 
-                                                }
+												if(pos<tablist.count){
+													tablist.insert(tmp, atIndex: pos)
+												}
+												else{
+													tablist.append(tmp)
+												}
 												next.append(tmp)
 												
 												if(tmp.isSol()){
 													print ("solution trouvé")
-                                                    found = true
 													sol = tmp
-                                                    b = false
+													b = false
 													print(tmp.afficheTab())
 												}
 											}
 											exist = false
 										}
+											
+											// si on ne peux pas deplacer x , on ne peux pas de x+1 donc break
+										else {
+											break
+									}
+								}
+								
+								
+								for j in 1..<plateau.colonnes {
 										if (current[z].cars[i].isAllowed("minus", val: j) && b){
 											var tmp : Plateau
 											tmp = current[z].tryy(current[z])
@@ -160,36 +151,32 @@ class Controleur{
 											tmp.move = "car \(i+1) :  moins (\(j)) "
 											tmp.update()
                                             exist = false
-											for ind in 0..<tablist.count{
-                                                if(tmp.key <= tablist[ind].key){
-                                                    if ( (tmp.key == tablist[ind].key) && !exist){
-                                                        exist = true
-                                                        break
-                                                    }
-                                                }
+											pos = 0
+											for ind2 in 0..<tablist.count{
+												if(tablist[ind2].key < tmp.key){
+													pos += 1
+												}
+												else {
+													break
+												}
+											}
+											if(pos<tablist.count){
+												if ((tmp.key == tablist[pos].key)){
+													exist = true
+												}
 											}
 											if(!exist){
-                                                
-                                                pos=0
-                                               
-                                                for ind2 in 0..<tablist.count{
-                                                    
-                                                    if(tablist[ind2].key < tmp.key){
-                                                        pos += 1
-                                                    }
-                                                }
-                                                if(pos<tablist.count){
-                                                    
-                                                    tablist.insert(tmp, atIndex: pos)
-                                                }
-                                                else{
-                                                    tablist.append(tmp)
-                                                    
-                                                }
-                                                next.append(tmp)
+												if(pos<tablist.count){
+													
+													tablist.insert(tmp, atIndex: pos)
+												}
+												else{
+													tablist.append(tmp)
+													
+												}
+												next.append(tmp)
 												if(tmp.isSol()){
 													print ("solution trouvé")
-                                                    found = true
 													sol = tmp
 													b = false
 													print(tmp.afficheTab())
@@ -197,9 +184,13 @@ class Controleur{
 											}
 											exist = false
 										}
+											
+										else {
+											break
+									}
 								}
 							}
-							if (!(current[z].cars[i].isVertical) && b){
+							else{
 								for j in 1..<current[z].lignes{
 										if (current[z].cars[i].isAllowed("plus", val: j) && b){
 											var tmp : Plateau
@@ -210,6 +201,7 @@ class Controleur{
 											tmp.update()
 											tmp.move = "car \(i+1) : plus (\(j))"
                                             exist = false
+											pos = 0
 											for ind in 0..<tablist.count{
                                                 if(tmp.key <= tablist[ind].key){
 												if ( (tmp.key == tablist[ind].key) && !exist){
@@ -236,10 +228,8 @@ class Controleur{
                                                 }
                                                 next.append(tmp)
 												if(tmp.isSol()){
-													print ("solution trouvé")
                                                     found = true
 													b = false
-													print(tmp.afficheTab())
                                                     sol = tmp
 												}
 											}
@@ -283,11 +273,9 @@ class Controleur{
                                                 }
                                                  next.append(tmp)
 												if(tmp.isSol()){
-													print ("solution trouvé")
                                                     found = true
 													sol = tmp
 													b = false
-													print(tmp.afficheTab())
 												}
 											}
 											exist = false

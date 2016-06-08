@@ -35,8 +35,6 @@ extension String {
         self.enumerateSubstringsInRange(range, options: NSStringEnumerationOptions.ByWords) { (substring, _, _, in) -> () in
             words.append(substring!)
         }
-        
-        print(words[0])
         return words
     }
     

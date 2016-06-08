@@ -86,6 +86,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             supprimer.removeItemAtIndex(vue.controleur.plateau.cars.count-1)
             supprimer.stringValue = ""
         }
+		
+		nextmove.hidden = true
+		previousmove.hidden = true
 	}
     
     @IBAction func setlvl(sender: NSTextField) {
@@ -108,9 +111,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 			isallow = false
 		}
 		
+		nextmove.hidden = true
+		previousmove.hidden = true
+		
     }
 
-    @IBAction func createlvl(sender: NSButton) {
+   /* @IBAction func createlvl(sender: NSButton) {
         vue.controleur.create()
         vue.draw(self.ImgArea)
 		afficheMove.stringValue = ""
@@ -123,8 +129,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		else {
 			isallow = false
 		}
+		
+		nextmove.hidden = true
+		previousmove.hidden = true
     }
-
+*/
 
 	@IBAction func nextLvl(sender: NSButton) {
         vue.carnumber = 1500
@@ -142,6 +151,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		else {
 			isallow = false
 		}
+		
+		nextmove.hidden = true
+		previousmove.hidden = true
+		
 	}
     @IBAction func previousLvl(sender: NSButton) {
         vue.carnumber = 1500
@@ -161,16 +174,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		else {
 			isallow = false
 		}
+		
+		nextmove.hidden = true
+		previousmove.hidden = true
+		
     }
 	
 	@IBAction func searchsolution(sender: NSButton) {
             vue.controleur.mooving()
-        print("end algo")
             vue.controleur.createPath()
             vue.fin = vue.controleur.path.count
             vue.current = vue.fin - 1
         afficheMove.stringValue = ""
         addcar = false
+		nextmove.hidden = false
+		previousmove.hidden = false
 	}
 	
 	
@@ -196,10 +214,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         win.contentView!.addSubview(buttruck)
 		
 		let imv = NSImageView(frame: NSMakeRect(100,20,100,100))
-		let filePath1 = "/Users/projet2a/Documents/GitProjet2A/Images/echelle.png"
-		let file1 = NSURL(fileURLWithPath: filePath1, isDirectory: false)
-
-		imv.image = NSImage(byReferencingURL: file1)
+		imv.image = NSImage(named:"echelle")
 		 win.contentView!.addSubview(imv)
         
         cbox = NSComboBox(frame: NSMakeRect(400,150,150,30))
@@ -252,7 +267,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let controller = NSWindowController(window: win);
         controller.showWindow(self);
-        
+		
+		nextmove.hidden = true
+		previousmove.hidden = true
     }
     
     func myAction(obj:AnyObject?){
@@ -318,6 +335,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         vue.controleur.calculed = false
         afficheMove.stringValue = ""
+		
+		
+		nextmove.hidden = true
+		previousmove.hidden = true
     }
   
     @IBAction func savelvl(sender: NSButton) {
@@ -415,12 +436,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		else {
 			isallow = false
 		}
+		
+		nextmove.hidden = false
+		previousmove.hidden = false
 
     }
 	
 	func intro(){
 		
-		let win = NSWindow(contentRect: NSMakeRect(100, 100, 800, 200),
+		let win = NSWindow(contentRect: NSMakeRect(100, 100, 800, 250),
 		                   styleMask: 1 | 2 | 4 | 8,
 		                   backing: NSBackingStoreType.Buffered, defer: true);
 		
@@ -428,11 +452,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		win.center();
 		
 		
-		let multi = NSTextField(frame: NSMakeRect(0,0,800,200))
+		let multi = NSTextField(frame: NSMakeRect(0,0,800,250))
 			win.contentView!.addSubview(multi)
 		multi.editable = false
 		multi.backgroundColor = NSColor.clearColor()
-		multi.stringValue = "\t \t \t \t\t\t\t\t\t\t\t Principe de fonctionnement \n\n" + "\t * Mode Semi - Automatique :\n - Choisissez un niveau en entrant son numéro ou à l'aide des touches directionnelles haut et bas\n - Cherchez la solution en cliquant sur le bouton\n - Déplacez les véhicules à l'aide des touches directionnelles droite et gauche\n\n " + " \t * Mode Manuel : \n - Cliquez sur la grille, à un endroit où il n'y a pas de voiture (le contour de la grille doit être bleu)\n - Placez le curseur de la souris sur un véhicule\n - Maintenez le bouton gauche de la souris et déplacer la souris\n - Relâcher le bouton"
+		multi.stringValue = "\t \t \t \t\t\t\t\t\t\t\t Principe de fonctionnement \n\n" + "Le but est de déplacer la voiture prisonnière (par defaut , la voiture rouge numérotée 0) jusqu'à la sortie en déplacant les véhicules\n\n" + "\t 1) Mode Intelligent :\n - Choisissez un niveau en entrant son numéro ou à l'aide des touches directionnelles haut et bas\n - Cherchez la solution en cliquant sur le bouton\n - Déplacez les véhicules à l'aide des touches directionnelles droite et gauche\n\n " + " \t 2)  Mode Manuel : \n - Cliquez sur Jouer \n - Placez le curseur de la souris sur un véhicule\n - Maintenez le bouton gauche de la souris enfoncé et déplacez la souris\n - Relâchez le bouton"
 		
 		
 		//Add the window to the main viewer
@@ -458,7 +482,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		win.contentView!.addSubview(multi)
 		multi.editable = false
 		multi.backgroundColor = NSColor.clearColor()
-		multi.stringValue = "vous avez terminé la partie, félicitations"
+		multi.stringValue = "Vous avez terminé la partie, félicitations !"
 		
 		d.window.addChildWindow(win, ordered:NSWindowOrderingMode.Above);
 		let controller = NSWindowController(window: win);
@@ -473,7 +497,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 		                   styleMask: 1 | 2 | 4 | 8,
 		                   backing: NSBackingStoreType.Buffered, defer: true);
 		
-		win.title = "erreur création véhicule";
+		win.title = "Echec";
 		win.center();
 		
 		
